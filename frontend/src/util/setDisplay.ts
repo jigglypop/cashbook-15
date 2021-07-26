@@ -1,6 +1,6 @@
 // import cache from "./cache"
 // import { $ } from "./jQurey"
-// 
+//
 // export const IPadAttr = {
 //     "--baseX": "1040px",
 //     "--base-X": "-1040px",
@@ -21,23 +21,23 @@
 //     "--category-margin": "40px",
 //     "--input-length": "500px",
 // }
-// 
-// 
+//
+//
 // export const SunAttr = {
 //     "--back": "#1d1d1d",
 //     "--text": "#1d1d1d",
 //     "--white-text": "white",
 //     "--app": "white",
 // }
-// 
+//
 // export const MoonAttr = {
 //     "--back": "white",
 //     "--text": "#12fff7",
 //     "--white-text": "#12fff7",
 //     "--app": "#1d1d1d",
 // }
-// 
-// 
+//
+//
 // export const IPhoneAttr = {
 //     "--baseX": "400px",
 //     "--base-X": "-400px",
@@ -58,9 +58,9 @@
 //     "--category-margin": "10px",
 //     "--input-length": "300px",
 // }
-// 
-// 
-// 
+//
+//
+//
 // export const setVAll = (Attr: any) => {
 //     const body = document.querySelector("body")
 //     if (body) {
@@ -69,7 +69,7 @@
 //         }
 //     }
 // }
-// 
+//
 // export const setBefore = () => {
 //     const attr = cache.get('attr')
 //     if (attr) {
@@ -79,10 +79,10 @@
 //     if (dark) {
 //         setVAll(dark)
 //     }
-// 
-// 
+//
+//
 // }
-// 
+//
 // export const setMode = () => {
 //     const mode = cache.get('mode')
 //     const darkSun = $('#dark-sun').getById()

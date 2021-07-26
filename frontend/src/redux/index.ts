@@ -1,11 +1,11 @@
-import { count } from "./count"
-import instance from "./instance"
+import { count } from "./count";
+import instance from "./instance";
 
 const createStore = function () {
-    return {
-        instance: instance,
-        count: count
-    }
-}
+  return {
+    instance: instance,
+    count: count,
+  };
+};
 
-export default createStore
+export default createStore;

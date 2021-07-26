@@ -6,7 +6,7 @@
 }
 
 .Error-Modal-Desc {
-  margin-bottom: 20px
+  margin-bottom: 20px;
 }
 
 .Error-Button-Wrapper {
@@ -24,6 +24,5 @@
 }
 
 #Close-Error-Modal {
-  color: #F45452;
+  color: #f45452;
 }
-

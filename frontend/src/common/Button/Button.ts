@@ -1,17 +1,17 @@
 // import React from "../../util/react"
 // import "./Button.css"
 // import { $ } from "../../util/select"
-// 
+//
 // export default class Button extends React{
-// 
+//
 //     text = ""
-// 
+//
 //     constructor($target: HTMLElement, text: string) {
 //         super($target, 'Button')
 //         this.text = text
 //         this.init()
 //     }
-// 
+//
 //     render() {
 //         this.$outer.innerHTML = `
 //             <button class="buttonInner" >${this.text}</button>
@@ -40,11 +40,11 @@
 //             font-family: "BMDOHYEON_ttf";
 //             font-size: 14px;
 //         }
-// 
+//
 //         .glass-button:hover {
 //             box-shadow: 2px 2px 20px var(--baemin);
 //         }
-// 
+//
 //         .glass-button:before {
 //             content: "";
 //             background-color: white;
@@ -56,14 +56,14 @@
 //             transform: translateX(-100%) rotate(45deg);
 //             transition: all 0.3s;
 //         }
-// 
+//
 //         .glass-button:hover:before {
 //             transform: translateX(100%) rotate(45deg);
 //         }`
 //     }
 //     methods() {
 //         $("#Auth-Arrow").on('click', function() {
-//             
+//
 //         })
 //     }
 // }

@@ -1,22 +1,20 @@
 export class Instance {
-    private instance: any = {}
+  private instance: any = {};
 
-    constructor() {
+  constructor() {}
 
-    }
+  setInstance(key: string, value: any) {
+    this.instance[key] = value;
+  }
 
-    setInstance(key: string, value: any) {
-        this.instance[key] = value
-    }
+  getInstance() {
+    return this.instance;
+  }
 
-    getInstance() {
-        return this.instance
-    }
-
-    getInstanceByKey(key: string) {
-        return this.instance[key]
-    }
+  getInstanceByKey(key: string) {
+    return this.instance[key];
+  }
 }
 
-const instance = new Instance()
-export default instance
+const instance = new Instance();
+export default instance;

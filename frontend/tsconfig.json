@@ -5,9 +5,6 @@
     "strict": true,
     "esModuleInterop": true,
     "sourceMap": true,
-    "lib": [
-      "ESNext.String",
-      "dom"
-    ]
+    "lib": ["ESNext.String", "dom"]
   }
 }

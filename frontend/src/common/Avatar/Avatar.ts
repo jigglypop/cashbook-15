@@ -1,14 +1,14 @@
 // import { API_ENDPOINT } from "../../util/api"
 // import React from "../../util/react"
 // import "./Avatar.css"
-// 
+//
 // export default class Avatar extends React{
-// 
+//
 //     private profileImage = ""
 //     private width = "40px"
 //     private height = "40px"
 //     private boxShadow = "2px_2px_10px_var(--text)"
-// 
+//
 //     constructor($target: HTMLElement, props:any, ID: string, profileImage: string, width?: string, height?: string, boxShadow?:string ) {
 //         super($target, 'Avatar')
 //         if (profileImage !== undefined) {
@@ -23,7 +23,7 @@
 //         }
 //         this.init()
 //     }
-// 
+//
 //     css() {
 //         return `
 //         #avatar-img-${this.ID} {
@@ -37,9 +37,9 @@
 //         }
 //         `
 //     }
-// 
+//
 //     componentWillMount() {}
-// 
+//
 //     render() {
 //         return(`
 //             <div id="Avatar-${this.ID}" class="border-div blob white" >
@@ -49,6 +49,6 @@
 //             </div>
 //         `)
 //     }
-// 
+//
 //     componentDidMount() {}
 // }
