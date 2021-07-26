@@ -48,3 +48,5 @@ lerna-debug.log*
 .idea
 
 **/dist/
+
+.DS_Store
