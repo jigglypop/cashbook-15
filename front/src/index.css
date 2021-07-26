@@ -1,0 +1,108 @@
+
+@import url("https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css");
+body {
+    font-family: 'NanumBarunGothic';
+    font-weight: 800;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    transition: all .3s ease-in;
+    perspective: 1000px;
+}
+
+body {
+    /* 그라디언트 */
+    --background-bluegreen: linear-gradient(45deg, #0cebeb, #20e3b2, #29ffc6);
+    --background-purple: linear-gradient(45deg, #8e2de2, #4a00e0);
+    --background-dark: linear-gradient(45deg, #000000, #434343);
+    --background-green: linear-gradient(45deg, #00b09b, #96c93d);
+    --background-yellow: linear-gradient(45deg, #ffe259, #ffa751);
+
+    /* 색깔들 */
+    --baemin: #12fff7;
+    --text: #1d1d1d;
+    --wtext: white;
+    --app: white;
+    --red: #ED213A;
+    --header: var(--background-green);
+    --grayA: #F6F6F6;
+    --grayB: #D7D7D7;
+    --grayC: #888888;
+    --dark: #222222;
+    --bluegreen: #0cebeb;
+    --green: #00b09b;
+    --purple: #8e2de2;
+    --yellow: #ffe259;
+
+
+    --width: 400px;
+    --width_: -400px;
+    --height: 665px;
+    --heightS: 555px;
+    --heightSS: 505px;
+    --input-width: 200px;
+
+    background: var(--background);
+}
+
+
+main {
+    z-index: 3;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all .3s ease-in;
+}
+
+.isNotVisible {
+    visibility: hidden;
+}
+
+.isNotDisplay {
+    display: none;
+}
+
+#root {
+    position: relative;
+    width: var(--baseX);
+    height: var(--baseY);
+
+    transition: all 0.3s ease-in;
+}
+
+
+::-webkit-scrollbar {
+    width: 20px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: var(--header);
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 3px solid transparent;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+
