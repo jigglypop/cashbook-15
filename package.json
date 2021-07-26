@@ -1,0 +1,8 @@
+{
+  "name": "cashbook-15",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/woowa-techcamp-2021/cashbook-15.git",
+  "author": "hwookim <gusdn9754@gmail.com>",
+  "license": "MIT"
+}
