@@ -15,6 +15,7 @@ class App extends Container {
     return `
           <Header/>
           <Router/>
+          <Toast/>
         `;
   }
 

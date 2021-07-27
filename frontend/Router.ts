@@ -22,7 +22,7 @@ class Router extends Container {
 
   render() {
     return `
-           <h1>라우터입니다</h1>
+           <h1>라우터일까요</h1>
            ${this.switch(location.pathname, 0)}
         `;
   }

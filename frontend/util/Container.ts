@@ -55,7 +55,7 @@ export abstract class Container{
 
     Components?.map((item) => {
       let id = getID();
-      html = html.replace(item, `<div id="temp-${id}" ></div>`);
+      html = html.replace(item, `<div class="tempOuter" id="temp-${id}" ></div>`);
       temp.push({
         id: id,
         tag: getTag(item),
