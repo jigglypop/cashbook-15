@@ -3,6 +3,6 @@ import templateRouter from "./template";
 
 const rootRouter = express();
 
-rootRouter.use('/', templateRouter)
+rootRouter.use("/", templateRouter);
 
 export default rootRouter;
