@@ -5,16 +5,16 @@ import { config } from "dotenv";
 import express from "express";
 import path from "path";
 import { sequelize } from "./models";
-import templateRouter from "./router/template";
+import rootRouter from "./router";
 
 config();
 sequelize.sync();
 const app = express();
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'ejs')
-app.engine('html', require('ejs').renderFile);
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+app.engine("html", require("ejs").renderFile);
 app.use(cors());
-app.use(express.static('dist'));
+app.use(express.static("dist"));
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -22,7 +22,7 @@ app.use(
   })
 );
 app.use(cookieParser());
-app.use(templateRouter)
+app.use(rootRouter);
 app.get("/", (req, res) => {
   res.render("index.html");
 });
