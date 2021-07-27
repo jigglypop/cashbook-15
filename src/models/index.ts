@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
 import { Sequelize } from "sequelize-typescript";
 import User from "./user";
+import { Payment } from "./Payment";
 
 dotenv.config();
 export const sequelize = new Sequelize({
@@ -10,3 +11,5 @@ export const sequelize = new Sequelize({
   password: process.env.DB_PASSWORD,
   models: [User],
 });
+
+sequelize.addModels([Payment]);

@@ -5,7 +5,7 @@ import { config } from "dotenv";
 import express from "express";
 import path from "path";
 import { sequelize } from "./models";
-import templateRouter from "./router/template";
+import rootRouter from "./router";
 
 config();
 sequelize.sync();
@@ -22,7 +22,7 @@ app.use(
   })
 );
 app.use(cookieParser());
-app.use(templateRouter);
+app.use(rootRouter);
 app.get("/", (req, res) => {
   res.render("index.html");
 });
