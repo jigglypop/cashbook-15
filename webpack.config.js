@@ -1,9 +1,8 @@
 require("dotenv/config");
-const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./frontend/index.ts",
@@ -37,7 +36,7 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.(png|svg|jpg|gif|ico)$/,
@@ -76,7 +75,6 @@ module.exports = {
         { from: "frontend/favicon.ico", to: "./favicon.ico" },
       ],
     }),
-    // new webpack.EnvironmentPlugin(["API_ENDPOINT"]),
-    new MiniCssExtractPlugin({ filename: 'css/style.css' })
+    new MiniCssExtractPlugin({ filename: "css/style.css" }),
   ],
 };
