@@ -1,6 +1,6 @@
 import { AllowNull, Column, Model, Table, Unique } from "sequelize-typescript";
 
-interface IPayment {
+export interface IPayment {
   value: string;
 }
 
