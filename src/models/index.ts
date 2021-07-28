@@ -1,7 +1,7 @@
 import * as dotenv from "dotenv";
 import { Sequelize } from "sequelize-typescript";
 import Month from "./month";
-import { Payment } from "./Payment";
+import Payment from "./Payment";
 import User from "./user";
 
 dotenv.config();

@@ -6,7 +6,7 @@ export interface IPayment {
 }
 
 @Table
-export class Payment extends Model<IPayment> {
+export default class Payment extends Model<IPayment> {
   @AllowNull(false)
   @Unique
   @Column
