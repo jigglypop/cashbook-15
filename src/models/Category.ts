@@ -1,12 +1,12 @@
 import { AllowNull, Column, Model, Table, Unique } from "sequelize-typescript";
 
-export interface IPayment {
+export interface ICategory {
   id?: number;
   value: string;
 }
 
 @Table
-export default class Payment extends Model<IPayment> {
+export default class Category extends Model<ICategory> {
   @AllowNull(false)
   @Unique
   @Column

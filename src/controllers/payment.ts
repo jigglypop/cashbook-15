@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { IPayment, Payment } from "../models/Payment";
+import Payment, { IPayment } from "../models/Payment";
 import HttpError from "../errors/HttpError";
 
 interface IWritePaymentRequest extends Request {
