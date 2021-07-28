@@ -1,9 +1,10 @@
 import express, { Router } from "express";
-import { getMonth } from "../controllers/month";
+import { read } from "../controllers/month";
 import requireLoggedIn from "../middleware/isLoggedIn";
+import wrapAsync from "../utils/wrapAsync";
 
 const monthRouter: Router = express.Router();
 
-monthRouter.get("/month", requireLoggedIn, getMonth);
+monthRouter.get("/month", requireLoggedIn, wrapAsync(read));
 
 export default monthRouter;
