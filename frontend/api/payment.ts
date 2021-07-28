@@ -7,7 +7,7 @@ export interface IWritePayment {
 }
 
 const readAll = () => {
-  return request.read(BASE_URL);
+  return request.get(BASE_URL);
 };
 
 const write = (data: IWritePayment) => {
@@ -15,7 +15,7 @@ const write = (data: IWritePayment) => {
 };
 
 const remove = (id: number) => {
-  return request.remove(BASE_URL + id);
+  return request.delete(BASE_URL + id);
 };
 
 const payment = {
