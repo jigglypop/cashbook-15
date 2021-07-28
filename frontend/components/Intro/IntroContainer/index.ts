@@ -1,9 +1,9 @@
-import { Container } from "../../util/Container";
+import { Container } from "../../../util/Container";
 import "./style.scss";
 
-export default class Main extends Container {
+export default class IntroContainer extends Container {
   constructor($target: HTMLElement, ID: string) {
-    super($target, "Main");
+    super($target, "IntroContainer");
     this.ID = ID;
     this.init();
   }
@@ -13,9 +13,7 @@ export default class Main extends Container {
   }
 
   render() {
-    return `
-            <h1>메인</h1>
-        `;
+    return `<IntroView />`;
   }
 
   componentDidMount() {

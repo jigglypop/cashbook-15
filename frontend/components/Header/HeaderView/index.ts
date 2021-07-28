@@ -1,20 +1,20 @@
-import { store } from "../..";
-import { CalendarSVG } from "../../common/SVG/CalendarSVG";
-import { MainSVG } from "../../common/SVG/MainSVG";
-import { StatisticSVG } from "../../common/SVG/StatisticSVG";
-import { calendar, main, statistic } from "../../redux/router/actions";
-import { Container } from "../../util/Container";
-import { generateToday } from "../../util/getPath";
-import { $ } from "../../util/jQurey";
+import { store } from "../../..";
+import { CalendarSVG } from "../../../common/SVG/CalendarSVG";
+import { MainSVG } from "../../../common/SVG/MainSVG";
+import { StatisticSVG } from "../../../common/SVG/StatisticSVG";
+import { calendar, main, statistic } from "../../../redux/router/actions";
+import { Container } from "../../../util/Container";
+import { generateToday } from "../../../util/getPath";
+import { $ } from "../../../util/jQurey";
 import "./style.scss";
 
-export default class Header extends Container {
+export default class HeaderView extends Container {
   public state = {
     title: "",
   };
 
   constructor($target: HTMLElement, ID: string) {
-    super($target, "Header");
+    super($target, "HeaderView");
     this.ID = ID;
     this.init();
   }
@@ -44,11 +44,11 @@ export default class Header extends Container {
 
   componentDidMount() {
     $("#main-title").on("click", function () {
-      history.pushState({ data: "" }, "", "/");
+      history.pushState({ data: "" }, "", "/main");
       store.router.dispatch(main());
     });
     $("#home-navigation").on("click", function () {
-      history.pushState({ data: "" }, "", "/");
+      history.pushState({ data: "" }, "", "/main");
       store.router.dispatch(main());
     });
     $("#calendar-navigation").on("click", function () {

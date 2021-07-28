@@ -4,7 +4,10 @@ import LineInput from "./common/LineInput/LineInput";
 import Toast from "./common/Toast";
 import CalendarContainer from "./components/Calendar/CalendarContainer";
 import CalendarView from "./components/Calendar/CalendarView";
-import Header from "./components/Header";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import HeaderView from "./components/Header/HeaderView";
+import IntroContainer from "./components/Intro/IntroContainer";
+import IntroView from "./components/Intro/IntroView";
 import Main from "./components/Main";
 import Statistic from "./components/Statistic";
 import "./index.scss";
@@ -16,11 +19,14 @@ export const Modules: any = {
   App,
   GlassButton,
   LineInput,
-  Header,
+  HeaderContainer,
+  HeaderView,
   Main,
   Statistic,
   CalendarContainer,
   CalendarView,
+  IntroContainer,
+  IntroView,
   Router,
   Toast,
 };

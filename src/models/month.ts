@@ -8,20 +8,17 @@ import {
 } from "sequelize-typescript";
 import User from "./user";
 
-export interface IMonth extends Document {
+export interface IMonth {
   id: number;
-  value: number;
+  userId: number;
 }
 
 @Table
-export default class Month extends Model<Month> {
+export default class Month extends Model<IMonth> {
   @PrimaryKey
   @Unique
   @Column
   id: number;
-
-  @Column
-  value: number;
 
   @ForeignKey(() => User)
   @PrimaryKey
