@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import { createPage } from "../../util/createPage";
+import { createPage } from "../util/createPage";
 
 const templateRouter: Router = express.Router();
 

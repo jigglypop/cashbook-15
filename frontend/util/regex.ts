@@ -8,7 +8,7 @@ const getRegex = (tag: string, text: string) => {
 // 인자 찾기
 export const getParams = (text: string) => {
   const datas = getRegex(':.*?=".*?"', text);
-  let _datas: any = {};
+  const _datas: any = {};
   datas.map((item) => {
     const [name, value] = item.replace(/(\"|:)/g, "").split("=");
     _datas[name] = value;
@@ -18,7 +18,7 @@ export const getParams = (text: string) => {
 // 함수 찾기
 export const getFunctions = (text: string) => {
   const datas = getRegex('@.*?=".*?"', text);
-  let _datas: any = {};
+  const _datas: any = {};
   datas.map((item) => {
     const [name, value] = item.replace(/(\"|@)/g, "").split("=");
     _datas[name] = value;

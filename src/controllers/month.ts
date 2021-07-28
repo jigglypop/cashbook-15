@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Model } from "sequelize-typescript";
-import Month from "../../models/month";
+import Month from "../models/month";
 
 export const getMonth = async (req: Request, res: Response) => {
   // 에러처리 (형식)

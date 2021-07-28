@@ -1,7 +1,6 @@
 import { Container } from "../../util/Container";
 import "./style.scss";
 
-
 export default class Statistic extends Container {
   public state = {
     title: "",
@@ -14,7 +13,7 @@ export default class Statistic extends Container {
   }
 
   componentWillMount() {
-    return { };
+    return {};
   }
 
   render() {
@@ -23,5 +22,7 @@ export default class Statistic extends Container {
         `;
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    return {};
+  }
 }

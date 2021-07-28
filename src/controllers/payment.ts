@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { IPayment, Payment } from "../../models/Payment";
+import { IPayment, Payment } from "../models/Payment";
 
 interface IWritePaymentRequest extends Request {
   body: IPayment;

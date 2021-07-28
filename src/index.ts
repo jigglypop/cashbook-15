@@ -5,7 +5,7 @@ import { config } from "dotenv";
 import express from "express";
 import path from "path";
 import { sequelize } from "./models";
-import rootRouter from "./router";
+import rootRouter from "./router/payment";
 
 config();
 sequelize.sync();

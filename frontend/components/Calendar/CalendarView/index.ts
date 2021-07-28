@@ -16,7 +16,6 @@ export default class CalendarView extends Container {
 
   render() {
     const [pathname, params] = getPath();
-    console.log(pathname, params);
     const year = Number(params.toString().slice(0, 4));
     const month = Number(params.toString().slice(4, 7));
     const beforeLast = new Date(year, month - 1, 0);
@@ -65,12 +64,6 @@ export default class CalendarView extends Container {
   }
 
   componentDidMount() {
-    //
-    //     const PLDate = prevLast.getDate();
-    //     const PLDay = prevLast.getDay();
-    //
-    //     const TLDate = thisLast.getDate();
-    //     const TLDay = thisLast.getDay();
     return {};
   }
 }

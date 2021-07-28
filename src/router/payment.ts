@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import { readAll, remove, write } from "./controller";
+import { readAll, remove, write } from "../controllers/payment";
 
 const paymentRouter: Router = express.Router();
 
