@@ -39,7 +39,6 @@ export const remove = async (req: IRemovePaymentRequest, res: Response) => {
       res.status(400).json();
     }
     await Payment.destroy({ where: { id } });
-
     res.status(203).json();
   } catch (error) {
     res.status(500).json({ error });

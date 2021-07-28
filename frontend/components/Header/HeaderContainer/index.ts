@@ -1,9 +1,13 @@
-import { Container } from "../../util/Container";
+import { Container } from "../../../util/Container";
 import "./style.scss";
 
-export default class Main extends Container {
+export default class HeaderContainer extends Container {
+  public state = {
+    title: "",
+  };
+
   constructor($target: HTMLElement, ID: string) {
-    super($target, "Main");
+    super($target, "HeaderContainer");
     this.ID = ID;
     this.init();
   }
@@ -13,9 +17,7 @@ export default class Main extends Container {
   }
 
   render() {
-    return `
-            <h1>메인</h1>
-        `;
+    return `<HeaderView />`;
   }
 
   componentDidMount() {

@@ -12,5 +12,3 @@ export const sequelize = new Sequelize({
   password: process.env.DB_PASSWORD,
   models: [User, Payment, Month],
 });
-
-sequelize.addModels([Payment]);

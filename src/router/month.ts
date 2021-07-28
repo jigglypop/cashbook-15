@@ -1,10 +1,9 @@
 import express, { Router } from "express";
 import { getMonth } from "../controllers/month";
-import checkLoggedIn from "../middleware/checkLoggedIn";
-import jwtMiddleware from "../middleware/jwtMiddleware";
+import requireLoggedIn from "../middleware/isLoggedIn";
 
 const monthRouter: Router = express.Router();
 
-monthRouter.get("/month", jwtMiddleware, checkLoggedIn, getMonth);
+monthRouter.get("/month", requireLoggedIn, getMonth);
 
 export default monthRouter;

@@ -11,7 +11,7 @@ export interface IUser extends Document {
 }
 
 @Table
-export default class User extends Model<User> {
+export default class User extends Model<IUser> {
   @Column
   username: string;
 
