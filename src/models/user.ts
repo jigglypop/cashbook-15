@@ -1,8 +1,7 @@
 import { Column, HasMany, Model, Table } from "sequelize-typescript";
 import Month from "./month";
 
-
-export interface IUser extends Document{
+export interface IUser extends Document {
   id: string;
   username: string;
   email: string;
@@ -29,5 +28,5 @@ export default class User extends Model<User> {
   updatedAt: Date;
 
   @HasMany(() => Month)
-  months: Month[]
+  months: Month[];
 }

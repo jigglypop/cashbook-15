@@ -23,9 +23,6 @@ app.use(
 );
 app.use(cookieParser());
 app.use(rootRouter);
-app.get("/", (req, res) => {
-  res.render("index.html");
-});
 
 app.listen(3000, () => {
   console.log("http://localhost:3000");

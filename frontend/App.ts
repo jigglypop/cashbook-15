@@ -8,7 +8,7 @@ class App extends Container {
   }
 
   componentWillMount() {
-    return {}
+    return {};
   }
 
   render() {
@@ -19,7 +19,9 @@ class App extends Container {
         `;
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    return {};
+  }
 }
 
 export default App;

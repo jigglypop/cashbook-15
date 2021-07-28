@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node build/index.js",
-    "build:front": "webpack --config webpack.config.js",
     "dev": "yarn build:front && nodemon --watch '*ts' --exec 'ts-node' ./src/index.ts",
+    "start": "yarn build:front && ts-node ./src/index.ts",
+    "start:front": "webpack serve --open --port=8000",
+    "build:front": "webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,9 +15,11 @@
   "dependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
+    "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
     "@types/validator": "^13.6.3",
     "babel-loader": "^8.2.2",
+    "bcrypt": "^5.0.1",
     "class-validator": "^0.13.1",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "cookie-parser": "^1.4.5",

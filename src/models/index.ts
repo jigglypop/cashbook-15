@@ -10,11 +10,7 @@ export const sequelize = new Sequelize({
   dialect: "mysql",
   username: process.env.DB_USERNAME || "root",
   password: process.env.DB_PASSWORD,
-  models: [
-    User,
-    Payment,
-    Month
-  ],
+  models: [User, Payment, Month],
 });
 
 sequelize.addModels([Payment]);

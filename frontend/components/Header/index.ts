@@ -4,9 +4,9 @@ import { MainSVG } from "../../common/SVG/MainSVG";
 import { StatisticSVG } from "../../common/SVG/StatisticSVG";
 import { calendar, main, statistic } from "../../redux/router/actions";
 import { Container } from "../../util/Container";
+import { generateToday } from "../../util/getPath";
 import { $ } from "../../util/jQurey";
 import "./style.scss";
-
 
 export default class Header extends Container {
   public state = {
@@ -20,8 +20,7 @@ export default class Header extends Container {
   }
 
   componentWillMount() {
-    return {
-    };
+    return {};
   }
 
   render() {
@@ -45,20 +44,21 @@ export default class Header extends Container {
 
   componentDidMount() {
     $("#main-title").on("click", function () {
-      history.pushState({ data: '' }, '', '/')
-      store.router.dispatch(main())
-    })
+      history.pushState({ data: "" }, "", "/");
+      store.router.dispatch(main());
+    });
     $("#home-navigation").on("click", function () {
-      history.pushState({ data: '' }, '', '/')
-      store.router.dispatch(main())
-    })
+      history.pushState({ data: "" }, "", "/");
+      store.router.dispatch(main());
+    });
     $("#calendar-navigation").on("click", function () {
-      history.pushState({ data: 'calendar' }, '', '/calendar')
-      store.router.dispatch(calendar())
-    })
+      const thisYearMonth = generateToday();
+      history.pushState({ data: "calendar" }, "", `/calendar/${thisYearMonth}`);
+      store.router.dispatch(calendar());
+    });
     $("#statistic-navigation").on("click", function () {
-      history.pushState({ data: 'statistic' }, '', '/statistic')
-      store.router.dispatch(statistic())
-    })
+      history.pushState({ data: "statistic" }, "", "/statistic");
+      store.router.dispatch(statistic());
+    });
   }
 }
