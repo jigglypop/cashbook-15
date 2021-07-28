@@ -19,9 +19,11 @@ export const sequelize = new Sequelize({
 const init = () => {
   Category.sync().then(async () => {
     const categories = await Category.findAll();
-    if (!categories || !categories.length) {
-      CATEGORIES.forEach((value) => Category.create({ value }));
-    }
+    const values = categories.map((category) => category.value);
+    const notInsertedData = CATEGORIES.filter(
+      (category) => !values.includes(category)
+    );
+    notInsertedData.forEach((value) => Category.create({ value }));
   });
 };
 
