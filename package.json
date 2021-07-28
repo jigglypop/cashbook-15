@@ -27,7 +27,6 @@
     "cors": "^2.8.5",
     "css-loader": "^5.2.6",
     "dotenv": "^10.0.0",
-    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "file-loader": "^6.2.0",
     "html-loader": "^2.1.2",
