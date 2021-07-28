@@ -13,10 +13,9 @@ class App extends Container {
 
   render() {
     return `
-          <Header/>
-          <Router/>
-          <Toast/>
-        `;
+      <HeaderContainer />
+      <Router/>
+      <Toast/>`;
   }
 
   componentDidMount() {

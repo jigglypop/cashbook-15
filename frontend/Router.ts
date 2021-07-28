@@ -13,6 +13,8 @@ class Router extends Container {
 
   switch(path: string) {
     if (path === "") {
+      return `<IntroContainer/>`;
+    } else if (path === "main") {
       return `<Main/>`;
     } else if (path === "statistic") {
       return `<Statistic/>`;
