@@ -2,7 +2,8 @@ import App from "./App";
 import GlassButton from "./common/GlassButton/GlassButton";
 import LineInput from "./common/LineInput/LineInput";
 import Toast from "./common/Toast";
-import Calendar from "./components/Calendar";
+import CalendarContainer from "./components/Calendar/CalendarContainer";
+import CalendarView from "./components/Calendar/CalendarView";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Statistic from "./components/Statistic";
@@ -11,7 +12,6 @@ import createStore from "./redux";
 import Router from "./Router";
 import { $ } from "./util/jQurey";
 
-
 export const Modules: any = {
   App,
   GlassButton,
@@ -19,9 +19,10 @@ export const Modules: any = {
   Header,
   Main,
   Statistic,
-  Calendar,
+  CalendarContainer,
+  CalendarView,
   Router,
-  Toast
+  Toast,
 };
 
 export const store: any = createStore();
