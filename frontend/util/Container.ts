@@ -11,7 +11,7 @@ type Item = {
   parents: string;
 };
 
-export abstract class Container{
+export abstract class Container {
   public $outer: HTMLElement;
   public $target: HTMLElement;
   public state: any;
@@ -51,11 +51,14 @@ export abstract class Container{
   renderComponent() {
     let html = this.render();
     const Components = getComponent(html);
-    let temp: Item[] = [];
+    const temp: Item[] = [];
 
     Components?.map((item) => {
-      let id = getID();
-      html = html.replace(item, `<div id="temp-${id}" ></div>`);
+      const id = getID();
+      html = html.replace(
+        item,
+        `<div class="tempOuter" id="temp-${id}" ></div>`
+      );
       temp.push({
         id: id,
         tag: getTag(item),
@@ -72,7 +75,7 @@ export abstract class Container{
       const Component = Modules[tag];
 
       if (Object.keys(item.callbacks).length) {
-        for (let param of Object.keys(item.callbacks)) {
+        for (const param of Object.keys(item.callbacks)) {
           const funcName = item.callbacks[param];
           const callback = this.methods[funcName];
           item.params[param] = callback;
@@ -101,7 +104,7 @@ export abstract class Container{
 
   // setState
   setState(data: any) {
-    for (let param of Object.keys(data)) {
+    for (const param of Object.keys(data)) {
       this.state[param] = data[param];
     }
     // 메서드 세팅

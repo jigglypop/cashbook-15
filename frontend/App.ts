@@ -8,17 +8,20 @@ class App extends Container {
   }
 
   componentWillMount() {
-    return {}
+    return {};
   }
 
   render() {
     return `
           <Header/>
           <Router/>
+          <Toast/>
         `;
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    return {};
+  }
 }
 
 export default App;

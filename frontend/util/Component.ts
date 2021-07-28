@@ -28,7 +28,7 @@ export abstract class Component {
   constructor(
     $target: HTMLElement,
     name: string,
-    sementic?: string | undefined
+    sementic?: string | undefined,
   ) {
     this.sementic = sementic;
     this.$target = $target;

@@ -1,5 +1,3 @@
-import { $ } from "./jQurey";
-
 const rotate3D = () => {
   // $("#Name").on('mousemove', function (e: any) {
   //     const Name = $("#Name").getById()

@@ -1,4 +1,5 @@
 import { Container } from "./util/Container";
+import { getPath } from "./util/getPath";
 
 class Router extends Container {
   constructor($target: HTMLElement) {
@@ -7,27 +8,27 @@ class Router extends Container {
   }
 
   componentWillMount() {
-    return {}
+    return {};
   }
 
-  switch(path: string, params: number) {
-    if (path === "/") {
-      return `<Main/>`
-    } else if (path === "/statistic") {
-      return `<Statistic/>`
-    } else if (path === "/calendar") {
-      return `<Calendar/>`
+  switch(path: string) {
+    if (path === "") {
+      return `<Main/>`;
+    } else if (path === "statistic") {
+      return `<Statistic/>`;
+    } else if (path === "calendar") {
+      return `<CalendarContainer />`;
     }
   }
 
   render() {
-    return `
-           <h1>라우터입니다</h1>
-           ${this.switch(location.pathname, 0)}
-        `;
+    const [pathname, _] = getPath();
+    return `${this.switch(pathname.toString())}`;
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    return {};
+  }
 }
 
 export default Router;
