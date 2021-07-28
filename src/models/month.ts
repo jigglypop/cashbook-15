@@ -1,12 +1,14 @@
 import {
   Column,
   ForeignKey,
+  HasMany,
   Model,
   PrimaryKey,
   Table,
-  Unique
+  Unique,
 } from "sequelize-typescript";
 import User from "./user";
+import MoneyRecord from "./MoneyRecord";
 
 export interface IMonth {
   id: number;
@@ -24,4 +26,7 @@ export default class Month extends Model<IMonth> {
   @PrimaryKey
   @Column
   userId: number;
+
+  @HasMany(() => MoneyRecord)
+  moneyRecords: MoneyRecord[];
 }

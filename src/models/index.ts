@@ -4,6 +4,7 @@ import Month from "./month";
 import Payment from "./Payment";
 import User from "./user";
 import Category from "./Category";
+import MoneyRecord from "./MoneyRecord";
 
 import { CATEGORIES } from "./defaultData";
 
@@ -13,7 +14,7 @@ export const sequelize = new Sequelize({
   dialect: "mysql",
   username: process.env.DB_USERNAME || "root",
   password: process.env.DB_PASSWORD,
-  models: [User, Payment, Month, Category],
+  models: [User, Payment, Month, Category, MoneyRecord],
 });
 
 const init = () => {
