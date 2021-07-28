@@ -5,6 +5,7 @@ import { config } from "dotenv";
 import express from "express";
 import { sequelize } from "./models";
 import rootRouter from "./router";
+import errorMiddleware from "./middleware/errorMiddleware";
 
 config();
 sequelize.sync();
@@ -19,6 +20,7 @@ app.use(
 );
 app.use(cookieParser());
 app.use(rootRouter);
+app.use(errorMiddleware);
 
 app.listen(3000, () => {
   console.log("http://localhost:3000");
