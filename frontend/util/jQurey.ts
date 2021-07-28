@@ -1,10 +1,6 @@
 import { isOuter, isTag } from "./regex";
 
-const setCSSProperty = (
-  $element: HTMLElement,
-  attr: any,
-  value: string
-) => {
+const setCSSProperty = ($element: HTMLElement, attr: any, value: string) => {
   if (
     attr === "length" ||
     attr === "parentRule" ||

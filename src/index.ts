@@ -5,7 +5,7 @@ import { config } from "dotenv";
 import express from "express";
 import path from "path";
 import { sequelize } from "./models";
-import rootRouter from "./router";
+import rootRouter from "./router/payment";
 
 config();
 sequelize.sync();
@@ -23,9 +23,6 @@ app.use(
 );
 app.use(cookieParser());
 app.use(rootRouter);
-app.get("/", (req, res) => {
-  res.render("index.html");
-});
 
 app.listen(3000, () => {
   console.log("http://localhost:3000");
