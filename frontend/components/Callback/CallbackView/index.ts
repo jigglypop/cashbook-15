@@ -1,10 +1,9 @@
-import { GITHUB_URL } from "../../../constants/constants";
 import { Component } from "../../../util/Component";
 import "./style.scss";
 
-export default class LoginView extends Component {
+export default class CallbackView extends Component {
   constructor($target: HTMLElement, ID: string) {
-    super($target, "LoginView");
+    super($target, "CallbackView");
     this.ID = ID;
     this.init();
   }
@@ -15,7 +14,7 @@ export default class LoginView extends Component {
 
   render() {
     return `
-    <a href="${GITHUB_URL}">GITHUB</a>
-    `;
+            <h1>잠시만 기다려주세요</h1>
+        `;
   }
 }

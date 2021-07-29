@@ -8,7 +8,7 @@ const cache = {
       return null;
     }
   },
-  set(key: string, data: object | string) {
+  set(key: string, data: Record<string, unknown> | string) {
     localStorage.setItem(key, JSON.stringify(data));
   },
   remove(key: string) {

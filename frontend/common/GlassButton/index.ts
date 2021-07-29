@@ -1,26 +1,26 @@
-import { $ } from "../../util/jQurey";
 import { Container } from "../../util/Container";
-import "./style.css";
+import { $ } from "../../util/jQurey";
+import "./style.scss";
 
 interface IGlassButton {
   text: string;
-  onClick: () => {};
+  onClick: () => void;
 }
 
 export default class GlassButton extends Container {
   private props: IGlassButton;
 
   constructor($target: HTMLElement, ID: string, props: IGlassButton) {
-    super($target, "GlassButton", []);
+    super($target, "GlassButton");
     this.props = props;
     this.ID = ID;
     this.init();
   }
 
   componentWillMount() {
-    return {}
+    return {};
   }
-  
+
   render() {
     return `
             <button class="glass-button" id="${this.ID}" >${this.props.text}</button>

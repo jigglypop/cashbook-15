@@ -3,9 +3,10 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import { config } from "dotenv";
 import express from "express";
+import expressSession from "express-session";
+import errorMiddleware from "./middleware/errorMiddleware";
 import { sequelize } from "./models";
 import rootRouter from "./router";
-import errorMiddleware from "./middleware/errorMiddleware";
 
 config();
 sequelize.sync();
@@ -19,6 +20,13 @@ app.use(
   })
 );
 app.use(cookieParser());
+app.use(
+  expressSession({
+    secret: process.env.SESSION_KEY ?? "",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
 app.use(rootRouter);
 app.use(errorMiddleware);
 

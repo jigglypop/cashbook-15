@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import Payment, { IPayment } from "../models/Payment";
 import HttpError from "../errors/HttpError";
+import Payment, { IPayment } from "../models/Payment";
 
 //TODO: 모든 메소드 user 값 전달 방식에 따라 변경해야함
 

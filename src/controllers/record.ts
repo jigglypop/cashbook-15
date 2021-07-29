@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import Record, { IRecord } from "../models/Record";
+import HttpError from "../errors/HttpError";
 import Category from "../models/Category";
 import Payment from "../models/Payment";
-import HttpError from "../errors/HttpError";
+import Record, { IRecord } from "../models/Record";
 import RecordType from "../models/RecordType";
 
 interface IReadRecordRequest extends Request {

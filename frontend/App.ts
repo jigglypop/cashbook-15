@@ -1,9 +1,18 @@
+import { store } from ".";
 import "./App.scss";
+import check from "./util/check";
 import { Container } from "./util/Container";
+
+export interface IHeaderView {
+  username: string;
+  path: string;
+  params: number;
+}
 
 class App extends Container {
   constructor($target: HTMLElement) {
-    super($target, "App");
+    super($target, "App", ["check"]);
+    check();
     this.init();
   }
 
@@ -12,8 +21,9 @@ class App extends Container {
   }
 
   render() {
+    const { username, path, params } = store.check.getState();
     return `
-      <HeaderContainer />
+      <HeaderContainer :username="${username}" :path="${path}" :params="${params}" />
       <Router/>
       <Toast/>`;
   }

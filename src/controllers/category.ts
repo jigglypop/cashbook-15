@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
+import HttpError from "../errors/HttpError";
 import Category from "../models/Category";
 import RecordType from "../models/RecordType";
-import HttpError from "../errors/HttpError";
 
 interface IReadCategoryRequest extends Request {
   query: {
