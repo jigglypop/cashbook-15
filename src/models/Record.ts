@@ -15,7 +15,7 @@ export enum RecordType {
   EXPENSE = "expense",
 }
 
-export interface IMoneyRecord {
+export interface IRecord {
   id?: number;
   type: RecordType;
   amount: number;
@@ -28,7 +28,7 @@ export interface IMoneyRecord {
 }
 
 @Table
-export default class MoneyRecord extends Model<IMoneyRecord> {
+export default class Record extends Model<IRecord> {
   @AllowNull(false)
   @Column
   type: RecordType;
