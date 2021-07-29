@@ -1,5 +1,4 @@
-import { Column, HasMany, Model, Table } from "sequelize-typescript";
-import Month from "./month";
+import { Column, Model, Table } from "sequelize-typescript";
 
 export interface IUser extends Document {
   id: string;
@@ -26,7 +25,4 @@ export default class User extends Model<IUser> {
 
   @Column
   updatedAt: Date;
-
-  @HasMany(() => Month)
-  months: Month[];
 }
