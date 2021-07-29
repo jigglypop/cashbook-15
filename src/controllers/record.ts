@@ -28,7 +28,7 @@ export const write = async (req: IWriteRecordRequest, res: Response) => {
     ...req.body,
     month: Math.floor(req.body.date / 100),
   };
-  if (!(data.type in RecordType)) {
+  if (!Object.values(RecordType).includes(data.type)) {
     throw new HttpError(400, "잘못된 타입입니다.");
   }
   const newRecord = await Record.create({ ...data });
