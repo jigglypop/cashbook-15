@@ -53,6 +53,8 @@ export default class Record extends Model<IRecord> {
   @ForeignKey(() => User)
   @Column
   userId: number;
+  @BelongsTo(() => User)
+  user: User;
 
   @AllowNull(false)
   @ForeignKey(() => Category)
