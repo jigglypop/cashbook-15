@@ -6,17 +6,17 @@ export function routerReducer(state = initialState, action: any) {
     case MAIN:
       return {
         ...state,
-        path: ""
+        path: "",
       };
     case STATISTIC:
       return {
         ...state,
-        path: "statistic"
+        path: "statistic",
       };
     case CALENDAR:
       return {
         ...state,
-        path: "calendar"
+        path: "calendar",
       };
     default:
       return state;

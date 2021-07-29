@@ -7,6 +7,12 @@ export const getPath = () => {
   return [pathname, params];
 };
 
+export const getCode = () => {
+  const query = location.search;
+  const code = query.replace("?", "").split("=");
+  return code[1];
+};
+
 export const generateToday = () => {
   const now = new Date();
   let month = (Month(now) + 1).toString();

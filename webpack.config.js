@@ -2,6 +2,8 @@ require("dotenv/config");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require("dotenv-webpack");
+const webpack = require("webpack");
 
 module.exports = {
   entry: "./frontend/index.ts",
@@ -9,6 +11,11 @@ module.exports = {
   mode: "production",
   resolve: {
     extensions: [".ts", ".js", ".json"],
+    fallback: {
+      os: false,
+      fs: false,
+      path: require.resolve("path-browserify"),
+    },
   },
   output: {
     clean: true,
@@ -75,5 +82,9 @@ module.exports = {
       ],
     }),
     new MiniCssExtractPlugin({ filename: "css/style.css" }),
+    new Dotenv(),
+    new webpack.ProvidePlugin({
+      process: "process/browser",
+    }),
   ],
 };

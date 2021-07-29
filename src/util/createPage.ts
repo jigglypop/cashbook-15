@@ -10,6 +10,7 @@ export const createPage = (title: string) => {
         </head>
         <body>
             <main id="root"></main>
+            <div id="toasts"></div>
             <script type="module" src="/public/frontend/index.js"></script>
         </body>
     </html>`;

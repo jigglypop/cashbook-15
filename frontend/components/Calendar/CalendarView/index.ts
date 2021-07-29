@@ -45,7 +45,6 @@ export default class CalendarView extends Container {
       DayComponent[i] = `<div class="date">${date}</div>`;
     });
     const DividedDay = divide(7, DayComponent);
-    console.log(DividedDay);
     let dayComponent = "";
     for (const week of DividedDay) {
       let temp = '<div class="week-item" >';
@@ -56,7 +55,7 @@ export default class CalendarView extends Container {
       dayComponent += temp;
     }
     return `
-            <h1>캘린더뷰</h1>
+            <h1>${year}년 ${month}월</h1>
             <div id="calendar" >
               ${dayComponent}
             </div>

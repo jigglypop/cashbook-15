@@ -1,3 +1,4 @@
+import { IHeaderView } from "../../../App";
 import { Container } from "../../../util/Container";
 import "./style.scss";
 
@@ -5,10 +6,12 @@ export default class HeaderContainer extends Container {
   public state = {
     title: "",
   };
+  public props: IHeaderView;
 
-  constructor($target: HTMLElement, ID: string) {
+  constructor($target: HTMLElement, ID: string, props: IHeaderView) {
     super($target, "HeaderContainer");
     this.ID = ID;
+    this.props = props;
     this.init();
   }
 
@@ -17,7 +20,7 @@ export default class HeaderContainer extends Container {
   }
 
   render() {
-    return `<HeaderView />`;
+    return `<HeaderView :username="${this.props.username}" :path="${this.props.path}" :params="${this.props.params}" />`;
   }
 
   componentDidMount() {

@@ -1,13 +1,13 @@
-import { $ } from "../../util/jQurey";
 import { Container } from "../../util/Container";
-import "./style.css";
+import { $ } from "../../util/jQurey";
+import "./style.scss";
 
 interface ILineInput {
   text: string;
   type?: string;
   labelText?: string;
   value?: string;
-  onChange: (e: InputEl) => {};
+  onChange: (e: InputEl) => void;
 }
 
 export interface InputEl {
@@ -20,14 +20,14 @@ export default class LineInput extends Container {
   public props: ILineInput;
 
   constructor($target: HTMLElement, ID: string, props: ILineInput) {
-    super($target, "LineInput", []);
+    super($target, "LineInput");
     this.ID = ID;
     this.props = props;
     this.init();
   }
 
   componentWillMount() {
-    return {}
+    return {};
   }
 
   render() {
@@ -53,7 +53,6 @@ export default class LineInput extends Container {
         $(LineInput).toggleClass("Hold");
       }
     });
-    let value = "";
     $(`#line-input-${this.ID}`).on("input", function (e: any) {
       if (e.target.value.length > 0) {
         $(LineInput).addClass("Hold");

@@ -1,13 +1,13 @@
-import { Container } from "../../util/Container";
+import { Container } from "../../../util/Container";
 import "./style.scss";
 
-export default class Statistic extends Container {
+export default class StatisticView extends Container {
   public state = {
     title: "",
   };
 
   constructor($target: HTMLElement, ID: string) {
-    super($target, "Statistic");
+    super($target, "StatisticView");
     this.ID = ID;
     this.init();
   }
@@ -18,7 +18,7 @@ export default class Statistic extends Container {
 
   render() {
     return `
-            <h1>통계</h1>
+            <h1>통계 뷰</h1>
         `;
   }
 

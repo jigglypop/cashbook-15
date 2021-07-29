@@ -2,7 +2,8 @@ const HTTP_METHOD = {
   GET(token?: string) {
     return {
       headers: {
-        Authorization: token ? "Bearer " + token : "",
+        "Content-Type": "application/json",
+        Authorization: token ? token : "",
       },
     };
   },

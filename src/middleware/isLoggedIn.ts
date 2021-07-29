@@ -16,6 +16,7 @@ const requireLoggedIn: RequestHandler = (req, res, next) => {
         .status(401)
         .json({ error: new Error("허가되지 않은 사용자입니다.").toString() });
     }
+    next();
   } else {
     next();
   }

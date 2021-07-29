@@ -3,7 +3,7 @@ import { getPath } from "./util/getPath";
 
 class Router extends Container {
   constructor($target: HTMLElement) {
-    super($target, "Router", ["router"]);
+    super($target, "Router");
     this.init();
   }
 
@@ -15,9 +15,11 @@ class Router extends Container {
     if (path === "") {
       return `<IntroContainer/>`;
     } else if (path === "main") {
-      return `<Main/>`;
+      return `<MainContainer/>`;
+    } else if (path === "github") {
+      return `<CallbackContainer/>`;
     } else if (path === "statistic") {
-      return `<Statistic/>`;
+      return `<StatisticContainer/>`;
     } else if (path === "calendar") {
       return `<CalendarContainer />`;
     }

@@ -1,16 +1,19 @@
+import { store } from "..";
+import api from "../api";
+import { checkAndRoute } from "../redux/check/actions";
 import cache from "./cache";
 
-const check = () => {
+const check = async () => {
   // 토큰 받기
-  const token = cache.get("token");
-  // 리덕스 체크, 상태바꾸기 함수
-  const ChangeState = (_id: string, profileImage: string) => {};
-
-  // 토큰 없으면 헤더 처리, auth창 닫기
-  if (!token) {
-    ChangeState("", "");
+  const token = await cache.get("token");
+  if (token) {
+    const data = await api.auth.check();
+    const path = location.pathname.split("/");
+    const pathname = path[1];
+    const params = path[2] ? Number(path[2]) : 0;
+    const username = data.data.username;
+    store.check.dispatch(checkAndRoute(username, pathname.toString(), params));
   }
-  // 있으면 헤더 처리
 };
 
 export default check;
