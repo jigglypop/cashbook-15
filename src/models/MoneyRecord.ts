@@ -12,7 +12,8 @@ import User from "./user";
 
 export interface IMoneyRecord {
   id?: number;
-  value: string;
+  amount: number;
+  content: string;
   date: number;
   month: number;
   userId: number;
@@ -28,7 +29,11 @@ export default class MoneyRecord extends Model<IMoneyRecord> {
 
   @AllowNull(false)
   @Column
-  value: number;
+  amount: number;
+
+  @AllowNull(false)
+  @Column
+  content: string;
 
   @AllowNull(false)
   @Column
