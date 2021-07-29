@@ -12,6 +12,7 @@ import User from "./user";
 
 export interface IMoneyRecord {
   id?: number;
+  type: "income" | "expense";
   amount: number;
   content: string;
   date: number;
@@ -25,7 +26,7 @@ export interface IMoneyRecord {
 export default class MoneyRecord extends Model<IMoneyRecord> {
   @AllowNull(false)
   @Column
-  type: string;
+  type: "income" | "expense";
 
   @AllowNull(false)
   @Column
