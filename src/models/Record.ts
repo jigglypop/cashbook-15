@@ -9,11 +9,7 @@ import {
 import Category from "./Category";
 import Payment from "./Payment";
 import User from "./user";
-
-export enum RecordType {
-  INCOME = "income",
-  EXPENSE = "expense",
-}
+import RecordType from "./RecordType";
 
 export interface IRecord {
   id?: number;
