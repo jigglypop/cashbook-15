@@ -1,6 +1,5 @@
 require("dotenv/config");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -12,6 +11,7 @@ module.exports = {
     extensions: [".ts", ".js", ".json"],
   },
   output: {
+    clean: true,
     filename: "public/frontend/index.js",
   },
   module: {
@@ -68,7 +68,6 @@ module.exports = {
       template: "./frontend/index.html",
       filename: "./index.html",
     }),
-    new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         { from: "frontend/public/", to: "./public" },
