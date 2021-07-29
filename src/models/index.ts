@@ -21,9 +21,9 @@ const init = () => {
     const categories = await Category.findAll();
     const values = categories.map((category) => category.value);
     const notInsertedData = CATEGORIES.filter(
-      (category) => !values.includes(category)
+      (category) => !values.includes(category.value)
     );
-    notInsertedData.forEach((value) => Category.create({ value }));
+    notInsertedData.forEach((category) => Category.create(category));
   });
 };
 

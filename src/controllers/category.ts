@@ -1,12 +1,24 @@
 import { Request, Response } from "express";
-import Category, { ICategory } from "../models/Category";
+import Category from "../models/Category";
+import RecordType from "../models/RecordType";
+import HttpError from "../errors/HttpError";
 
-export const readAll = async (req: Request, res: Response) => {
-  const categories: Category[] = await Category.findAll();
-  const data: ICategory[] = categories.map((category) => ({
-    id: category.id,
-    value: category.value,
-  }));
+interface IReadCategoryRequest extends Request {
+  query: {
+    type: RecordType;
+  };
+}
 
-  res.status(200).json({ data });
+export const readByType = async (req: IReadCategoryRequest, res: Response) => {
+  const { type } = req.query;
+  if (!Object.values(RecordType).includes(type)) {
+    throw new HttpError(400, "잘못된 타입입니다.");
+  }
+
+  const categories: Category[] = await Category.findAll({
+    where: { type },
+    attributes: ["id", "value", "type"],
+  });
+
+  res.status(200).json({ data: categories });
 };
