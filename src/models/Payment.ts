@@ -1,8 +1,18 @@
-import { AllowNull, Column, Model, Table, Unique } from "sequelize-typescript";
+import {
+  AllowNull,
+  BelongsTo,
+  Column,
+  ForeignKey,
+  Model,
+  Table,
+  Unique,
+} from "sequelize-typescript";
+import User from "./user";
 
 export interface IPayment {
   id?: number;
   value: string;
+  userId: number;
 }
 
 @Table
@@ -11,4 +21,11 @@ export default class Payment extends Model<IPayment> {
   @Unique
   @Column
   value: string;
+
+  @AllowNull(false)
+  @ForeignKey(() => User)
+  @Column
+  userId: number;
+  @BelongsTo(() => User)
+  user: User;
 }

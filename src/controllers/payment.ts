@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import Payment, { IPayment } from "../models/Payment";
 import HttpError from "../errors/HttpError";
 
+//TODO: 모든 메소드 user 값 전달 방식에 따라 변경해야함
+
 interface IWritePaymentRequest extends Request {
   body: IPayment;
 }
@@ -19,8 +21,7 @@ export const readAll = async (req: Request, res: Response) => {
 };
 
 export const write = async (req: IWritePaymentRequest, res: Response) => {
-  const { value } = req.body;
-  const payment = await Payment.create({ value });
+  const payment = await Payment.create({ ...req.body });
 
   res.status(200).json({ data: payment });
 };
