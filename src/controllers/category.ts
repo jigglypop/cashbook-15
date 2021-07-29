@@ -6,6 +6,7 @@ export const readAll = async (req: Request, res: Response) => {
   const data: ICategory[] = categories.map((category) => ({
     id: category.id,
     value: category.value,
+    type: category.type,
   }));
 
   res.status(200).json({ data });
