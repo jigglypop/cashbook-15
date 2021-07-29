@@ -10,9 +10,14 @@ import Category from "./Category";
 import Payment from "./Payment";
 import User from "./user";
 
+export enum RecordType {
+  INCOME = "income",
+  EXPENSE = "expense",
+}
+
 export interface IMoneyRecord {
   id?: number;
-  type: "income" | "expense";
+  type: RecordType;
   amount: number;
   content: string;
   date: number;
@@ -26,7 +31,7 @@ export interface IMoneyRecord {
 export default class MoneyRecord extends Model<IMoneyRecord> {
   @AllowNull(false)
   @Column
-  type: "income" | "expense";
+  type: RecordType;
 
   @AllowNull(false)
   @Column

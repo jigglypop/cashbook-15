@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
-import MoneyRecord, { IMoneyRecord } from "../models/MoneyRecord";
+import MoneyRecord, { IMoneyRecord, RecordType } from "../models/MoneyRecord";
 import Category from "../models/Category";
 import Payment from "../models/Payment";
+import HttpError from "../errors/HttpError";
 
 interface IReadMoneyRecordRequest extends Request {
   query: {
@@ -30,6 +31,9 @@ export const write = async (req: IWriteMoneyRecordRequest, res: Response) => {
     ...req.body,
     month: Math.floor(req.body.date / 100),
   };
+  if (!(data.type in RecordType)) {
+    throw new HttpError(400, "잘못된 타입입니다.");
+  }
   const newRecord = await MoneyRecord.create({ ...data });
   res.status(200).json({ data: newRecord });
 };
