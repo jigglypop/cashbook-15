@@ -6,14 +6,16 @@ import {
   Model,
   Table,
 } from "sequelize-typescript";
-import Month from "./month";
 import Category from "./Category";
 import Payment from "./Payment";
+import User from "./user";
 
 export interface IMoneyRecord {
   id?: number;
   value: string;
-  monthId: number;
+  date: number;
+  month: number;
+  userId: number;
   categoryId: number;
   paymentId: number;
 }
@@ -28,16 +30,27 @@ export default class MoneyRecord extends Model<IMoneyRecord> {
   @Column
   value: number;
 
-  @ForeignKey(() => Month)
+  @AllowNull(false)
   @Column
-  monthId: number;
+  date: number;
 
+  @AllowNull(false)
+  @Column
+  month: number;
+
+  @AllowNull(false)
+  @ForeignKey(() => User)
+  @Column
+  userId: number;
+
+  @AllowNull(false)
   @ForeignKey(() => Category)
   @Column
   categoryId: number;
   @BelongsTo(() => Category)
   category: Category;
 
+  @AllowNull(false)
   @ForeignKey(() => Payment)
   @Column
   paymentId: number;
