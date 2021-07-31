@@ -1,6 +1,6 @@
 import express, { Router } from "express";
 import { readAll, remove, write } from "../controllers/payment";
-import wrapAsync from "../utils/wrapAsync";
+import wrapAsync from "../util/wrapAsync";
 
 const paymentRouter: Router = express.Router();
 
