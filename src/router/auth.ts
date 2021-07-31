@@ -5,8 +5,8 @@ import wrapAsync from "../util/wrapAsync";
 
 const userRouter: Router = express.Router();
 
-userRouter.post("/login", login);
+userRouter.post("/login", wrapAsync(login));
 userRouter.post("/register", wrapAsync(register));
-userRouter.get("/check", jwtMiddleware, check);
+userRouter.get("/check", jwtMiddleware, wrapAsync(check));
 
 export default userRouter;
