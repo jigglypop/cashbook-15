@@ -1,18 +1,19 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import HttpError from "../errors/HttpError";
 import Category from "../models/Category";
 import Payment from "../models/Payment";
 import Record, { IRecord } from "../models/Record";
 import RecordType from "../models/RecordType";
+import { IAuthRequest } from "../middleware/jwtMiddleware";
 
-interface IReadRecordRequest extends Request {
+interface IReadRecordRequest extends IAuthRequest {
   query: {
     month: string;
   };
 }
 
-interface IWriteRecordRequest extends Request {
-  body: IRecord;
+interface IWriteRecordRequest extends IAuthRequest {
+  body: IAuthRequest["body"] & IRecord;
 }
 
 export const readByMonth = async (req: IReadRecordRequest, res: Response) => {
@@ -25,9 +26,11 @@ export const readByMonth = async (req: IReadRecordRequest, res: Response) => {
 };
 
 export const write = async (req: IWriteRecordRequest, res: Response) => {
+  const user = req.body.decoded;
   const data: IRecord = {
     ...req.body,
     month: Math.floor(req.body.date / 100),
+    userId: user.id,
   };
   if (!Object.values(RecordType).includes(data.type)) {
     throw new HttpError(400, "잘못된 타입입니다.");
