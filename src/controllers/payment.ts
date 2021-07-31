@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import HttpError from "../errors/HttpError";
 import Payment, { IPayment } from "../models/Payment";
 import { IAuthRequest } from "../middleware/jwtMiddleware";
@@ -13,7 +13,7 @@ interface IRemovePaymentRequest extends IAuthRequest {
   };
 }
 
-export const readAll = async (req: Request, res: Response) => {
+export const readAll = async (req: IAuthRequest, res: Response) => {
   const payments: Payment[] = await Payment.findAll();
 
   res.status(200).json({ data: payments });
