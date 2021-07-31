@@ -4,7 +4,7 @@ import Payment, { IPayment } from "../models/Payment";
 import { IAuthRequest } from "../middleware/jwtMiddleware";
 
 interface IWritePaymentRequest extends IAuthRequest {
-  body: IAuthRequest["body"] & IPayment;
+  body: IPayment;
 }
 
 interface IRemovePaymentRequest extends IAuthRequest {
@@ -20,8 +20,6 @@ export const readAll = async (req: IAuthRequest, res: Response) => {
 };
 
 export const write = async (req: IWritePaymentRequest, res: Response) => {
-  const user = req.body.decoded;
-  req.body.userId = user.id;
   const payment = await Payment.create({ ...req.body });
 
   res.status(200).json({ data: payment });

@@ -13,7 +13,7 @@ interface IReadRecordRequest extends IAuthRequest {
 }
 
 interface IWriteRecordRequest extends IAuthRequest {
-  body: IAuthRequest["body"] & IRecord;
+  body: IRecord;
 }
 
 export const readByMonth = async (req: IReadRecordRequest, res: Response) => {
@@ -26,11 +26,9 @@ export const readByMonth = async (req: IReadRecordRequest, res: Response) => {
 };
 
 export const write = async (req: IWriteRecordRequest, res: Response) => {
-  const user = req.body.decoded;
   const data: IRecord = {
     ...req.body,
     month: Math.floor(req.body.date / 100),
-    userId: user.id,
   };
   if (!Object.values(RecordType).includes(data.type)) {
     throw new HttpError(400, "잘못된 타입입니다.");

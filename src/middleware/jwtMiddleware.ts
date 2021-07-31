@@ -5,7 +5,7 @@ import HttpError from "../errors/HttpError";
 
 export interface IAuthRequest extends Request {
   body: {
-    decoded: User;
+    userId: number;
   };
 }
 
@@ -19,7 +19,8 @@ const jwtMiddleware: RequestHandler = (
   if (!authorization || !jwt_secret) {
     throw new HttpError(401, "사용자 인증에 실패했습니다.");
   }
-  req.body.decoded = jwt.verify(authorization, jwt_secret) as User;
+  const user = jwt.verify(authorization, jwt_secret) as User;
+  req.body.userId = user.id;
   next();
 };
 export default jwtMiddleware;
