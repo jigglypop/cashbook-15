@@ -1,20 +1,26 @@
 import { store } from "../../..";
 import { IHeaderView } from "../../../App";
 import { CalendarSVG } from "../../../common/SVG/CalendarSVG";
+import { GoOutSVG } from "../../../common/SVG/GoOutSVG";
 import { MainSVG } from "../../../common/SVG/MainSVG";
 import { StatisticSVG } from "../../../common/SVG/StatisticSVG";
 import { ICheck } from "../../../redux/check";
-import { calendar, main, statistic } from "../../../redux/check/actions";
+import { initCheck } from "../../../redux/check/actions";
 import { Container } from "../../../util/Container";
-import { MinusMonth, PlusMonth } from "../../../util/getDate";
-import { generateToday } from "../../../util/getPath";
+import { createToast } from "../../../util/createToast";
+import { makeYearMonth } from "../../../util/getDate";
+import {
+  goBackMonth,
+  goCalendar,
+  goFrontMonth,
+  goIntro,
+  goMain,
+  goStatistic,
+} from "../../../util/goRouter";
 import { $ } from "../../../util/jQurey";
 import "./style.scss";
 
 export default class HeaderView extends Container {
-  public state = {
-    title: "",
-  };
   public props: IHeaderView;
   public check: ICheck;
 
@@ -31,25 +37,31 @@ export default class HeaderView extends Container {
   }
 
   render() {
+    const [year, month] = makeYearMonth(this.check.params.toString());
     return `
       <div class="header-item" >
         <h4 class="header-button" id="main-title" >우아한 가계부</h4>
       </div>
       <div class="header-item" >
-        ${
-          this.check.path === "calendar"
-            ? `<div class="header-button" id="calendar-front">
-          <h4>앞</h4>
-        </div>     
+        <div class="header-button" id="calendar-front">
+          <h4><</h4>
+        </div>
+        <div class="header-button" id="calendar-front">
+          <h1>${month}월</h1>
+          <h4>${year}</h4>
+        </div>    
         <div class="header-button" id="calendar-back">
-          <h4>뒤</h4>
-        </div>`
-            : ""
-        }  
+          <h4>></h4>
+        </div>
       </div>
       <div class="header-item" >
-          <div class="header-button" >
-            <h4>${this.props.username}</h4>
+          <div class="header-button login" >
+            <h4 id="login-id">${
+              this.props.username ? this.props.username : ""
+            }</h4>
+            <h4 id="logout-button" >${
+              this.props.username ? GoOutSVG("var(--white-text)") : ""
+            }</h4>
           </div>      
           <div class="header-button" id="home-navigation">
             ${MainSVG}
@@ -63,35 +75,38 @@ export default class HeaderView extends Container {
       </div>
 `;
   }
+  goMain() {
+    goMain();
+  }
 
+  goCalendar() {
+    goCalendar();
+  }
+
+  goStatistic() {
+    goStatistic();
+  }
+  async goLogout() {
+    await store.check.dispatch(initCheck());
+    await localStorage.clear();
+    await goIntro();
+    await createToast("로그아웃");
+  }
   componentDidMount() {
-    const params = this.check.params;
-    $("#calendar-front").on("click", function () {
-      const minusMonth = MinusMonth(params);
-      history.pushState({ data: "calendar" }, "", `/calendar/${minusMonth}`);
-      store.check.dispatch(calendar(minusMonth));
-    });
-    $("#calendar-back").on("click", function () {
-      const plusMonth = PlusMonth(params);
-      history.pushState({ data: "calendar" }, "", `/calendar/${plusMonth}`);
-      store.check.dispatch(calendar(plusMonth));
-    });
-    $("#main-title").on("click", function () {
-      history.pushState({ data: "" }, "", "/");
-      store.check.dispatch(main());
-    });
-    $("#home-navigation").on("click", function () {
-      history.pushState({ data: "" }, "", "/main");
-      store.check.dispatch(main());
-    });
-    $("#calendar-navigation").on("click", function () {
-      const thisYearMonth = generateToday();
-      history.pushState({ data: "calendar" }, "", `/calendar/${thisYearMonth}`);
-      store.check.dispatch(calendar(Number(thisYearMonth)));
-    });
-    $("#statistic-navigation").on("click", function () {
-      history.pushState({ data: "statistic" }, "", "/statistic");
-      store.check.dispatch(statistic());
-    });
+    const goFront = () => {
+      const params = this.check.params;
+      goFrontMonth(params);
+    };
+    const goBack = () => {
+      const params = this.check.params;
+      goBackMonth(params);
+    };
+    $("#calendar-front").on("click", goFront);
+    $("#calendar-back").on("click", goBack);
+    $("#main-title").on("click", this.goMain);
+    $("#home-navigation").on("click", this.goMain);
+    $("#calendar-navigation").on("click", this.goCalendar);
+    $("#statistic-navigation").on("click", this.goStatistic);
+    $("#logout-button").on("click", this.goLogout);
   }
 }

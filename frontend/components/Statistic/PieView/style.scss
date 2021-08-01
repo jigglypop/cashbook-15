@@ -1,0 +1,30 @@
+.PieViewOuter {
+    position: relative;
+    width: var(--records-width);
+    height: var(--chart-height);
+    background-color: var(--app);
+    border-radius: 10px;
+    box-shadow: 0 0 20px var(--text);
+    margin: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .pieview-inner{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pie-item {
+        width: var(--records-half-width);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

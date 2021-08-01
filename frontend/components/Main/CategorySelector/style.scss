@@ -1,0 +1,75 @@
+.WriteViewOuter {
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .CategorySelectorOuter {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        cursor: pointer;
+    }
+
+    .type-flag {
+        background-color: var(--primary1);
+        box-shadow: 0 0 10px var(--primary1);
+        color: var(--text);
+        font-size: 14px;
+        border-radius: 5px;
+        padding: 5px 10px;
+        margin: 5px;
+    }
+
+    .write-item {
+        width: 160px;
+        height: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        .LineInput input{
+            width: 150px;
+        }
+
+        .write-text {
+            margin: 10px;
+            font-size: 14px;
+            color: var(--primary3);
+        }
+
+        .category-select {
+            position: absolute;
+            background-color: white;
+            box-shadow: 2px 2px 20px black;
+            border-radius: 10px;
+            visibility: visible;
+            transform: translateY(var(--write-height));
+            z-index: 4;
+            transition: all .3s ease-in;
+
+            .category-select-item {
+                padding: 5px 20px;
+                font-size: 12px;
+                cursor: pointer;
+                transition: all .3s ease-in;
+            }
+            .category-select-item:hover {
+                background-color: var(--grayB);
+            }
+        }
+
+        .category-select.invisible {
+            visibility: hidden;
+            transform: translateY(-180px);
+            .category-select-item {
+                visibility: hidden;
+            }
+        }
+    }
+
+}

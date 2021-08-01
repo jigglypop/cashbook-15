@@ -5,7 +5,7 @@ import {
   ForeignKey,
   Model,
   Table,
-  Unique,
+  Unique
 } from "sequelize-typescript";
 import User from "./user";
 

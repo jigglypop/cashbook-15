@@ -75,6 +75,8 @@ export const githubtoken = async (req: any, res: Response) => {
   const CLIENT_URL = process.env.CLIENT_URL;
   if (!CLIENT_URL) throw new HttpError(500, "헤더 생성 실패");
   res.set("token", token);
+  res.setHeader("Access-Control-Expose-Headers", "*");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.status(200).json({ data: serialized });
   req.session.destroy(function (err: string) {
     if (err) {

@@ -1,22 +1,21 @@
-import { store } from "../../..";
 import api from "../../../api";
-import { checkAndRoute } from "../../../redux/check/actions";
+import check from "../../../util/check";
 import { Container } from "../../../util/Container";
+import { goMain } from "../../../util/goRouter";
 import "./style.scss";
 
 export default class CallbackContainer extends Container {
   constructor($target: HTMLElement, ID: string) {
     super($target, "CallbackContainer");
     this.ID = ID;
-    console.log("깃허브");
     this.init();
   }
 
   async componentWillMount() {
     const data = await api.github.getGithubApi();
     if (!data) return;
-    await history.pushState({ data: "main" }, "", "/main");
-    await store.check.dispatch(checkAndRoute(data.data.username, "main"));
+    await goMain();
+    await check();
     return {};
   }
 

@@ -36,9 +36,11 @@ export default class LineInput extends Container {
                 <input id="line-input-${this.ID}" 
                 ${this.props.type === "number" ? 'type="number"' : ""}
                 value="${this.props.value ?? ""}" />
-                <label id="line-input-label-${this.ID}" >${
-      this.props.labelText
-    }</label>
+                ${
+                  this.props.labelText
+                    ? `<label id="line-input-label-${this.ID}" >${this.props.labelText}</label>`
+                    : ""
+                }
             </div>
         `;
   }

@@ -1,4 +1,5 @@
 import { Month, Year } from "./getDate";
+import { makeLengthTwo } from "./makeLengthTwo";
 
 export const getPath = () => {
   const path = location.pathname.split("/");
@@ -15,10 +16,8 @@ export const getCode = () => {
 
 export const generateToday = () => {
   const now = new Date();
-  let month = (Month(now) + 1).toString();
-  if (month.length === 1) {
-    month = "0" + month;
-  }
+  const month = Month(now) + 1;
+  const _month = makeLengthTwo(month);
   const year = Year(now).toString();
-  return year + month;
+  return year + _month;
 };

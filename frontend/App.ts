@@ -1,7 +1,9 @@
 import { store } from ".";
-import "./App.scss";
+import api from "./api";
+import { setData } from "./redux/list/actions";
 import check from "./util/check";
 import { Container } from "./util/Container";
+import { sortByDay } from "./util/sortByDay";
 
 export interface IHeaderView {
   username: string;
@@ -16,7 +18,12 @@ class App extends Container {
     this.init();
   }
 
-  componentWillMount() {
+  async componentWillMount() {
+    const { path } = store.check.getState();
+    if (path !== "") {
+      const _data = await api.records.getrecords();
+      await store.list.dispatch(setData(sortByDay(_data.data)));
+    }
     return {};
   }
 
