@@ -36,3 +36,70 @@ yarn run start
   - Payment - 결제수단
   - Category - 내역 카테고리
 </div>
+
+# API Spec
+
+회원가입
+```http request
+POST /api/auth/register
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "유저 이름",
+  "email": "email@email.com",
+  "password": "비밀번호"
+}
+
+// response
+{
+  "data": {
+    "id": 0,
+    "username": "유저 이름",
+    "email": "email@email.com",
+    "updatedAt": "2021-08-01T15:44:08.750Z",
+    "createdAt": "2021-08-01T15:44:08.750Z"
+  }
+} 
+```
+
+로그인
+```http request
+POST /api/auth/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "유저 이름",
+  "password": "비밀번호"
+}
+// response
+{
+  "data": {
+    "id": 0,
+    "username": "유저 이름",
+    "email": "email@email.com",
+    "updatedAt": "2021-08-01T15:44:08.750Z",
+    "createdAt": "2021-08-01T15:44:08.750Z"
+  }
+} 
+```
+
+토큰을 통한 로그인 여부 체크
+```http request
+GET /api/auth/check
+Accept: application/json
+Content-Type: application/json
+Authorization: token
+
+// response
+{
+  "data": {
+    "id": 0,
+    "username": "유저 이름",
+    "email": "email@email.com",
+    "updatedAt": "2021-08-01T15:44:08.750Z",
+    "createdAt": "2021-08-01T15:44:08.750Z"
+  }
+} 
+```
