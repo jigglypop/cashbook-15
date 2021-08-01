@@ -1,6 +1,7 @@
 # 우아한 가계부 By. team-15
 
 ## 데모 링크
+
 [http://52.79.152.101:3000/](http://52.79.152.101:3000/)
 
 ## 염동환
@@ -27,9 +28,11 @@ yarn run start
 
 # Database 설계
 
-![ERD](https://user-images.githubusercontent.com/45786387/127775127-e839a6c2-9497-43c0-991b-b603bc5ccd1b.png)
-
-- User - 사용자 (자체 로그인 / 깃헙 로그인)
-- Record - 수입/지출 내역
-- Payment - 결제수단
-- Category - 내역 카테고리
+<div style="display: flex">
+  <img src="https://user-images.githubusercontent.com/45786387/127775127-e839a6c2-9497-43c0-991b-b603bc5ccd1b.png" alt="ERD" />
+  
+  - User - 사용자 (자체 로그인 / 깃헙 로그인)
+  - Record - 수입/지출 내역
+  - Payment - 결제수단
+  - Category - 내역 카테고리
+</div>
