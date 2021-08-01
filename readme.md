@@ -17,6 +17,14 @@
 - 학교가 싫어 도망친 미래의 프론트엔드 개발자입니다.
 - 좀 더 나은 코드를 짜기 위해 항상 고민합니다.
 
+# 실행 방법
+
+```shell
+yarn install
+yarn run start
+# Server will running port 3000
+```
+
 # Database 설계
 
 ![ERD](https://user-images.githubusercontent.com/45786387/127775127-e839a6c2-9497-43c0-991b-b603bc5ccd1b.png)
