@@ -1,5 +1,4 @@
 import { Container } from "../../../util/Container";
-import "./style.scss";
 
 export default class StatisticContainer extends Container {
   public state = {
@@ -18,7 +17,6 @@ export default class StatisticContainer extends Container {
 
   render() {
     return `
-            <h1>통계 컨테이너</h1>
             <StatisticView/>
         `;
   }

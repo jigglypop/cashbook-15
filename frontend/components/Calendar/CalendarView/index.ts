@@ -1,11 +1,15 @@
+import { store } from "../../..";
 import { Container } from "../../../util/Container";
 import { divide } from "../../../util/divide";
 import { getPath } from "../../../util/getPath";
+import { dot } from "../../../util/makeLengthTwo";
+import { makeDateDiv } from "./makeDateDiv";
+import { makeDayComponent } from "./makeDayComponent";
 import "./style.scss";
 
 export default class CalendarView extends Container {
   constructor($target: HTMLElement, ID: string) {
-    super($target, "CalendarView");
+    super($target, "CalendarView", ["list"]);
     this.ID = ID;
     this.init();
   }
@@ -15,51 +19,58 @@ export default class CalendarView extends Container {
   }
 
   render() {
-    const [pathname, params] = getPath();
+    const { data } = store.list.getState();
+    let calcdate: any = null;
+    let all = 0;
+    let income = 0;
+    let expense = 0;
+    if (data) {
+      calcdate = data[1];
+      all = data[3];
+      income = data[4];
+      expense = data[5];
+    }
+
+    const path = getPath();
+    const params = path[1];
     const year = Number(params.toString().slice(0, 4));
     const month = Number(params.toString().slice(4, 7));
     const beforeLast = new Date(year, month - 1, 0);
     const nowLast = new Date(year, month, 0);
-    const bDate = beforeLast.getDate();
     const bDay = beforeLast.getDay();
-
     const nDate = nowLast.getDate();
     const nDay = nowLast.getDay();
-
     const beforeDates = [];
     const nowDates = [...Array(nDate + 1).keys()].slice(1);
     const afterDates = [];
 
     if (bDay !== 6) {
       for (let i = 0; i < bDay + 1; i++) {
-        beforeDates.unshift(bDate - i);
+        beforeDates.unshift(-1);
       }
     }
-
     for (let i = 1; i < 7 - nDay; i++) {
-      afterDates.push(i);
+      afterDates.push(-1);
     }
     const dates = beforeDates.concat(nowDates, afterDates);
-    const DayComponent: string[] = [];
-    dates.forEach((date, i) => {
-      DayComponent[i] = `<div class="date">${date}</div>`;
-    });
+    const DayComponent: string[] = makeDateDiv(dates, calcdate);
+
     const DividedDay = divide(7, DayComponent);
-    let dayComponent = "";
-    for (const week of DividedDay) {
-      let temp = '<div class="week-item" >';
-      for (const day of week) {
-        temp += day + "\n";
-      }
-      temp += "</div>\n";
-      dayComponent += temp;
-    }
+    const dayComponent = makeDayComponent(DividedDay);
+
     return `
-            <h1>${year}년 ${month}월</h1>
-            <div id="calendar" >
-              ${dayComponent}
+        <div id="calendar" >
+          <div class="calendar-title" >
+            <div class="calendar-item" >
+              <h4>합계: ${dot(all)}원<h4>
             </div>
-        `;
+            <div class="calendar-item" >
+              <h4>수입: ${dot(income)}원</h4>
+              <h4>지출: ${dot(Math.abs(expense))}원</h4>
+            </div>
+          </div>
+          ${dayComponent}
+        </div>`;
   }
 
   componentDidMount() {

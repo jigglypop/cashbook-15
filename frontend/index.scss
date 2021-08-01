@@ -1,28 +1,21 @@
 @import url("https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css");
 body {
   font-family: "NanumBarunGothic";
-  font-weight: 800;
 }
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-html,
+html {
+  margin: 0;
+  padding: 0;
+}
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
   transition: all 0.3s ease-in;
-}
-
-.tempOuter {
-  position: relative;
-  width: 100%;
-  height: 100%;
 }
 
 body {
@@ -49,19 +42,89 @@ body {
   --purple: #8e2de2;
   --yellow: #ffe259;
   --primary1: #2AC1BC;
+  --primary3: #219A95;
 
-  --width: 400px;
-  --width_: -400px;
-  --height: 665px;
-  --heightS: 555px;
-  --heightSS: 505px;
-  --input-width: 200px;
+  --header-height: 100px;
+  --auth-width: 250px;
+  --badge-width: 80px;
+  --badge-height: 40px;
+  --records-height: 100px;
+  --records-width: 1000px;
+  --records-half-width: 400px;
+  --record-item: 200px;
+  --calendar-width: 900px;
+  --calendar-title-width: 950px;
 
-  background: var(--background);
+  --calendar-day-height: 60px;
+  --calendar-item-width: 100px;
+  --text-shadow: none;
+  --write-width: 1000px;
+  --write-height: 120px;
+
+  --chart-height: 600px;
+  --category-badge-1 : linear-gradient(45deg, #ed213a, #93291e);
+  --category-badge-2 : linear-gradient(45deg, #bc4e9c, #f80759);
+  --category-badge-3 : linear-gradient(45deg, #fdc830, #f37335);
+  --category-badge-4 : linear-gradient(45deg, #ffe259, #ffa751);
+  --category-badge-5 : linear-gradient(45deg, #a8ff78, #78ffd6);
+  --category-badge-6 : linear-gradient(45deg, #11998e, #38ef7d);
+  --category-badge-7 : linear-gradient(45deg, #12d8fa, #1fa2ff);
+  --category-badge-8 : linear-gradient(45deg, #8e2de2, #4a00e0);
+  --category-badge-9 : linear-gradient(45deg, #302b63, #24243e);
+  --category-badge-10 : linear-gradient(45deg, #434343, #000000);
+  --category-badge-11 : linear-gradient(45deg, #434343, #434343);
+
+  --category-1 : #ed213a;
+  --category-2 : #bc4e9c;
+  --category-3 : #fdc830;
+  --category-4 : #ffe259;
+  --category-5 : #a8ff78;
+  --category-6 : #11998e;
+  --category-7 : #12d8fa;
+  --category-8 : #8e2de2;
+  --category-9 : #302b63;
+  --category-10 : #434343;
+  --category-11 : var(--grayA);
+  --body-background: #d7d7d7;
+  --calendar-item: #d7d7d7;
+
+  background: var(--body-background);
 }
 
+
+  .category-badge-1 {
+    background: var(--category-badge-1);
+  }
+  .category-badge-2 {
+    background: var(--category-badge-2);
+  }
+  .category-badge-3 {
+    background: var(--category-badge-3);
+  }
+  .category-badge-4 {
+    background: var(--category-badge-4);
+  }
+  .category-badge-5 {
+    background: var(--category-badge-5);
+  }
+  .category-badge-6 {
+    background: var(--category-badge-6);
+  }
+  .category-badge-7 {
+    background: var(--category-badge-7);
+  }
+  .category-badge-8 {
+    background: var(--category-badge-8);
+  }
+  .category-badge-9 {
+    background: var(--category-badge-9);
+  }
+  .category-badge-10 {
+    background: var(--category-badge-10);
+  }
+
+
 main {
-  z-index: 3;
   position: relative;
 
   display: flex;
@@ -81,9 +144,25 @@ main {
 
 #root {
   position: relative;
-  /* width: 100%;
-  height: 100%; */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.3s ease-in;
+}
+
+.AppOuter {
+  top: var(--header-height);
+  padding: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.RouterOuter {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 ::-webkit-scrollbar {

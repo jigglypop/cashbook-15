@@ -42,7 +42,7 @@ export const isComponent = (text: string) => {
 };
 // 컴포넌트 거르기
 export const getComponent = (text: string) => {
-  const openTag = "(<.*/>)";
+  const openTag = "(<[A-Z].*/>)";
   return getRegex(`${openTag}`, text);
 };
 

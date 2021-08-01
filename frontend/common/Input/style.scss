@@ -6,7 +6,7 @@
     margin: 10px;
 
     position: absolute;
-    width: 300px;
+    width: var(--auth-width);
     height: 80px;
     left: 15px;
     top: 52px;
@@ -18,7 +18,6 @@
 
 
     position: static;
-    width: 250px;
     height: 40px;
     left: 16px;
     bottom: 8px;

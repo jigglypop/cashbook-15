@@ -1,5 +1,4 @@
 import { Container } from "../../../util/Container";
-import "./style.scss";
 
 export default class StatisticView extends Container {
   public state = {
@@ -18,8 +17,10 @@ export default class StatisticView extends Container {
 
   render() {
     return `
-            <h1>통계 뷰</h1>
-        `;
+      <PieView/>
+      <LineView/>
+      <FilteredCategory/>
+    `;
   }
 
   componentDidMount() {

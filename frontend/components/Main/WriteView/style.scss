@@ -1,0 +1,31 @@
+.WriteViewOuter {
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+
+    .write-item {
+        width: 160px;
+        height: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        .LineInput input{
+            width: 150px;
+        }
+
+        .write-text {
+            font-size: 14px;
+            color: var(--primary3);
+            margin: 20px;
+            cursor:pointer;
+        }
+
+    }
+
+}

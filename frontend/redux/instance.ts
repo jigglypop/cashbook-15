@@ -1,8 +1,6 @@
 export class Instance {
   private instance: any = {};
 
-  constructor() {}
-
   setInstance(key: string, value: any) {
     this.instance[key] = value;
   }

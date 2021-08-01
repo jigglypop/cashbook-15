@@ -2,6 +2,7 @@ import { store } from "..";
 import api from "../api";
 import { checkAndRoute } from "../redux/check/actions";
 import cache from "./cache";
+import { goIntro } from "./goRouter";
 
 const check = async () => {
   // 토큰 받기
@@ -12,7 +13,12 @@ const check = async () => {
     const pathname = path[1];
     const params = path[2] ? Number(path[2]) : 0;
     const username = data.data.username;
-    store.check.dispatch(checkAndRoute(username, pathname.toString(), params));
+    const id = data.data.id;
+    store.check.dispatch(
+      checkAndRoute(username, id, pathname.toString(), params)
+    );
+  } else {
+    goIntro();
   }
 };
 

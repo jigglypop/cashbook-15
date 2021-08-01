@@ -1,12 +1,20 @@
 import { check } from "./check";
 import instance from "./instance";
-import { router } from "./router";
+import { list } from "./list";
+import { login } from "./login";
+import { register } from "./register";
+import { writerecords } from "./writerecords";
+import { yearcategory } from "./yearcategory";
 
 const createStore = function () {
   return {
     instance: instance,
-    router: router,
     check: check,
+    login: login,
+    register: register,
+    writerecords: writerecords,
+    list: list,
+    yearcategory: yearcategory,
   };
 };
 

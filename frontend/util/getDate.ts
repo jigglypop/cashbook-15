@@ -1,3 +1,5 @@
+import { makeLengthTwo } from "./makeLengthTwo";
+
 export const Year = (date: Date) => {
   return date.getFullYear();
 };
@@ -5,13 +7,13 @@ export const Year = (date: Date) => {
 export const Month = (date: Date) => {
   return date.getMonth();
 };
+export const Day = (date: Date) => {
+  return date.getDate();
+};
 
 export const MakeLengthTwoAndNumber = (year: number, month: number) => {
   const _year = year.toString();
-  let _month = month.toString();
-  if (_month.length === 1) {
-    _month = "0" + _month;
-  }
+  const _month = makeLengthTwo(month);
   return Number(_year + _month);
 };
 
@@ -37,4 +39,10 @@ export const MinusMonth = (params: number) => {
     month -= 1;
   }
   return MakeLengthTwoAndNumber(year, month);
+};
+
+export const makeYearMonth = (params: string) => {
+  const year = Number(params.toString().slice(0, 4));
+  const month = Number(params.toString().slice(4, 7));
+  return [year, month];
 };

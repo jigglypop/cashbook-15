@@ -20,9 +20,10 @@ export abstract class Container {
   private name = "";
   protected ID = getID();
   private methods: any;
+  private storeNames: any;
 
   abstract render(): string;
-  abstract componentWillMount(): ReturnType<() => {}>;
+  abstract componentWillMount(): ReturnType<() => void>;
   abstract componentDidMount(): void;
 
   constructor(
@@ -34,10 +35,8 @@ export abstract class Container {
     this.sementic = sementic;
     this.$target = $target;
     this.name = name;
-    if (storeNames && storeNames.length > 0) {
-      storeNames.forEach((name) => {
-        store[name].subscribe(this.init.bind(this));
-      });
+    if (storeNames) {
+      this.storeNames = storeNames;
     }
     this.$outer = $("<div></div>").get();
   }
@@ -45,7 +44,17 @@ export abstract class Container {
   append() {
     this.$outer.className = `${this.name}Outer`;
     this.$outer.id = `${this.name}Outer-${this.ID}`;
-    this.$target.appendChild(this.$outer);
+    if (this.$target.className === "tempOuter") {
+      const $parent: any = this.$target.parentNode;
+      if ($parent) {
+        const _$target = this.$target;
+        this.$target = $parent;
+        this.$target.insertBefore(this.$outer, _$target);
+        _$target.remove();
+      }
+    } else {
+      this.$target.appendChild(this.$outer);
+    }
   }
 
   renderComponent() {
@@ -67,7 +76,6 @@ export abstract class Container {
         parents: `${this.name}-${this.ID}`,
       });
     });
-
     this.$outer.innerHTML = html;
     temp.map((item) => {
       const tag = item.tag;
@@ -100,6 +108,14 @@ export abstract class Container {
     this.append();
     this.renderComponent();
     this.componentDidMount();
+    if (this.storeNames && this.storeNames.length > 0) {
+      this.storeNames.forEach((name: any) => {
+        store[name].subscribe(
+          `${this.name}Outer-${this.ID}`,
+          this.init.bind(this)
+        );
+      });
+    }
   }
 
   // setState
@@ -112,5 +128,13 @@ export abstract class Container {
     this.append();
     this.renderComponent();
     this.componentDidMount();
+    if (this.storeNames && this.storeNames.length > 0) {
+      this.storeNames.forEach((name: any) => {
+        store[name].subscribe(
+          `${this.name}Outer-${this.ID}`,
+          this.init.bind(this)
+        );
+      });
+    }
   }
 }

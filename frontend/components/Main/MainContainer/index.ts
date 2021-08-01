@@ -1,4 +1,3 @@
-import { store } from "../../..";
 import { Container } from "../../../util/Container";
 import "./style.scss";
 
@@ -14,11 +13,10 @@ export default class MainContainer extends Container {
   }
 
   render() {
-    const { username } = store.check.getState();
     return `
-          <h1>메인 컨테이너</h1>
-          <h2>${username}</h2>
-          <MainView/>
+          <WriteContainer/>
+          <h6 id="write-errortext" ></h6>
+          <ListContainer/>
       `;
   }
 

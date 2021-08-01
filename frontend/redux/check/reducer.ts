@@ -1,8 +1,25 @@
 import { initialState } from ".";
-import { CALENDAR, CHECK, CHECKANDROUTE, MAIN, STATISTIC } from "./actions";
+import {
+  CALENDAR,
+  CHECK,
+  CHECKANDROUTE,
+  INIT,
+  INTRO,
+  MAIN,
+  STATISTIC,
+} from "./actions";
 
-export function checkReducer(state = initialState, action: any) {
+export interface ICheckAction {
+  type: string;
+  username: string;
+  id: string;
+  path: string;
+  params: number;
+}
+export function checkReducer(state = initialState, action: ICheckAction) {
   switch (action.type) {
+    case INIT:
+      return state;
     case CHECK:
       return {
         ...state,
@@ -12,8 +29,14 @@ export function checkReducer(state = initialState, action: any) {
       return {
         ...state,
         username: action.username,
+        id: action.id,
         path: action.path,
         params: action.params,
+      };
+    case INTRO:
+      return {
+        ...state,
+        path: "",
       };
     case MAIN:
       return {
