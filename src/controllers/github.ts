@@ -10,7 +10,7 @@ import { serialize } from "../util/serialize";
 const getToken = async (req: Request) => {
   const clientID = process.env.GITHUB_CLIENT_ID;
   const clientSecret = process.env.GITHUB_CLIENT_SECRET;
-  if (!clientID && !clientSecret) throw new HttpError(403, "Github 토큰 에러");
+  if (!clientID && !clientSecret) throw new HttpError(401, "Github 토큰 에러");
   const requestToken = req.query.code;
   const token_result = await fetch(
     `https://github.com/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${requestToken}`,
@@ -21,7 +21,7 @@ const getToken = async (req: Request) => {
       },
     }
   );
-  if (!token_result) throw new HttpError(403, "토큰 가져오기 실패");
+  if (!token_result) throw new HttpError(401, "토큰 가져오기 실패");
   const token_data = await token_result.json();
   const token = await token_data.access_token;
   return token;
@@ -33,7 +33,7 @@ const getGithubUser = async (token: string) => {
       Authorization: "token " + token,
     },
   });
-  if (!result) throw new HttpError(403, "깃허브 유저 정보 에러");
+  if (!result) throw new HttpError(401, "깃허브 유저 정보 에러");
   const data = await result.json();
   return data;
 };
@@ -50,7 +50,7 @@ export const github = async (req: any, res: Response) => {
 export const githubtoken = async (req: any, res: Response) => {
   const data = req.session.data.data;
   if (!data) {
-    throw new HttpError(403, "세션이 없습니다");
+    throw new HttpError(401, "세션이 없습니다");
   }
   let user = await User.findOne<Model>({ where: { username: data.login } });
   const username = data.login;
@@ -62,7 +62,7 @@ export const githubtoken = async (req: any, res: Response) => {
       email: "",
       hashedPassword: hashedPassword,
     });
-    if (!user) throw new HttpError(500, "유저 생성 불가");
+    if (!user) throw new Error("유저 생성 불가");
   } else {
     const hashedPassword = user.getDataValue("hashedPassword");
     const valid = await bcrypt.compare(password, hashedPassword);
@@ -71,9 +71,9 @@ export const githubtoken = async (req: any, res: Response) => {
   // 로그인 발급
   const serialized = await serialize(user);
   const token = await generateToken(user);
-  if (!token) throw new HttpError(500, "토큰 생성 실패");
+  if (!token) throw new Error("토큰 생성 실패");
   const CLIENT_URL = process.env.CLIENT_URL;
-  if (!CLIENT_URL) throw new HttpError(500, "헤더 생성 실패");
+  if (!CLIENT_URL) throw new Error("헤더 생성 실패");
   res.set("token", token);
   res.status(200).json({ data: serialized });
   req.session.destroy(function (err: string) {

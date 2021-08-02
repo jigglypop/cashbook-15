@@ -1,17 +1,18 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import HttpError from "../errors/HttpError";
 import Category from "../models/Category";
 import Payment from "../models/Payment";
 import Record, { IRecord } from "../models/Record";
 import RecordType from "../models/RecordType";
+import { IAuthRequest } from "../middleware/jwtMiddleware";
 
-interface IReadRecordRequest extends Request {
+interface IReadRecordRequest extends IAuthRequest {
   query: {
     month: string;
   };
 }
 
-interface IWriteRecordRequest extends Request {
+interface IWriteRecordRequest extends IAuthRequest {
   body: IRecord;
 }
 
