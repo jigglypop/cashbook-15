@@ -5,10 +5,11 @@ import User from "../models/User";
 import HttpError from "../errors/HttpError";
 import { generateToken } from "../util/generateToken";
 import { serialize } from "../util/serialize";
+import { IAuthRequest } from "../middleware/jwtMiddleware";
 
-export const check = async (req: Request, res: Response) => {
-  const { decoded } = await req.body;
-  const user = await User.findByPk(decoded.id);
+export const check = async (req: IAuthRequest, res: Response) => {
+  const { userId } = req.body;
+  const user = await User.findByPk(userId);
   if (!user) throw new HttpError(400, "같은 이름의 계정이 존재하지 않습니다.");
   res.status(200).json({ data: user });
 };

@@ -1,21 +1,21 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import HttpError from "../errors/HttpError";
 import Payment, { IPayment } from "../models/Payment";
+import { IAuthRequest } from "../middleware/jwtMiddleware";
 
-//TODO: 모든 메소드 user 값 전달 방식에 따라 변경해야함
-
-interface IWritePaymentRequest extends Request {
+interface IWritePaymentRequest extends IAuthRequest {
   body: IPayment;
 }
 
-interface IRemovePaymentRequest extends Request {
+interface IRemovePaymentRequest extends IAuthRequest {
   params: {
     id: string;
   };
 }
 
-export const readAll = async (req: Request, res: Response) => {
-  const payments: Payment[] = await Payment.findAll();
+export const readAll = async (req: IAuthRequest, res: Response) => {
+  const { userId } = req.body;
+  const payments: Payment[] = await Payment.findAll({ where: { userId } });
 
   res.status(200).json({ data: payments });
 };
