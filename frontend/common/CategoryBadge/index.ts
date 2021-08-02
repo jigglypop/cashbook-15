@@ -1,4 +1,5 @@
 import { categoryObjectKeyValue } from "../../constants/constants";
+import { Component } from "../../util/Component";
 import { Container } from "../../util/Container";
 import "./style.scss";
 
@@ -6,7 +7,7 @@ interface ICategoryBadge {
   key: number;
 }
 
-export default class CategoryBadge extends Container {
+export default class CategoryBadge extends Component {
   private props: ICategoryBadge;
 
   constructor($target: HTMLElement, ID: string, props: ICategoryBadge) {
@@ -16,8 +17,15 @@ export default class CategoryBadge extends Container {
     this.init();
   }
 
-  componentWillMount() {
-    return {};
+  css() {
+    return `
+      .category-badge {
+        box-shadow: 0_0_10px_var(--category-${this.props.key});
+      }
+      .category-badge:hover {
+        box-shadow: 0_0_20px_var(--category-${this.props.key});
+      }
+    `;
   }
 
   render() {
@@ -28,9 +36,5 @@ export default class CategoryBadge extends Container {
               <h5>${categoryObjectKeyValue[this.props.key]}</h5>
             </div>
         `;
-  }
-
-  componentDidMount() {
-    return {};
   }
 }

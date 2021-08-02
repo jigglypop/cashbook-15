@@ -13,9 +13,9 @@
   }
 
   .graph .grid {
-    stroke: #ccc;
+    stroke: var(--text);
     stroke-dasharray: 0;
-    stroke-width: 1;
+    stroke-width: 2;
   }
 
   .labels {
@@ -26,7 +26,7 @@
     font-weight: bold;
     text-transform: uppercase;
     font-size: 12px;
-    fill: black;
+    fill: var(--text);
   }
 
   .data {
@@ -47,13 +47,21 @@
   }
 
   .circle-outer{
-    stroke: white;  
+    stroke: var(--white-text);  
     fill: none; 
     stroke-width: 2;
   }
 
   .circle-inner{
     stroke: var(--white-text);  
+  }
+
+  text{
+    fill: var(--text);
+  }
+
+  .yearcategory-title {
+    fill: var(--text);   
   }
 
   @keyframes dash {

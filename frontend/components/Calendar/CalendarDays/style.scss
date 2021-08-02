@@ -6,11 +6,12 @@
     width: var(--calendar-width);
     height: var(--calendar-day-height);
     border-radius: 10px;
-    background-color: var(--app);
-    box-shadow: 0 0 20px var(--text);
     margin: 20px;
     padding: 20px;
-
+    box-shadow: 0 0 10px var(--text);
+    border: 2px solid var(--border);
+    background-color: var(--app);
+    
     #calendar-day {
         display: flex;
         align-items: center;

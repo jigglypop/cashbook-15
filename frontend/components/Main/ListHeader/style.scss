@@ -1,12 +1,13 @@
 .ListHeaderOuter {
     position: relative;
     width: var(--write-width);
-    background-color: var(--app);
     border-radius: 10px;
-    box-shadow: 0 0 20px var(--text);
     padding: 10px;
     margin-bottom: 30px;
-            
+    box-shadow: 0 0 10px var(--text);
+    border: 2px solid var(--border);
+    background-color: var(--app);
+
     .calendar-title {
         position: relative;
         width: var(--calendar-title-width);
@@ -18,7 +19,7 @@
 
         label {
             font-size: 14px;
-            color: var(--primary1);
+            color: var(--tag);
             margin: 20px;
         }
 
@@ -34,7 +35,7 @@
             content: '';
             display: inline-block;
             visibility: visible;
-            border: 2px solid var(--primary1);
+            border: 2px solid var(--tag);
         }
 
         input[type='radio']:checked:after {
@@ -44,11 +45,11 @@
             top: -5px;
             left: -5px;
             position: relative;
-            background-color: var(--primary1);
+            background-color: var(--tag);
             content: '';
             display: inline-block;
             visibility: visible;
-            border: 2px solid var(--primary1);
+            border: 2px solid var(--tag);
         }
         .calendar-item {
             position: relative;

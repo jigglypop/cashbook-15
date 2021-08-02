@@ -1,7 +1,6 @@
 import { initialState } from ".";
 import { SETFILTER, SETLIST } from "./actions";
 export function listReducer(state = initialState, action: any) {
-  console.log(action.type, action.filter);
   switch (action.type) {
     case SETLIST:
       return {

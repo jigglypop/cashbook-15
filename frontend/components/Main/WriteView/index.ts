@@ -68,7 +68,7 @@ export default class WriteView extends Container {
     return `
         <div class="write-item" >
           <h6 class="write-text" >일자</h6>
-          <h4>${year}년 ${month}월 ${day}일</h4>
+          <h4 class="write-day" >${year}년 ${month}월 ${day}일</h4>
         </div>
         <div class="write-item" id="write-item-category">
           <CategorySelector />

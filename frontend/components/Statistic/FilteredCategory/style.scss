@@ -2,11 +2,14 @@
     position: relative;
     width: var(--write-width);
     height: var(--chart-height);
-    background-color: var(--app);
     border-radius: 10px;
-    box-shadow: 0 0 20px var(--text);
+    box-shadow: 0 0 10px var(--text);
+    border: 2px solid var(--border);
+    background-color: var(--app);
+    
     margin: 20px;
     padding: 20px;
+    margin-bottom: 100px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

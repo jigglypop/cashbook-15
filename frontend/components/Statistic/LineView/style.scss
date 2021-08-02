@@ -2,10 +2,11 @@
     position: relative;
     width: var(--records-width);
     height: var(--chart-height);
-    background-color: var(--app);
     border-radius: 10px;
-
-    box-shadow: 0 0 20px var(--text);
+    box-shadow: 0 0 10px var(--text);
+    border: 2px solid var(--border);
+    background-color: var(--app);
+    
     margin: 20px;
     display: flex;
     flex-direction: column;
@@ -13,6 +14,7 @@
     align-items: center;
 
     .yearcategory-title {
+        color: var(--text);
         padding: 30px;
     }
 }

@@ -1,0 +1,78 @@
+.FooterViewOuter {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    transition: all .3s ease-in;
+    font-size: 12px;
+    padding: 30px;
+
+    .footer-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--header-app);
+    }
+
+    .colorpicker-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 25px;
+        height: 25px;
+        margin: 5px;
+        border-radius: 50%;
+        background: var(--dark-gradient);
+        transition: all .3s ease-in;
+        cursor: pointer;
+    }
+
+    .colorpicker-button.color-1 {
+        background: linear-gradient(45deg, #12fff7, #20e3b2, #29ffc6); 
+        box-shadow: 0 0 10px #12fff7;
+    }
+
+    .colorpicker-button.color-2 {
+        background: linear-gradient(45deg, #8a2387, #e94057, #f27121); 
+        box-shadow: 0 0 10px #e94057;
+    }
+
+    .colorpicker-button.color-3 {
+        background: linear-gradient(45deg, #ffe259, #ffa751);
+        box-shadow: 0 0 10px #ffe259;
+    }
+
+    .colorpicker-button.color-4 {
+        background: linear-gradient(45deg, #b2fefa, #0ed2f7); 
+        box-shadow: 0 0 10px #b2fefa;
+    }
+
+
+    .colorpicker-button:hover {
+        transform: scale(1.2);
+    }
+
+    #darkmode-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        background: var(--dark-gradient);
+        box-shadow: 0 0 10px black;
+        border: 2px solid black;
+        transform: scale(0.8);
+        transition: all .3s ease-in;
+        cursor: pointer;
+    }
+
+    #darkmode-button:hover {
+        transform: scale(1);
+    }
+}

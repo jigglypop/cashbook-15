@@ -33,13 +33,19 @@ import LineView from "./components/Statistic/LineView";
 import PieView from "./components/Statistic/PieView";
 import StatisticContainer from "./components/Statistic/StatisticContainer";
 import StatisticView from "./components/Statistic/StatisticView";
+import FooterContainer from "./components/Footer/FooterContainer";
+import FooterView from "./components/Footer/FooterView";
+import Avatar from "./common/Avatar";
+
 import "./index.scss";
 import createStore from "./redux";
 import Router from "./Router";
 import { $ } from "./util/jQurey";
+import { setDarkMode } from "./util/setDisplay";
 
 export const Modules: any = {
   App,
+  Avatar,
   GlassButton,
   Input,
   LineInput,
@@ -75,8 +81,10 @@ export const Modules: any = {
   LineChart,
   FilteredCategory,
   ListHeader,
+  FooterContainer,
+  FooterView,
 };
-
+setDarkMode();
 export const store: any = createStore();
 const app: any = new App($("#root").get());
 store.instance.setInstance(`App-${app.ID}`, app);

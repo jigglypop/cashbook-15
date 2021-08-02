@@ -1,53 +1,86 @@
-// import cache from "./cache";
-// import { $ } from "./jQurey";
-//
-// export const SunAttr = {
-//   "--back": "#1d1d1d",
-//   "--text": "#1d1d1d",
-//   "--white-text": "white",
-//   "--app": "white",
-// };
-//
-// export const MoonAttr = {
-//   "--back": "white",
-//   "--text": "#12fff7",
-//   "--white-text": "#12fff7",
-//   "--app": "#1d1d1d",
-// };
-//
-// export const setVAll = (Attr: any) => {
-//   const body = document.querySelector("body");
-//   if (body) {
-//     for (const param of Object.keys(Attr)) {
-//       $(body).val(param, Attr[param]);
-//     }
-//   }
-// };
-//
-// export const setBefore = () => {
-//   const attr = cache.get("attr");
-//   if (attr) {
-//     setVAll(attr);
-//   }
-//   const dark = cache.get("dark");
-//   if (dark) {
-//     setVAll(dark);
-//   }
-// };
-//
-// export const setMode = () => {
-//   const mode = cache.get("mode");
-//   const darkSun = $("#dark-sun").get();
-//   const darkMoon = $("#dark-moon").get();
-//   if (darkSun && darkMoon) {
-//     if (mode) {
-//       if (mode === "sun") {
-//         darkSun.classList.add("isNotDisplay");
-//       } else {
-//         darkMoon.classList.add("isNotDisplay");
-//       }
-//     } else {
-//       darkSun.classList.add("isNotDisplay");
-//     }
-//   }
-// };
+import cache from "./cache";
+import { $ } from "./jQurey";
+
+export const SunAttr = () => {
+  return {
+    "--back": "#1d1d1d",
+    "--text": "#1d1d1d",
+    "--app": "white",
+    "--body-background": "#d7d7d7",
+    "--header-color": "#222222",
+    "--base-shadow": "none",
+    "--dark-gradient": "linear-gradient(45deg, #0cebeb, #20e3b2, #219A95)",
+    "--grayA": "white",
+    "--grayB": "#f6f6f6",
+    "--grayD": "#888888",
+    "--grayE": "#484848",
+    "--border": "none",
+    "--header-app": "white",
+    "--tag": "#219A95",
+  };
+};
+
+export const MoonAttr = () => {
+  const color = cache.get("color");
+  let text = "#12fff7";
+  let headerColor = "linear-gradient(45deg, #0cebeb, #20e3b2, #219A95)";
+  let tag = "#219A95";
+  let header = "#1d1d1d";
+  if (color) {
+    if (color === "1") {
+      text = "#12fff7";
+      headerColor = "linear-gradient(45deg, #0cebeb, #20e3b2, #219A95)";
+      header = "#1d1d1d";
+      tag = "#219A95";
+    } else if (color === "2") {
+      text = "#e94057";
+      headerColor = "linear-gradient(45deg, #8a2387, #e94057, #f27121)";
+      header = "white";
+      tag = "#f27121";
+    } else if (color === "3") {
+      text = "#ffe259";
+      headerColor = "linear-gradient(45deg, #ffe259, #ffa751)";
+      header = "#1d1d1d";
+      tag = "#ffa751";
+    } else if (color === "4") {
+      text = "#b2fefa";
+      headerColor = "linear-gradient(45deg, #b2fefa, #0ed2f7)";
+      header = "#1d1d1d";
+      tag = "#0ed2f7";
+    }
+  }
+  return {
+    "--back": "white",
+    "--text": text,
+    "--app": "#1d1d1d",
+    "--body-background": "#222222",
+    "--header-color": headerColor,
+    "--base-shadow": text,
+    "--dark-gradient": headerColor,
+    "--grayA": "#484848",
+    "--grayB": "#888888",
+    "--grayD": "#f6f6f6",
+    "--grayE": "white",
+    "--border": text,
+    "--header-app": header,
+    "--tag": tag,
+  };
+};
+
+export const setVAll = (Attr: any) => {
+  const body = document.querySelector("body");
+  if (body) {
+    for (const param of Object.keys(Attr)) {
+      $(body).val(param, Attr[param]);
+    }
+  }
+};
+
+export const setDarkMode = () => {
+  const dark = cache.get("dark");
+  if (dark === "false") {
+    setVAll(SunAttr());
+  } else {
+    setVAll(MoonAttr());
+  }
+};

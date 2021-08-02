@@ -22,14 +22,14 @@
 
   .LineInput input {
     border: 0;
-    border-bottom: 2px solid var(--grayB);
+    border-bottom: 2px solid var(--grayC);
     border-radius: 2px;
     background: transparent;
     width: var(--auth-width);
     min-width: var(--input-width);
     font-size: 12px;
     font-weight: 800;
-    color: var(--grayC);
+    color: var(--grayD);
     transition: all 0.3s ease-in-out;
   }
 

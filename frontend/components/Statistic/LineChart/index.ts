@@ -98,14 +98,12 @@ export default class LineChart extends Container {
     </g>
       <g class="labels x-labels">
       ${xLabel}
-      <text x="400" y="340" class="label-title">월별</text>
     </g>
     <g class="labels y-labels">
       <text x="80" y="15">${dot(yLavel[2])} 원</text>
       <text x="80" y="95">${dot(yLavel[1])} 원</text>
       <text x="80" y="175">${dot(yLavel[0])} 원</text>
       <text x="80" y="273">0</text>
-      <text x="50" y="200" class="label-title">지출</text>
     </g>
     <g>
       ${Circles}

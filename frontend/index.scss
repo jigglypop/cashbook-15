@@ -30,12 +30,15 @@ body {
   --baemin: #12fff7;
   --text: #1d1d1d;
   --white-text: white;
+  --header-app: white;
   --app: white;
   --red: #ed213a;
   --header: var(--background-bluegreen);
-  --grayA: #f6f6f6;
-  --grayB: #d7d7d7;
-  --grayC: #888888;
+  --grayA: white;
+  --grayB: #f6f6f6;
+  --grayC: #d7d7d7;
+  --grayD: #888888;
+  --grayE: #484848;
   --dark: #222222;
   --bluegreen: #0cebeb;
   --green: #00b09b;
@@ -44,7 +47,7 @@ body {
   --primary1: #2AC1BC;
   --primary3: #219A95;
 
-  --header-height: 100px;
+  --header-height: 120px;
   --auth-width: 250px;
   --badge-width: 80px;
   --badge-height: 40px;
@@ -60,6 +63,7 @@ body {
   --text-shadow: none;
   --write-width: 1000px;
   --write-height: 120px;
+  --footer-height: 60px;
 
   --chart-height: 600px;
   --category-badge-1 : linear-gradient(45deg, #ed213a, #93291e);
@@ -87,7 +91,15 @@ body {
   --category-11 : var(--grayA);
   --body-background: #d7d7d7;
   --calendar-item: #d7d7d7;
+  --base-shadow: none;
+  --tag: #219A95;
 
+  --base-gradient: linear-gradient(45deg, #0cebeb, #20e3b2, #219A95);
+  --dark-gradient: linear-gradient(45deg, #0cebeb, #20e3b2, #29ffc6);
+
+  --base-color:#0cebeb;
+  --header-color: #222222;
+  --border: none;
   background: var(--body-background);
 }
 
@@ -171,20 +183,20 @@ main {
 
 ::-webkit-scrollbar {
   width: 20px;
-  background-color: transparent;
+  background-color: var(--dark);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-image: var(--header);
+  background-image: var(--dark-gradient);
   border-radius: 10px;
   background-clip: padding-box;
-  border: 3px solid transparent;
+  border: 3px solid var(--dark);
 }
 
 ::-webkit-scrollbar-track {
-  background-color: transparent;
+  background-color: var(--dark);
 }
 
 ::-webkit-scrollbar-corner {
-  background-color: transparent;
+  background-color: var(--dark);
 }

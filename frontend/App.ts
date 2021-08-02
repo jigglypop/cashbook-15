@@ -32,7 +32,8 @@ class App extends Container {
     return `
       <HeaderContainer :username="${username}" :path="${path}" :params="${params}" />
       <Router/>
-      <Toast/>`;
+      <Toast/>
+      <FooterContainer/>`;
   }
 
   componentDidMount() {

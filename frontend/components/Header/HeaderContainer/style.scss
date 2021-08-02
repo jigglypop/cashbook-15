@@ -5,7 +5,7 @@
     width: 100%;
     height: var(--header-height);
 
-    background-color: var(--primary1);
+    background: var(--header-color);
     z-index: 5;
 
     .HeaderViewOuter {
@@ -25,8 +25,8 @@
         }
 
         .header-item {
-            width: 300px;
-            padding: 10px;
+            width: 450px;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;       

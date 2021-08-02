@@ -1,0 +1,16 @@
+.FooterContainerOuter {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--footer-height);
+    color: var(--app);
+    background: var(--header-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all .3s ease-in;
+    z-index: 5;
+
+}

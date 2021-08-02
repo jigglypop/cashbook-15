@@ -1,11 +1,13 @@
 .WriteViewOuter {
-    background-color: white;
 
     display: flex;
     align-items: center;
     justify-content: space-around;
 
-
+    .write-day {
+        color: var(--text);        
+    }
+    
     .write-item {
         width: 160px;
         height: 100%;
@@ -14,6 +16,7 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
+        color: var(--text);
 
         .LineInput input{
             width: 150px;
@@ -21,7 +24,7 @@
 
         .write-text {
             font-size: 14px;
-            color: var(--primary3);
+            color: var(--tag);
             margin: 20px;
             cursor:pointer;
         }
