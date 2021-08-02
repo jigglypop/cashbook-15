@@ -3,7 +3,7 @@ const HTTP_METHOD = {
     return {
       headers: {
         "Content-Type": "application/json",
-        Authorization: token ? token : "",
+        Authorization: token || "",
       },
     };
   },
@@ -12,7 +12,7 @@ const HTTP_METHOD = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: token ? "Bearer " + token : "",
+        Authorization: token || "",
       },
       body: JSON.stringify({
         ...data,
@@ -24,7 +24,7 @@ const HTTP_METHOD = {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Authorization: token ? "Bearer " + token : "",
+        Authorization: token || "",
       },
       body: JSON.stringify({
         ...data,
@@ -35,7 +35,7 @@ const HTTP_METHOD = {
     return {
       method: "DELETE",
       headers: {
-        Authorization: token ? "Bearer " + token : "",
+        Authorization: token || "",
       },
     };
   },
