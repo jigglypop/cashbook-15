@@ -1,6 +1,6 @@
 import express, { Router } from "express";
 import { readByType } from "../controllers/category";
-import wrapAsync from "../util/wrapAsync";
+import wrapAsync from "../utils/wrapAsync";
 
 const categoryRouter: Router = express.Router();
 
