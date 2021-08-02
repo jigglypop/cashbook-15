@@ -1,0 +1,61 @@
+.ListHeaderOuter {
+    position: relative;
+    width: var(--write-width);
+    background-color: var(--app);
+    border-radius: 10px;
+    box-shadow: 0 0 20px var(--text);
+    padding: 10px;
+    margin-bottom: 30px;
+            
+    .calendar-title {
+        position: relative;
+        width: var(--calendar-title-width);
+        margin: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;     
+
+        label {
+            font-size: 14px;
+            color: var(--primary1);
+            margin: 20px;
+        }
+
+
+        input[type='radio']:after {
+            width: 20px;
+            height: 20px;
+            border-radius: 20px;
+            top: -5px;
+            left: -5px;
+            position: relative;
+            background-color: var(--grayA);
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid var(--primary1);
+        }
+
+        input[type='radio']:checked:after {
+            width: 20px;
+            height: 20px;
+            border-radius: 20px;
+            top: -5px;
+            left: -5px;
+            position: relative;
+            background-color: var(--primary1);
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid var(--primary1);
+        }
+        .calendar-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;       
+        }
+    }
+
+}

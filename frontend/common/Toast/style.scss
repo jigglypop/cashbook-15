@@ -1,5 +1,5 @@
 #toasts {
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   right: 10px;
   display: flex;
@@ -16,7 +16,7 @@
   background-color: rgba(0, 0, 0, 0.8);
   border: 2px solid var(--red);
   color: white;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 800;
   border-radius: 5px;
   padding: 20px;
@@ -24,7 +24,7 @@
 }
 .strong {
   color: var(--red);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 800;
   margin: 2px;
 }

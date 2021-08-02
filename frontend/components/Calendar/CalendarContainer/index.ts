@@ -14,9 +14,8 @@ export default class CalendarContainer extends Container {
 
   render() {
     return `
-            <h1>캘린더 컨테이너</h1>
-            <CalendarView />
-        `;
+    <CalendarDays />
+    <CalendarView />`;
   }
 
   componentDidMount() {

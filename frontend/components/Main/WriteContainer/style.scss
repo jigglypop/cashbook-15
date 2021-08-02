@@ -1,0 +1,12 @@
+.WriteContainerOuter {
+    margin: 30px 0;
+    width: var(--write-width);
+    height: var(--write-height);
+    box-shadow: 2px 2px 20px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: var(--app);
+    z-index: 5;
+}

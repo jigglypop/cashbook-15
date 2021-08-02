@@ -1,0 +1,29 @@
+.ListViewOuter {
+    position: relative;
+    width: var(--write-width);
+    background-color: var(--app);
+    border-radius: 10px;
+    box-shadow: 0 0 20px var(--text);
+    padding: 10px;
+    margin-bottom: 50px;
+
+
+        
+    .calendar-title {
+        position: relative;
+        width: var(--calendar-title-width);
+        margin: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;     
+        
+        .calendar-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;       
+        }
+    }
+
+}

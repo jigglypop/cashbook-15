@@ -1,0 +1,46 @@
+.CategoryItemOuter {
+    position: relative;
+    width: var(--records-half-width);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+    border-top: 2px solid var(--grayB);
+
+    .categoryitem {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+        transition: all .3s ease-in;      
+
+        .categoryitem-item {
+            width: var(--record-item);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;   
+        }
+        .left {
+            justify-content: flex-start;
+        }
+        .right {
+            justify-content: flex-end;
+        }
+        .payment {
+            color: var(--grayC);
+        }
+
+        h4 {
+            margin: 4px;
+        }
+    }
+
+    .categoryitem:hover {
+        background-color: var(--grayB);
+        cursor: pointer;
+    }
+}

@@ -28,7 +28,7 @@ export abstract class Component {
   constructor(
     $target: HTMLElement,
     name: string,
-    sementic?: string | undefined,
+    sementic?: string | undefined
   ) {
     this.sementic = sementic;
     this.$target = $target;
@@ -39,17 +39,30 @@ export abstract class Component {
   append() {
     this.$outer.className = `${this.name}Outer`;
     this.$outer.id = `${this.name}Outer-${this.ID}`;
-    this.$target.appendChild(this.$outer);
+    if (this.$target.className === "tempOuter") {
+      const $parent: any = this.$target.parentNode;
+      if ($parent) {
+        const _$target = this.$target;
+        this.$target = $parent;
+        this.$target.insertBefore(this.$outer, _$target);
+        _$target.remove();
+      }
+    } else {
+      this.$target.appendChild(this.$outer);
+    }
   }
 
   renderComponent() {
     let html = this.render();
     const Components = getComponent(html);
-    let temp: Item[] = [];
+    const temp: Item[] = [];
 
     Components?.map((item) => {
-      let id = getID();
-      html = html.replace(item, `<div id="temp-${id}" ></div>`);
+      const id = getID();
+      html = html.replace(
+        item,
+        `<div class="tempOuter" id="temp-${id}" ></div>`
+      );
       temp.push({
         id: id,
         tag: getTag(item),
@@ -66,16 +79,18 @@ export abstract class Component {
       const Component = Modules[tag];
 
       if (Object.keys(item.callbacks).length) {
-        for (let param of Object.keys(item.callbacks)) {
-          const callback = this.methods[param];
+        for (const param of Object.keys(item.callbacks)) {
+          const funcName = item.callbacks[param];
+          const callback = this.methods[funcName];
           item.params[param] = callback;
         }
       }
-      const instance = new Component($temp, item.id, item.params);
+      const $parent = $temp.parentNode;
+      $temp.remove();
+      const instance = new Component($parent, item.id, item.params);
       store.instance.setInstance(`${tag}-${item.id}`, instance);
     });
   }
-
   // 시작 함수
   init() {
     // 렌더링
@@ -87,7 +102,7 @@ export abstract class Component {
 
   // setState
   setState(data: any) {
-    for (let param of Object.keys(data)) {
+    for (const param of Object.keys(data)) {
       this.state[param] = data[param];
     }
     // 메서드 세팅

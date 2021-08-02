@@ -1,0 +1,32 @@
+.CalendarDaysOuter {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--calendar-width);
+    height: var(--calendar-day-height);
+    border-radius: 10px;
+    background-color: var(--app);
+    box-shadow: 0 0 20px var(--text);
+    margin: 20px;
+    padding: 20px;
+
+    #calendar-day {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .calendar-day-item {
+        width: var(--calendar-item-width);
+        margin: 5px;
+        font-size: 16px;
+        color: var(--text);
+        text-shadow: var(--text-shadow);
+    }
+
+    .calendar-day-item.red{
+        color: var(--red);
+        text-shadow: var(--text-shadow);
+    }
+}

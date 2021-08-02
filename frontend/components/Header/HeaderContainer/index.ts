@@ -3,9 +3,6 @@ import { Container } from "../../../util/Container";
 import "./style.scss";
 
 export default class HeaderContainer extends Container {
-  public state = {
-    title: "",
-  };
   public props: IHeaderView;
 
   constructor($target: HTMLElement, ID: string, props: IHeaderView) {
