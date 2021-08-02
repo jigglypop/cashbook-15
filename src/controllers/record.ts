@@ -34,7 +34,7 @@ export const readByMonth = async (req: IReadRecordRequest, res: Response) => {
 export const write = async (req: IWriteRecordRequest, res: Response) => {
   const { paymentId, userId, year, categoryId, amount } = req.body;
   if (!paymentId || !userId || !year || !categoryId || !amount)
-    throw new Error("카드 기록이 필요합니다.");
+    throw new HttpError(400, "카드 기록이 필요합니다.");
   let payment = await Payment.findOne({ where: { value: paymentId } });
   if (!payment) {
     payment = await Payment.create({
@@ -57,7 +57,7 @@ export const write = async (req: IWriteRecordRequest, res: Response) => {
         id: yearCategoryId,
         [req.body.month]: amount,
       });
-      if (!yearCategory) throw new Error("월별 지출 생성 실패");
+      if (!yearCategory) throw new HttpError(500, "월별 지출 내역 생성 실패");
     } else {
       const monthValue = await yearCategory.getDataValue(req.body.month);
       const _yearCategory = await YearCategory.update(
@@ -70,13 +70,14 @@ export const write = async (req: IWriteRecordRequest, res: Response) => {
           },
         }
       );
-      if (!_yearCategory) throw new Error("월별 지출 업데이트 실패");
+      if (!_yearCategory)
+        throw new HttpError(500, "월별 지출 내역 업데이트 실패");
     }
   }
 
   const _paymentId = await payment.id;
   const req_body = await { ...req.body };
-  req_body.paymentId = await _paymentId;
+  req_body.paymentId = _paymentId;
   const data: IRecord = await {
     ...req_body,
   };
