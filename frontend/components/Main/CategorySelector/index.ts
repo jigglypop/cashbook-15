@@ -2,7 +2,7 @@ import { store } from "../../..";
 import {
   category,
   categoryObjectKeyValue,
-  categoryObjectValueType
+  categoryObjectValueType,
 } from "../../../constants/constants";
 import { changeWriteRecords } from "../../../redux/writerecords/actions";
 import { Container } from "../../../util/Container";

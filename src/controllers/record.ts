@@ -76,7 +76,7 @@ export const write = async (req: IWriteRecordRequest, res: Response) => {
 
   const _paymentId = await payment.id;
   const req_body = await { ...req.body };
-  req_body.paymentId = await _paymentId;
+  req_body.paymentId = _paymentId;
   const data: IRecord = await {
     ...req_body,
   };
