@@ -31,7 +31,7 @@ export default class LoginView extends Container {
         const data = await api.auth.login();
         if (data.status >= 400) {
           this.setState({
-            errorText: data.message.split(":")[1],
+            errorText: data.message,
           });
         } else {
           await goMain();
@@ -50,7 +50,7 @@ export default class LoginView extends Container {
     <a href="${GITHUB_URL}" >
       <button class="github-button" >GITHUB 로그인/ 회원가입 </button>
     </a>
-    <h6>${this.state.errorText}</h6>
+    <h6 class="errormessage" >${this.state.errorText}</h6>
     `;
   }
 

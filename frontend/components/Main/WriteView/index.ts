@@ -47,8 +47,7 @@ export default class WriteView extends Container {
         const data = await api.records.writerecords();
         const errorText = $("#write-errortext").get();
         if (data.status >= 400) {
-          errorText.innerText =
-            "수입, 지출 입력 에러: " + data.message.split(":")[1];
+          errorText.innerText = "수입, 지출 입력 에러: " + data.message;
         } else {
           store.list.dispatch(setData(sortByDay(data.data)));
           errorText.innerText = "";
