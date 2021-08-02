@@ -7,7 +7,7 @@ import {
   Table,
   Unique
 } from "sequelize-typescript";
-import User from "./user";
+import User from "./User";
 
 export interface IPayment {
   id?: number;

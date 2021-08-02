@@ -4,7 +4,7 @@ import Category from "./Category";
 import { CATEGORIES } from "./defaultData";
 import Payment from "./Payment";
 import Record from "./Record";
-import User from "./user";
+import User from "./User";
 import YearCategory from "./YearCategory";
 
 dotenv.config();

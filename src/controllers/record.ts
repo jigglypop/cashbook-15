@@ -1,30 +1,27 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import HttpError from "../errors/HttpError";
 import Category from "../models/Category";
 import Payment from "../models/Payment";
 import Record, { IRecord } from "../models/Record";
 import RecordType from "../models/RecordType";
 import YearCategory from "../models/YearCategory";
+import { IAuthRequest } from "../middleware/jwtMiddleware";
 
-interface IReadRecordRequest extends Request {
+interface IReadRecordRequest extends IAuthRequest {
   query: {
     month: string;
   };
 }
 
-interface IRecodeYear extends IRecord {
-  year: number;
-}
-
-interface IWriteRecordRequest extends Request {
-  body: IRecodeYear;
+interface IWriteRecordRequest extends IAuthRequest {
+  body: IRecord & { year: number };
 }
 
 export const readByMonth = async (req: IReadRecordRequest, res: Response) => {
   const { month } = req.query;
-  const { decoded } = req.body;
+  const { userId } = req.body;
   const records: Record[] = await Record.findAll({
-    where: { month, userId: decoded.id },
+    where: { month, userId },
     include: [Category, Payment],
     order: [["date", "ASC"]],
   });
@@ -39,7 +36,7 @@ export const write = async (req: IWriteRecordRequest, res: Response) => {
   if (!payment) {
     payment = await Payment.create({
       value: paymentId.toString(),
-      userId: userId,
+      userId,
     });
   }
   let categoryIdString = categoryId.toString();

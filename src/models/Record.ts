@@ -9,7 +9,7 @@ import {
 import Category from "./Category";
 import Payment from "./Payment";
 import RecordType from "./RecordType";
-import User from "./user";
+import User from "./User";
 
 export interface IRecord {
   id?: number;
