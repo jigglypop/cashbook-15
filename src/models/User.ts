@@ -1,13 +1,11 @@
 import { Column, Model, Table } from "sequelize-typescript";
 
-export interface IUser extends Document {
-  id: string;
+export interface IUser {
+  id?: string;
   username: string;
   email: string;
   hashedPassword: string;
   img: string;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 @Table
@@ -23,10 +21,4 @@ export default class User extends Model<IUser> {
 
   @Column
   img: string;
-
-  @Column
-  createdAt: Date;
-
-  @Column
-  updatedAt: Date;
 }
