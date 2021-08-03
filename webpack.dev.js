@@ -8,7 +8,7 @@ const webpack = require("webpack");
 module.exports = {
   entry: "./frontend/index.ts",
   devtool: "source-map",
-  mode: "production",
+  mode: "development",
   resolve: {
     extensions: [".ts", ".js", ".json"],
     fallback: {

@@ -66,7 +66,7 @@ export default class HeaderView extends Container {
             <h4 id="login-id">${
               this.props.username ? this.props.username : ""
             }</h4>
-            <div class="header-svg" id="logout-button" >
+            <div class="header-svg logout" id="logout-button" >
               <div  class="header-button">
                 ${this.props.username ? GoOutSVG() : ""}
               </div>

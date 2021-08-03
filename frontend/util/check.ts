@@ -3,7 +3,6 @@ import api from "../api";
 import { checkAndRoute } from "../redux/check/actions";
 import cache from "./cache";
 import { goIntro } from "./goRouter";
-
 const check = async () => {
   // 토큰 받기
   const token = await cache.get("token");

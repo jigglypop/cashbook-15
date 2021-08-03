@@ -1,0 +1,13 @@
+.CardViewOuter {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    height: 60%;
+
+    background-color: #222222;
+    border-radius: 10px;
+    box-shadow: 0 0 20px black;
+}

@@ -1,26 +1,20 @@
 import cache from "./cache";
 import { $ } from "./jQurey";
 
-export const SunAttr = () => {
-  return {
-    "--back": "#1d1d1d",
-    "--text": "#1d1d1d",
-    "--app": "white",
-    "--body-background": "#d7d7d7",
-    "--header-color": "#222222",
-    "--base-shadow": "none",
-    "--dark-gradient": "linear-gradient(45deg, #0cebeb, #20e3b2, #219A95)",
-    "--grayA": "white",
-    "--grayB": "#f6f6f6",
-    "--grayD": "#888888",
-    "--grayE": "#484848",
-    "--border": "none",
-    "--header-app": "white",
-    "--tag": "#219A95",
-  };
+// 다크모드 확인해보고 있으면 boolean 값 변환
+export const isDark = () => {
+  const flag = cache.get("dark");
+  if (!flag) {
+    return true;
+  } else {
+    if (flag === "false") {
+      return false;
+    } else {
+      return true;
+    }
+  }
 };
-
-export const MoonAttr = () => {
+const colorPickerSelector = () => {
   const color = cache.get("color");
   let text = "#12fff7";
   let headerColor = "linear-gradient(45deg, #0cebeb, #20e3b2, #219A95)";
@@ -50,6 +44,43 @@ export const MoonAttr = () => {
     }
   }
   return {
+    text,
+    headerColor,
+    header,
+    tag,
+  };
+};
+
+export const SunAttr = () => {
+  const colorPicker = colorPickerSelector();
+  const tag = colorPicker.tag;
+  const headerColor = colorPicker.headerColor;
+  return {
+    "--back": "#1d1d1d",
+    "--text": "#1d1d1d",
+    "--app": "white",
+    "--body-background": "#d7d7d7",
+    "--header-color": "#222222",
+    "--base-shadow": "none",
+    "--dark-gradient": "linear-gradient(45deg, #0cebeb, #20e3b2, #219A95)",
+    "--grayA": "white",
+    "--grayB": "#f6f6f6",
+    "--grayD": "#888888",
+    "--grayE": "#484848",
+    "--border": "none",
+    "--header-app": "white",
+    "--darkmode": headerColor,
+    "--tag": tag,
+  };
+};
+
+export const MoonAttr = () => {
+  const colorPicker = colorPickerSelector();
+  const tag = colorPicker.tag;
+  const headerColor = colorPicker.headerColor;
+  const text = colorPicker.text;
+  const header = colorPicker.header;
+  return {
     "--back": "white",
     "--text": text,
     "--app": "#1d1d1d",
@@ -64,6 +95,7 @@ export const MoonAttr = () => {
     "--border": text,
     "--header-app": header,
     "--tag": tag,
+    "--darkmode": "linear-gradient(45deg, #434343, #000000)",
   };
 };
 

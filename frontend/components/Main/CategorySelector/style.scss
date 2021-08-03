@@ -38,11 +38,11 @@
 
     .category-select {
         position: absolute;
-        background-color: white;
+        background-color: var(--app);
         box-shadow: 2px 2px 20px black;
         border-radius: 10px;
         visibility: visible;
-        transform: translateY(var(--write-height));
+        transform: translateY(100px);
         z-index: 4;
         transition: all .3s ease-in;
 

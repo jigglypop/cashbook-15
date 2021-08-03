@@ -1,4 +1,3 @@
-// import { API_ENDPOINT } from "../../util/api";
 import { SERVER_URL } from "../../constants/constants";
 import { Component } from "../../util/Component";
 import "./style.scss";

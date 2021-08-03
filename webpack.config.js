@@ -21,11 +21,6 @@ module.exports = {
     clean: true,
     filename: "public/frontend/index.js",
   },
-  devServer: {
-    historyApiFallback: {
-      index: "dist/index.html",
-    },
-  },
   module: {
     rules: [
       {

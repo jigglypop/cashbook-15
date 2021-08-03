@@ -1,14 +1,14 @@
 import { MoonSVG } from "../../../common/SVG/MoonSVG";
 import { SunSVG } from "../../../common/SVG/SunSVG";
-import cache, { getDark } from "../../../util/cache";
+import cache from "../../../util/cache";
 import { Container } from "../../../util/Container";
 import { $ } from "../../../util/jQurey";
-import { setDarkMode } from "../../../util/setDisplay";
+import { isDark, setDarkMode } from "../../../util/setDisplay";
 import "./style.scss";
 
 export default class FooterView extends Container {
   public state = {
-    toggle: getDark(),
+    toggle: isDark(),
   };
 
   constructor($target: HTMLElement, ID: string) {

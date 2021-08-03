@@ -35,6 +35,8 @@ import StatisticContainer from "./components/Statistic/StatisticContainer";
 import StatisticView from "./components/Statistic/StatisticView";
 import FooterContainer from "./components/Footer/FooterContainer";
 import FooterView from "./components/Footer/FooterView";
+import CardContainer from "./components/Main/CardContainer";
+import CardView from "./components/Main/CardView";
 import Avatar from "./common/Avatar";
 
 import "./index.scss";
@@ -83,6 +85,8 @@ export const Modules: any = {
   ListHeader,
   FooterContainer,
   FooterView,
+  CardContainer,
+  CardView,
 };
 setDarkMode();
 export const store: any = createStore();

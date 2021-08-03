@@ -17,17 +17,3 @@ const cache = {
 };
 
 export default cache;
-
-// 다크모드 확인해보고 있으면 boolean 값 변환
-export const getDark = () => {
-  const flag = cache.get("dark");
-  if (!flag) {
-    return true;
-  } else {
-    if (flag === "false") {
-      return false;
-    } else {
-      return true;
-    }
-  }
-};

@@ -24,6 +24,9 @@ export default class WriteView extends Container {
     const { id } = store.check.getState();
     store.writerecords.dispatch(changeWriteRecords("userId", id));
     return {
+      onPayment: () => {
+        $(".CardContainerOuter").toggleClass("isNotDisplay");
+      },
       changeContent: (e: any) => {
         store.writerecords.dispatch(
           changeWriteRecords("content", e.target.value)
@@ -79,7 +82,7 @@ export default class WriteView extends Container {
         </div>
         <div class="write-item" >
           <h6 class="write-text" >결제수단</h6>
-          <LineInput @onChange="changePayment" />
+          <GlassButton :text="결제수단 선택" @onClick="onPayment" />
         </div>
         <div class="write-item" >
           <h6 class="write-text" >금액</h6>

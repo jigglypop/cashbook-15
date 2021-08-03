@@ -3,6 +3,7 @@ import api from "./api";
 import { setData } from "./redux/list/actions";
 import check from "./util/check";
 import { Container } from "./util/Container";
+import { $ } from "./util/jQurey";
 import { sortByDay } from "./util/sortByDay";
 
 export interface IHeaderView {
@@ -33,11 +34,12 @@ class App extends Container {
       <HeaderContainer :username="${username}" :path="${path}" :params="${params}" />
       <Router/>
       <Toast/>
-      <FooterContainer/>`;
+      <FooterContainer/>
+      <CardContainer/>`;
   }
 
   componentDidMount() {
-    return {};
+    $(".CardContainerOuter").addClass("isNotDisplay");
   }
 }
 

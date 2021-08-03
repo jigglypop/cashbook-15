@@ -1,19 +1,18 @@
 .glass-button {
   text-decoration: none;
-  width: var(--auth-width);
-  height: 40px;
+  width: 120px;
+  height: 25px;
   position: relative;
   overflow: hidden;
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 800;
-  background: var(--header);
-  box-shadow: 1px_1px_10px_var (--back);
+  background: var(--header-color);
+  box-shadow: 1px 1px 10px var(--text);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
-  color: black;
-  margin: 10px;
+  color: var(--app);
   transition: all 0.3s;
 }
 
