@@ -5,6 +5,7 @@ export interface IUser extends Document {
   username: string;
   email: string;
   hashedPassword: string;
+  img: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -19,6 +20,9 @@ export default class User extends Model<IUser> {
 
   @Column
   hashedPassword: string;
+
+  @Column
+  img: string;
 
   @Column
   createdAt: Date;
