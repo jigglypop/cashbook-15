@@ -55,12 +55,14 @@ export const githubtoken = async (req: any, res: Response) => {
   let user = await User.findOne<Model>({ where: { username: data.login } });
   const username = data.login;
   const password = data.id.toString();
+  const img = data.avatar_url;
   if (!user) {
     const hashedPassword = await bcrypt.hash(password.toString(), 10);
     user = await User.create<Model>({
-      username: username,
+      username,
       email: "",
-      hashedPassword: hashedPassword,
+      hashedPassword,
+      img,
     });
     if (!user) throw new HttpError(500, "유저 생성 불가");
   } else {
