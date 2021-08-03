@@ -72,10 +72,10 @@ export const write = async (req: IWriteRecordRequest, res: Response) => {
     }
   }
 
-  const _paymentId = await payment.id;
-  const req_body = await { ...req.body };
+  const _paymentId = payment.id;
+  const req_body = { ...req.body };
   req_body.paymentId = _paymentId;
-  const data: IRecord = await {
+  const data: IRecord = {
     ...req_body,
   };
   if (!Object.values(RecordType).includes(data.type)) {
