@@ -7,6 +7,12 @@ import { generateToken } from "../util/generateToken";
 import { serialize } from "../util/serialize";
 import { IAuthRequest } from "../middleware/jwtMiddleware";
 
+interface IUpdateUserImgRequest extends IAuthRequest {
+  body: IAuthRequest["body"] & {
+    img: string;
+  };
+}
+
 export const check = async (req: IAuthRequest, res: Response) => {
   const { userId } = req.body;
   const user = await User.findByPk(userId);
@@ -70,4 +76,10 @@ export const register = async (req: Request, res: Response) => {
   res.setHeader("Access-Control-Expose-Headers", "*");
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.status(200).json({ data: serialized });
+};
+
+export const updateImg = async (req: IUpdateUserImgRequest, res: Response) => {
+  const { userId, img } = req.body;
+  const user = await User.update({ img }, { where: { id: userId } });
+  res.status(200).json({ data: user });
 };
