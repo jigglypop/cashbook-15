@@ -30,12 +30,13 @@ yarn run start
 ### [Wiki에서 보기](https://github.com/woowa-techcamp-2021/cashbook-15/wiki/DB-tables)
 
 <div style="display: flex">
-  <img src="https://user-images.githubusercontent.com/45786387/127775127-e839a6c2-9497-43c0-991b-b603bc5ccd1b.png" alt="ERD" />
+  <img src="https://user-images.githubusercontent.com/45786387/128116832-fcc61e89-17ab-4429-89d8-315f15e849c1.png" alt="ERD" />
 
   - User - 사용자 (자체 로그인 / 깃헙 로그인)
   - Record - 수입/지출 내역
   - Payment - 결제수단
   - Category - 내역 카테고리
+  - YearCategories - 통계 페이지 수입/지출 내역 조회용 테이블 
 </div>
 
 # API Spec
