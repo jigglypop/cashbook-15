@@ -11,7 +11,6 @@ import CalendarView from "./components/Calendar/CalendarView";
 import CallbackContainer from "./components/Callback/CallbackContainer";
 import CallbackView from "./components/Callback/CallbackView";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import HeaderView from "./components/Header/HeaderView";
 import IntroContainer from "./components/Intro/IntroContainer";
 import IntroView from "./components/Intro/IntroView";
 import LoginView from "./components/Intro/LoginView";
@@ -38,6 +37,11 @@ import FooterView from "./components/Footer/FooterView";
 import CardContainer from "./components/Main/CardContainer";
 import CardView from "./components/Main/CardView";
 import Avatar from "./common/Avatar";
+import CreditCard from "./components/Main/CreditCard";
+import CreditSelector from "./components/Main/CreditSelector";
+import CreditCarousel from "./components/Main/CreditCarousel";
+import ProfileView from "./components/Header/ProfileView";
+import HeaderView from "./components/Header/HeaderView";
 
 import "./index.scss";
 import createStore from "./redux";
@@ -87,6 +91,10 @@ export const Modules: any = {
   FooterView,
   CardContainer,
   CardView,
+  CreditCard,
+  CreditSelector,
+  CreditCarousel,
+  ProfileView,
 };
 setDarkMode();
 export const store: any = createStore();

@@ -44,6 +44,11 @@
             justify-content: center;
         }
 
+        .date.isToday {
+            background-color: var(--grayB);
+            box-shadow: 0 0 20px var(--grayB);
+        }
+
         .date {
             background-color: var(--calendar-item);
             box-shadow: 0 0 20px var(--calendar-item);
@@ -60,14 +65,14 @@
                 margin: 5px;
             }
             
-            .calcdate-all{
+            .calcdate-all {
                 font-size: 12px;
-                color: var(--tag);
+                color: var(--dark);
             }
 
             .calcdate-income{
                 font-size: 12px;
-                color: var(--tag);
+                color: var(--blue);
             }
 
             .calcdate-expense{

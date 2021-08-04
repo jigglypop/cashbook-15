@@ -15,7 +15,8 @@
     bottom: 5px;
     left: 0px;
     font-size: 14px;
-    color: var(--text);
+    margin-top: -5px;
+    color: var(--thumb);
     transition: all 0.3s ease-in-out;
     cursor: pointer;
   }
@@ -37,28 +38,28 @@
     font-size: 16px;
     border: none;
     outline: none;
-    border-bottom: 2px solid var(--text);
+    border-bottom: 2px solid var(--thumb);
     border-radius: 2px;
   }
 
   .LineInput input:focus + label {
     top: -12px;
     font-size: 12px;
-    color: var(--text);
+    color: var(--thumb);
   }
 
   .LineInput.Hold input {
     font-size: 16px;
     border: none;
     outline: none;
-    border-bottom: 2px solid var(--text);
+    border-bottom: 2px solid var(--thumb);
     border-radius: 2px;
   }
 
   .LineInput.Hold label {
     top: -12px;
     font-size: 12px;
-    color: var(--text);
+    color: var(--thumb);
   }
 
 }

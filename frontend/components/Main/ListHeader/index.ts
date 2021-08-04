@@ -33,23 +33,29 @@ export default class ListHeader extends Container {
       expense_count = data[8];
     }
     return `
-          <div class="calendar-title" >
-            <div class="calendar-item" >
-              <label for="radio-all" >합계 (${all_count}): ${dot(all)}원</label>
+          <div class="listheader-title" >
+            <div class="listheader-item left" >
+              <div class="listheader-all" >
+                <label for="radio-all" >합계 (${all_count})</label>
+                <label for="radio-all" >${dot(all)}원</label>
+              </div>
               <input name="income-expense" type="radio" id="radio-all" class="income-expense-radio" ${
                 filter === "all" ? "checked" : ""
               } />
             </div>
-            <div class="calendar-item" >
-              <label for="radio-income" >수입 (${income_count}): ${dot(
-      income
-    )}원 </label>
+            <div class="listheader-item right" >
+              <div class="listheader-all" >
+                <label for="radio-income" >수입 (${income_count})</label>
+                <label for="radio-income" >${dot(income)}원 </label>
+              </div>
               <input name="income-expense" type="radio" id="radio-income" class="income-expense-radio" ${
                 filter === "income" ? "checked" : ""
               }/>
-              <label for="radio-expense" >지출 (${expense_count}): ${dot(
-      Math.abs(expense)
-    )}원</label>
+              <div class="listheader-all" >
+                <label for="radio-expense" >지출 (${expense_count})</label>
+                <label for="radio-expense" >${dot(Math.abs(expense))}원</label>
+              </div>
+
               <input name="income-expense" type="radio" id="radio-expense" class="income-expense-radio" ${
                 filter === "expense" ? "checked" : ""
               }/>

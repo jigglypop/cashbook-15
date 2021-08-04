@@ -1,4 +1,6 @@
 import { Container } from "../../../util/Container";
+import { toggleCredit } from "../../../util/goRouter";
+import { $ } from "../../../util/jQurey";
 import "./style.scss";
 
 export default class CardContainer extends Container {
@@ -19,6 +21,10 @@ export default class CardContainer extends Container {
   }
 
   componentDidMount() {
-    return {};
+    $(".CardContainerOuter").on("click", function (e: any) {
+      if (e.target.className === "CardContainerOuter") {
+        toggleCredit();
+      }
+    });
   }
 }

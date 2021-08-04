@@ -52,8 +52,10 @@ export default class CalendarView extends Container {
     for (let i = 1; i < 7 - nDay; i++) {
       afterDates.push(-1);
     }
+    const isSameMonth = new Date().getMonth() + 1 === month;
+
     const dates = beforeDates.concat(nowDates, afterDates);
-    const DayComponent: string[] = makeDateDiv(dates, calcdate);
+    const DayComponent: string[] = makeDateDiv(dates, calcdate, isSameMonth);
 
     const DividedDay = divide(7, DayComponent);
     const dayComponent = makeDayComponent(DividedDay);

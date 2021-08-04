@@ -35,12 +35,14 @@ export const check = (username: string) => ({
 export const checkAndRoute = (
   username: string,
   id: number,
+  img: string,
   path: string,
   params?: number
 ) => ({
   type: CHECKANDROUTE,
   username: username,
   id: id,
+  img: img,
   path: path,
   params: params ? Number(params) : 0,
 });

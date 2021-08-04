@@ -39,6 +39,8 @@ export default class HeaderView extends Container {
 
   render() {
     const [year, month] = makeYearMonth(this.check.params.toString());
+    const { img } = this.check;
+
     return `
       <div class="header-item left" >
         <div class="header-button-item">
@@ -52,7 +54,7 @@ export default class HeaderView extends Container {
         <div class="header-button" id="calendar-front">
           <h4><</h4>
         </div>
-        <div class="header-button" id="calendar-front">
+        <div class="header-button days" id="calendar-front">
           <h1 id="month-title" >${month}월</h1>
           <h4 id="year-title">${year}</h4>
         </div>    
@@ -61,16 +63,14 @@ export default class HeaderView extends Container {
         </div>
       </div>
       <div class="header-item" >
-          <div class="header-button login" >
-            <Avatar :width="40px" :height="40px" />
+          <div class="header-button login" id="avatar-button" >
+            <Avatar :width="40px" :height="40px" ${
+              img !== "" ? `:profileImage="${img}"` : ""
+            }/>
             <h4 id="login-id">${
               this.props.username ? this.props.username : ""
             }</h4>
-            <div class="header-svg logout" id="logout-button" >
-              <div  class="header-button">
-                ${this.props.username ? GoOutSVG() : ""}
-              </div>
-          </div>
+
           </div>
           <div class="header-svg" >
             <div  class="header-button" id="home-navigation">
@@ -101,6 +101,10 @@ export default class HeaderView extends Container {
   goStatistic() {
     goStatistic();
   }
+
+  toggleProfile() {
+    $(".ProfileViewOuter").toggleClass("dropProfile");
+  }
   async goLogout() {
     await store.check.dispatch(initCheck());
     await localStorage.clear();
@@ -123,5 +127,6 @@ export default class HeaderView extends Container {
     $("#calendar-navigation").on("click", this.goCalendar);
     $("#statistic-navigation").on("click", this.goStatistic);
     $("#logout-button").on("click", this.goLogout);
+    $("#avatar-button").on("click", this.toggleProfile);
   }
 }

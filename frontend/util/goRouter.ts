@@ -2,6 +2,7 @@ import { store } from "..";
 import { calendar, intro, main, statistic } from "../redux/check/actions";
 import { MinusMonth, PlusMonth } from "./getDate";
 import { generateToday, getPath } from "./getPath";
+import { $ } from "./jQurey";
 
 export const goFrontMonth = (params: number) => {
   const minusMonth = MinusMonth(params);
@@ -38,4 +39,8 @@ export const goStatistic = () => {
   const thisYearMonth = generateToday();
   history.pushState({ data: "statistic" }, "", `/statistic/${thisYearMonth}`);
   store.check.dispatch(statistic(Number(thisYearMonth)));
+};
+
+export const toggleCredit = () => {
+  $(".CardContainerOuter").toggleClass("isNotDisplay");
 };

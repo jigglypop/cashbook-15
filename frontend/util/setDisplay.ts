@@ -55,6 +55,7 @@ export const SunAttr = () => {
   const colorPicker = colorPickerSelector();
   const tag = colorPicker.tag;
   const headerColor = colorPicker.headerColor;
+  const text = colorPicker.text;
   return {
     "--back": "#1d1d1d",
     "--text": "#1d1d1d",
@@ -63,6 +64,7 @@ export const SunAttr = () => {
     "--header-color": "#222222",
     "--base-shadow": "none",
     "--dark-gradient": "linear-gradient(45deg, #0cebeb, #20e3b2, #219A95)",
+    "--thumb-gradient": headerColor,
     "--grayA": "white",
     "--grayB": "#f6f6f6",
     "--grayD": "#888888",
@@ -71,6 +73,7 @@ export const SunAttr = () => {
     "--header-app": "white",
     "--darkmode": headerColor,
     "--tag": tag,
+    "--thumb": text,
   };
 };
 
@@ -85,6 +88,7 @@ export const MoonAttr = () => {
     "--text": text,
     "--app": "#1d1d1d",
     "--body-background": "#222222",
+    "--thumb-gradient": headerColor,
     "--header-color": headerColor,
     "--base-shadow": text,
     "--dark-gradient": headerColor,
@@ -96,6 +100,7 @@ export const MoonAttr = () => {
     "--header-app": header,
     "--tag": tag,
     "--darkmode": "linear-gradient(45deg, #434343, #000000)",
+    "--thumb": text,
   };
 };
 

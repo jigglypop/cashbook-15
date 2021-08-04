@@ -28,6 +28,7 @@ body {
 
   /* 색깔들 */
   --baemin: #12fff7;
+  --thumb: #12fff7;
   --text: #1d1d1d;
   --white-text: white;
   --header-app: white;
@@ -47,6 +48,9 @@ body {
   --primary1: #2AC1BC;
   --primary3: #219A95;
 
+  --profile-width: 300px;
+  --profile-height: 350px;
+  --profile--height: 300px;
   --header-height: 120px;
   --auth-width: 250px;
   --badge-width: 80px;
@@ -93,14 +97,18 @@ body {
   --calendar-item: #d7d7d7;
   --base-shadow: none;
   --tag: #219A95;
+  --blue: #1fa2ff;
 
   --base-gradient: linear-gradient(45deg, #0cebeb, #20e3b2, #219A95);
   --dark-gradient: linear-gradient(45deg, #0cebeb, #20e3b2, #29ffc6);
   --darkmode: linear-gradient(45deg, #0cebeb, #20e3b2, #29ffc6);
+  --thumb-gradient: linear-gradient(45deg, #0cebeb, #20e3b2, #219A95);
 
   --base-color:#0cebeb;
   --header-color: #222222;
   --border: none;
+  --credit-width: 430px;
+  --credit-height: 260px;
   background: var(--body-background);
 }
 
@@ -188,7 +196,7 @@ main {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-image: var(--dark-gradient);
+  background: var(--thumb-gradient);
   border-radius: 10px;
   background-clip: padding-box;
   border: 3px solid var(--dark);
@@ -200,4 +208,10 @@ main {
 
 ::-webkit-scrollbar-corner {
   background-color: var(--dark);
+}
+
+.nodata {
+  margin: 20px;
+  color: var(--text);
+  font-size: 18px;
 }

@@ -17,7 +17,8 @@ export default class HeaderContainer extends Container {
   }
 
   render() {
-    return `<HeaderView :username="${this.props.username}" :path="${this.props.path}" :params="${this.props.params}" />`;
+    return `
+    <HeaderView :username="${this.props.username}" :path="${this.props.path}" :params="${this.props.params}" />`;
   }
 
   componentDidMount() {

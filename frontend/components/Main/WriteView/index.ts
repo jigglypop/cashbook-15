@@ -81,8 +81,7 @@ export default class WriteView extends Container {
           <LineInput @onChange="changeContent" />
         </div>
         <div class="write-item" >
-          <h6 class="write-text" >결제수단</h6>
-          <GlassButton :text="결제수단 선택" @onClick="onPayment" />
+          <CreditSelector />
         </div>
         <div class="write-item" >
           <h6 class="write-text" >금액</h6>

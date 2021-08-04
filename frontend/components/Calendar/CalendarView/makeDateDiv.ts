@@ -1,10 +1,17 @@
 import { dot } from "../../../util/makeLengthTwo";
 
-export const makeDateDiv = (dates: number[], calcdate: any) => {
+export const makeDateDiv = (
+  dates: number[],
+  calcdate: any,
+  isSameMonth: boolean
+) => {
   const DayComponent: string[] = [];
   dates.forEach((date, i) => {
+    const day = new Date().getDate();
     DayComponent[i] = `
-    <div class="date">
+    <div class="date ${
+      Number(day) === Number(date) && isSameMonth ? "isToday" : ""
+    }">
     ${date === -1 ? "" : `<h4 class="date-item" >${date}</h4>`}
     ${
       calcdate

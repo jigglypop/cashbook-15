@@ -4,9 +4,8 @@
     left: 0;
     width: 100%;
     height: var(--header-height);
-
-    background: var(--header-color);
     z-index: 5;
+    background: var(--header-color);
 
     .HeaderViewOuter {
         position: relative;

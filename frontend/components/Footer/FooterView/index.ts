@@ -24,9 +24,9 @@ export default class FooterView extends Container {
   render() {
     return `
       <div class="footer-item" >
-        <h5>2020 TOKKO OLYMPIC ANNIVERSARY EDITION</h5>
+        <h5 class="footer-text" >2020 TOKYO OLYMPIC ANNIVERSARY EDITION</h5>
       </div>
-      <div class="footer-item" >
+      <div class="footer-item color" >
         <div class="colorpicker-button color-1" id="color-1" >
           <h4></h4>
         </div>

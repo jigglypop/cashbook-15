@@ -8,6 +8,7 @@ import { sortByDay } from "./util/sortByDay";
 
 export interface IHeaderView {
   username: string;
+  img: string;
   path: string;
   params: number;
 }
@@ -29,13 +30,14 @@ class App extends Container {
   }
 
   render() {
-    const { username, path, params } = store.check.getState();
+    const { username, path, params, img } = store.check.getState();
     return `
-      <HeaderContainer :username="${username}" :path="${path}" :params="${params}" />
+      <HeaderContainer :username="${username}" :path="${path}" :params="${params}" :img="${img}" />
       <Router/>
       <Toast/>
       <FooterContainer/>
-      <CardContainer/>`;
+      <CardContainer/>
+      <ProfileView/>`;
   }
 
   componentDidMount() {

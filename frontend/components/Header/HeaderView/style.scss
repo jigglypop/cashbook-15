@@ -19,6 +19,9 @@
             color: var(--header-app);
         }
     }
+    .header-button.days {
+        flex-direction: column;
+    }
     .header-button-item {
         display: flex;
         flex-direction: column;

@@ -1,13 +1,10 @@
 .glass-button {
   text-decoration: none;
-  width: 120px;
-  height: 25px;
   position: relative;
   overflow: hidden;
   font-size: 10px;
   font-weight: 800;
-  background: var(--header-color);
-  box-shadow: 1px 1px 10px var(--text);
+ 
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -17,7 +14,7 @@
 }
 
 .glass-button:hover {
-  box-shadow: 2px 2px 20px var(--text);
+  box-shadow: 0 0 10px var(--dark);
 }
 
 .glass-button:before {
