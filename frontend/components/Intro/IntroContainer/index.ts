@@ -1,6 +1,4 @@
-import { OlympicRingsSVG } from "../../../common/SVG/OlympicRingsSVG";
 import { OlympicRingsTitleSVG } from "../../../common/SVG/OlympicRingsTitleSVG";
-import { Container } from "../../../util/Container";
 import { $ } from "../../../util/jQurey";
 import { React } from "../../../util/React";
 import "./style.scss";
