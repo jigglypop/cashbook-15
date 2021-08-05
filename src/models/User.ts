@@ -3,7 +3,7 @@ import { AllowNull, Column, Model, Table, Unique } from "sequelize-typescript";
 export interface IUser {
   id?: string;
   username: string;
-  email: string;
+  email?: string;
   hashedPassword: string;
   img?: string;
 }
@@ -15,7 +15,7 @@ export default class User extends Model<IUser> {
   @Column
   username: string;
 
-  @AllowNull(false)
+  @AllowNull
   @Unique
   @Column
   email: string;
