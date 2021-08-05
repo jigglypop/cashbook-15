@@ -5,7 +5,7 @@ export interface IUser {
   username: string;
   email: string;
   hashedPassword: string;
-  img: string;
+  img?: string;
 }
 
 @Table
@@ -23,6 +23,7 @@ export default class User extends Model<IUser> {
   @Column
   hashedPassword: string;
 
+  @AllowNull
   @Column
   img: string;
 }
