@@ -30,28 +30,29 @@ export const readByMonth = async (req: IReadRecordRequest, res: Response) => {
 
 const addYearCategory = async (record: IWriteRecordRequest["body"]) => {
   const { type, categoryId, year, amount, userId, month } = record;
-  if (type === "expense") {
-    let categoryIdString = categoryId.toString();
-    if (categoryIdString.length === 1) {
-      categoryIdString = "0" + categoryIdString;
-    }
-    const yearCategoryId = Number(
-      year.toString() + categoryIdString + userId.toString()
-    );
-    const yearCategory = await YearCategory.findByPk(yearCategoryId);
-    if (!yearCategory) {
-      await YearCategory.create<any>({
-        id: yearCategoryId,
-        [month]: amount,
-      });
-      return;
-    }
-
-    await YearCategory.increment(
-      { [month]: amount },
-      { where: { id: yearCategoryId } }
-    );
+  if (type === RecordType.INCOME) {
+    return;
   }
+  let categoryIdString = categoryId.toString();
+  if (categoryIdString.length === 1) {
+    categoryIdString = "0" + categoryIdString;
+  }
+  const yearCategoryId = Number(
+    year.toString() + categoryIdString + userId.toString()
+  );
+  const yearCategory = await YearCategory.findByPk(yearCategoryId);
+  if (!yearCategory) {
+    await YearCategory.create<any>({
+      id: yearCategoryId,
+      [month]: amount,
+    });
+    return;
+  }
+
+  await YearCategory.increment(
+    { [month]: amount },
+    { where: { id: yearCategoryId } }
+  );
 };
 
 const writeRecord = async (record: IRecord) => {
