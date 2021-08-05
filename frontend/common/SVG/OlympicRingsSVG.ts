@@ -5,9 +5,7 @@ export const OlympicRingsSVG = `<?xml version="1.0" standalone="no"?>
  width="1280.000000pt" height="640.000000pt" viewBox="0 0 1280.000000 640.000000"
  preserveAspectRatio="xMidYMid meet"
  class="OlympicRingsSVG" >
-<metadata>
-Created by potrace 1.15, written by Peter Selinger 2001-2017
-</metadata>
+
 <g transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)"
 fill="var(--header-app)" stroke="none">
 <path d="M1900 6154 c-297 -35 -522 -99 -748 -212 -212 -107 -374 -224 -542

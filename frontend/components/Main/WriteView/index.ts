@@ -5,6 +5,7 @@ import { changeWriteRecords } from "../../../redux/writerecords/actions";
 import { Container } from "../../../util/Container";
 import { createToast } from "../../../util/createToast";
 import { Day, makeYearMonth } from "../../../util/getDate";
+import { getPath } from "../../../util/getPath";
 import { $ } from "../../../util/jQurey";
 import { sortByDay } from "../../../util/sortByDay";
 import "./style.scss";
@@ -36,6 +37,17 @@ export default class WriteView extends Container {
         store.writerecords.dispatch(
           changeWriteRecords("paymentId", e.target.value)
         );
+      },
+      changeDay: (e: any) => {
+        const path = getPath();
+        const params = path[1];
+        const year = Number(params.toString().slice(0, 4));
+        const month = Number(params.toString().slice(4, 7));
+        const nowLast = new Date(year, month, 0);
+        const nDate = nowLast.getDate();
+        const min = Math.min(e.target.value, nDate);
+        e.target.value = min === 0 ? 1 : min;
+        store.writerecords.dispatch(changeWriteRecords("date", min));
       },
       changeAmount: (e: any) => {
         const { type } = store.writerecords.getState();
@@ -71,21 +83,24 @@ export default class WriteView extends Container {
     return `
         <div class="write-item" >
           <h6 class="write-text" >일자</h6>
-          <h4 class="write-day" >${year}년 ${month}월 ${day}일</h4>
+          <div class="write-input" >
+            <h4 class="write-day" >${year}/${month}/</h4>
+            <LineInput @onChange="changeDay" :value="${day}" :type="number" :width="35px" :fontsize="25px" />
+          </div>
         </div>
         <div class="write-item" id="write-item-category">
           <CategorySelector />
         </div>
         <div class="write-item" >
           <h6 class="write-text" >내용</h6>
-          <LineInput @onChange="changeContent" />
+          <LineInput @onChange="changeContent" :width="120px"/>
         </div>
         <div class="write-item" >
           <CreditSelector />
         </div>
         <div class="write-item" >
           <h6 class="write-text" >금액</h6>
-          <LineInput @onChange="changeAmount" :type="number" />
+          <LineInput @onChange="changeAmount" :type="number" :width="120px"/>
         </div>
         <SmallButton :text="제출" @onClick="writeApi" />
     `;

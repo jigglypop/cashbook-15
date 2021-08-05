@@ -54,6 +54,8 @@ export default class CategorySelector extends Container {
       store.writerecords.dispatch(changeWriteRecords("categoryId", id));
       store.writerecords.dispatch(changeWriteRecords("type", type));
     }
+    const select = $("#category-select").get();
+    $(select).toggleClass("invisible");
   }
 
   toggle() {
@@ -81,7 +83,6 @@ export default class CategorySelector extends Container {
     const select = $("#category-select").get();
     select.classList.add("invisible");
     $(".CategorySelectorOuter").on("click", this.toggle);
-
     $(".category-select").on("click", this.setCategoryItem);
     $("#checksvg").css("stroke", flag);
   }

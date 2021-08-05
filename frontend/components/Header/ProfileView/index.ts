@@ -63,7 +63,9 @@ export default class ProfileView extends React {
       <div class="profile-toggle" id="toggle-button" >
         ${CloseSVG()}
       </div>
-      <LineInput :labelText="프로필 URL 변경" :text="프로필 변경 URL" @onChange="changeProfile" :value="${img}" />
+      <LineInput :labelText="프로필 URL 변경" :text="프로필 변경 URL" @onChange="changeProfile" :value="${
+        img === null ? "" : img
+      }" />
       <GlassButton :text="프로필 변경" @onClick="profileApi" :width="240px" :height="40px" :margin="20px" :background="var(--thumb-gradient)" />
       <h4 class="error">${this.state.errorText}</h4>
 `;

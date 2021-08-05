@@ -26,8 +26,24 @@ export default class LoginView extends Container {
       changePassword: (e: any) => {
         store.login.dispatch(changeLogin("password", e.target.value));
       },
+      loginWoowaApi: async () => {
+        await store.login.dispatch(changeLogin("username", "woowa"));
+        await store.login.dispatch(changeLogin("password", "123456"));
+        const data = await api.auth.login();
+        if (data.status >= 400) {
+          this.setState({
+            errorText: data.message,
+          });
+        } else {
+          await goMain();
+          await check();
+          await createToast("관람용 아이디 로그인");
+        }
+      },
 
       loginApi: async () => {
+        console.log(store.login.getState());
+
         const data = await api.auth.login();
         if (data.status >= 400) {
           this.setState({
@@ -50,6 +66,7 @@ export default class LoginView extends Container {
     <a href="${GITHUB_URL}" >
       <button class="github-button" >GITHUB 로그인/ 회원가입 </button>
     </a>
+    <GlassButton :text="관람용 아이디로 로그인" @onClick="loginWoowaApi"  :background="linear-gradient(45deg,  #bc4e9c, #f80759" :color="white" />
     <h6 class="errormessage" >${this.state.errorText}</h6>
     `;
   }

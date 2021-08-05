@@ -1,5 +1,5 @@
-import { Container } from "../../util/Container";
 import { $ } from "../../util/jQurey";
+import { React } from "../../util/React";
 import "./style.scss";
 
 interface ILineInput {
@@ -8,6 +8,8 @@ interface ILineInput {
   labelText?: string;
   value?: string;
   color?: string;
+  width?: string;
+  fontsize?: string;
   onChange: (e: InputEl) => void;
 }
 
@@ -17,7 +19,7 @@ export interface InputEl {
   };
 }
 
-export default class LineInput extends Container {
+export default class LineInput extends React {
   public props: ILineInput;
 
   constructor($target: HTMLElement, ID: string, props: ILineInput) {
@@ -25,6 +27,19 @@ export default class LineInput extends Container {
     this.ID = ID;
     this.props = props;
     this.init();
+  }
+
+  css() {
+    console.log(this.props.fontsize);
+    return `    
+      #line-input-${this.ID} {
+        ${this.props.width ? `width: ${this.props.width}` : ""}
+      }
+  
+      #line-input-${this.ID} {
+        ${this.props.fontsize ? `font-size: ${this.props.fontsize}` : ""}
+      }
+    `;
   }
 
   componentWillMount() {
