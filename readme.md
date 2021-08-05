@@ -20,6 +20,21 @@
 
 # 실행 방법
 
+```text
+# .env
+DB_NAME=
+DB_HOST=
+MYSQL_PORT=
+DB_USERNAME=
+DB_PASSWORD=
+SESSION_KEY=
+JWT_SECRET=
+JWT_EXPIRED=
+SERVER_URL=
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+```
+
 ```shell
 yarn install
 yarn run start
@@ -36,9 +51,5 @@ yarn run start
   - Record - 수입/지출 내역
   - Payment - 결제수단
   - Category - 내역 카테고리
-  - YearCategories - 통계 페이지 수입/지출 내역 조회용 테이블 
+  - YearCategories - 통계 페이지 지출 내역 조회용 테이블 
 </div>
-
-# API Spec
-
-### [Wiki에서 보기](https://github.com/woowa-techcamp-2021/cashbook-15/wiki/API-spec)
