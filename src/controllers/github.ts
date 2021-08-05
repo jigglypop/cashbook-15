@@ -52,13 +52,13 @@ export const githubtoken = async (req: any, res: Response) => {
   if (!data) {
     throw new HttpError(403, "세션이 없습니다");
   }
-  let user = await User.findOne<Model>({ where: { username: data.login } });
+  let user = await User.findOne({ where: { username: data.login } });
   const username = data.login;
   const password = data.id.toString();
   const img = data.avatar_url;
   if (!user) {
     const hashedPassword = await bcrypt.hash(password.toString(), 10);
-    user = await User.create<Model>({
+    user = await User.create({
       username,
       email: "",
       hashedPassword,
@@ -73,9 +73,6 @@ export const githubtoken = async (req: any, res: Response) => {
   // 로그인 발급
   const serialized = await serialize(user);
   const token = await generateToken(user);
-  if (!token) throw new HttpError(500, "토큰 생성 실패");
-  const CLIENT_URL = process.env.CLIENT_URL;
-  if (!CLIENT_URL) throw new HttpError(500, "헤더 생성 실패");
   res.set("token", token);
   res.setHeader("Access-Control-Expose-Headers", "*");
   res.setHeader("Access-Control-Allow-Origin", "*");
