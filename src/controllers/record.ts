@@ -71,8 +71,7 @@ export const write = async (req: IWriteRecordRequest, res: Response) => {
   if (!Object.values(RecordType).includes(req.body.type)) {
     throw new HttpError(400, "잘못된 타입입니다.");
   }
-  await addYearCategory(req.body);
-  await writeRecord(req.body);
+  await Promise.all([addYearCategory(req.body), writeRecord(req.body)]);
 
   const records: Record[] = await Record.findAll({
     where: { month: req.body.month, userId: req.body.userId },
