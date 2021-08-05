@@ -34,7 +34,6 @@ export const login = async (req: Request, res: Response) => {
   // 토큰 발급
   const serialized = await serialize(user);
   const token = await generateToken(user);
-  if (!token) throw new HttpError(400, "토큰 생성 실패");
   res.set("token", token);
   res.setHeader("Access-Control-Expose-Headers", "*");
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -52,7 +51,6 @@ export const register = async (req: Request, res: Response) => {
   });
   const serialized = await serialize(user);
   const token = await generateToken(user);
-  if (!token) throw new HttpError(400, "토큰 생성 실패");
   res.set("token", token);
   res.setHeader("Access-Control-Expose-Headers", "*");
   res.setHeader("Access-Control-Allow-Origin", "*");
