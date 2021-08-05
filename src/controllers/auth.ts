@@ -43,26 +43,7 @@ export const login = async (req: Request, res: Response) => {
 
 export const register = async (req: Request, res: Response) => {
   const { username, password, email } = req.body;
-  // 에러처리
-  if (!username || !password || !email) {
-    const table: any = {
-      username: username,
-      password: password,
-      email: email,
-    };
-    const blanks = [];
-    for (const blank of ["username", "password", "email"]) {
-      if (!table[blank]) blanks.push(blank);
-    }
-    throw new HttpError(400, `${blanks.join(", ")}을 올바르게 입력해 주세요`);
-  }
-  // 에러처리 (이미 존재하는 계정)
-  const nameExists = await User.findOne({ where: { username: username } });
-  if (nameExists) throw new HttpError(400, "같은 이름의 계정이 존재합니다.");
-  // 에러처리 (이미 존재하는 이메일)
-  const emailExists = await User.findOne({ where: { email: email } });
-  if (emailExists) throw new HttpError(400, "이미 가입된 이메일입니다.");
-  // 패스워드 제네레이터
+
   const hashedPassword = await bcrypt.hash(password.toString(), 10);
   const user = await User.create<Model>({
     username: username,

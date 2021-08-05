@@ -1,4 +1,4 @@
-import { Column, Model, Table } from "sequelize-typescript";
+import { AllowNull, Column, Model, Table, Unique } from "sequelize-typescript";
 
 export interface IUser {
   id?: string;
@@ -10,9 +10,13 @@ export interface IUser {
 
 @Table
 export default class User extends Model<IUser> {
+  @AllowNull(false)
+  @Unique
   @Column
   username: string;
 
+  @AllowNull(false)
+  @Unique
   @Column
   email: string;
 
