@@ -53,3 +53,11 @@ export const category = [
   { value: "용돈", key: 9 },
   { value: "기타수입", key: 10 },
 ];
+
+export const credits = [
+  { key: 0, value: "카카오페이", category: 4 },
+  { key: 1, value: "농협", category: 6 },
+  { key: 2, value: "현대카드", category: 8 },
+  { key: 3, value: "삼성카드", category: 7 },
+  { key: 4, value: "직접선택", category: 10 },
+];

@@ -1,0 +1,68 @@
+.ProfileViewOuter {
+    position: fixed;
+    top: 120px;
+    right: 150px;
+    transform: translateY(-400px);
+    background:  #1d1d1d;
+    width: var(--profile-width);
+    height: var(--profile-height);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all .3s ease-in;
+    color: white;
+    z-index: 4;
+
+    .profile-svg {
+        background: var(--thumb-gradient);
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: 2px solid black;
+        box-shadow: 0 0 10px black;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transition: all .3s ease-in;
+        cursor: pointer;
+    }
+
+    .profile-toggle {
+        position: absolute;
+        top: 10px;
+        left: 10px;   
+        cursor: pointer;
+        transition: all .3s ease-in;
+    }
+    .profile-toggle:hover {
+        transform: scale(1.2);
+    }
+
+    #login-id {
+        margin: 20px;
+        font-size: 20px;
+        color: var(--white-text);
+    }
+
+    .profile-svg:hover {
+        transform: scale(1.2);
+    }
+
+    .profile-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.ProfileViewOuter.dropProfile {
+    transform: translateY(0);
+}

@@ -60,20 +60,16 @@ export default class LineChart extends Container {
       }" fill="var(--text)" >${i}</text>`;
       Circles += `
       <text x="${xPoint[i - 1]}" y="${
-        yPoint[i - 1] - 10
+        yPoint[i - 1] - 5
       }"  font-size="10px" fill="var(--text)" >${dot(
         monthdata[i - 1]
       )} 원</text>
-      <circle cx="${xPoint[i - 1]}" cy="${
-        yPoint[i - 1]
-      }" r="4" class="circle-inner" fill="var(--category-${categoryId})" ></circle>
-
       `;
       if (i >= 2) {
         lines += `<line x1="${xPoint[i - 2]}" x2="${xPoint[i - 1]}" y1="${
-          yPoint[i - 2]
+          yPoint[i - 2] - 20
         }" y2="${
-          yPoint[i - 1]
+          yPoint[i - 1] - 20
         }" class="circle-line" stroke="var(--category-${categoryId})"></line>`;
       }
     }
@@ -85,7 +81,7 @@ export default class LineChart extends Container {
 
     return `
     <div class="yearcategory-title" >
-      <h3>월별 지출 : ${categoryName}</h3>
+      <h3 class="all-expense" >월별 지출 : ${categoryName}</h3>
     </div>
     <svg version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="graph" aria-labelledby="title" role="img">
     <g class="grid x-grid" id="xGrid">
@@ -98,14 +94,12 @@ export default class LineChart extends Container {
     </g>
       <g class="labels x-labels">
       ${xLabel}
-      <text x="400" y="340" class="label-title">월별</text>
     </g>
     <g class="labels y-labels">
       <text x="80" y="15">${dot(yLavel[2])} 원</text>
       <text x="80" y="95">${dot(yLavel[1])} 원</text>
       <text x="80" y="175">${dot(yLavel[0])} 원</text>
       <text x="80" y="273">0</text>
-      <text x="50" y="200" class="label-title">지출</text>
     </g>
     <g>
       ${Circles}

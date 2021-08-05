@@ -6,9 +6,10 @@
     align-items: center;
     justify-content: center;
     text-align: center; 
-    border-top: 2px solid var(--grayB);
+    border-top: 2px solid var(--grayC);
 
     .recorditem {
+        font-size: 14px;
         position: relative;
         width: 100%;
         display: flex;
@@ -18,6 +19,7 @@
         padding: 0 20px;
 
         .recorditem-item {
+            color: var(--text);
             width: var(--record-item);
             display: flex;
             align-items: center;

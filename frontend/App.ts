@@ -3,10 +3,12 @@ import api from "./api";
 import { setData } from "./redux/list/actions";
 import check from "./util/check";
 import { Container } from "./util/Container";
+import { $ } from "./util/jQurey";
 import { sortByDay } from "./util/sortByDay";
 
 export interface IHeaderView {
   username: string;
+  img: string;
   path: string;
   params: number;
 }
@@ -28,15 +30,18 @@ class App extends Container {
   }
 
   render() {
-    const { username, path, params } = store.check.getState();
+    const { username, path, params, img } = store.check.getState();
     return `
-      <HeaderContainer :username="${username}" :path="${path}" :params="${params}" />
+      <HeaderContainer :username="${username}" :path="${path}" :params="${params}" :img="${img}" />
       <Router/>
-      <Toast/>`;
+      <Toast/>
+      <FooterContainer/>
+      <CardContainer/>
+      <ProfileView/>`;
   }
 
   componentDidMount() {
-    return {};
+    $(".CardContainerOuter").addClass("isNotDisplay");
   }
 }
 

@@ -15,5 +15,12 @@
   background-color: transparent;
   cursor: pointer;
   transition: all 0.3s;
+
+  background: var(--header-gradient);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid var(--text);
+  box-shadow: 0 0 10px var(--text);
 }
 

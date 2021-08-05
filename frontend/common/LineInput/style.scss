@@ -15,21 +15,22 @@
     bottom: 5px;
     left: 0px;
     font-size: 14px;
-    color: var(--text);
+    margin-top: -5px;
+    color: var(--thumb);
     transition: all 0.3s ease-in-out;
     cursor: pointer;
   }
 
   .LineInput input {
     border: 0;
-    border-bottom: 2px solid var(--grayB);
+    border-bottom: 2px solid var(--grayC);
     border-radius: 2px;
     background: transparent;
     width: var(--auth-width);
     min-width: var(--input-width);
     font-size: 12px;
     font-weight: 800;
-    color: var(--grayC);
+    color: var(--grayD);
     transition: all 0.3s ease-in-out;
   }
 
@@ -37,28 +38,28 @@
     font-size: 16px;
     border: none;
     outline: none;
-    border-bottom: 2px solid var(--text);
+    border-bottom: 2px solid var(--thumb);
     border-radius: 2px;
   }
 
   .LineInput input:focus + label {
     top: -12px;
     font-size: 12px;
-    color: var(--text);
+    color: var(--thumb);
   }
 
   .LineInput.Hold input {
     font-size: 16px;
     border: none;
     outline: none;
-    border-bottom: 2px solid var(--text);
+    border-bottom: 2px solid var(--thumb);
     border-radius: 2px;
   }
 
   .LineInput.Hold label {
     top: -12px;
     font-size: 12px;
-    color: var(--text);
+    color: var(--thumb);
   }
 
 }

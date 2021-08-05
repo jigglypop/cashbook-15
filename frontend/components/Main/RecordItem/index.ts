@@ -28,7 +28,6 @@ export default class RecordItem extends Container {
 
   render() {
     return `
-        <hr></hr>
         <div class="recorditem">
         <div class="recorditem-item left">
           <CategoryBadge :key="${this.props.categoryId}" />

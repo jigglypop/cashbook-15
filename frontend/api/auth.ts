@@ -21,10 +21,17 @@ const register = () => {
   return request.post(BASE_URL + "/register", data, token);
 };
 
+const profile = () => {
+  const token = cache.get("token");
+  const data = store.profile.getState();
+  return request.put(BASE_URL, data, token);
+};
+
 const auth = {
   check,
   login,
   register,
+  profile,
 };
 
 export default auth;

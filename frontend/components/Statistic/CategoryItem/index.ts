@@ -32,7 +32,6 @@ export default class RecordItem extends Container {
       ratio = 0;
     }
     return `
-        <hr></hr>
         <div class="categoryitem" id="categoryitem-${this.props.categoryId}">
           <div class="categoryitem-item left"  >
             <CategoryBadge :key="${this.props.categoryId}" />

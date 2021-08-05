@@ -8,6 +8,12 @@ const BASE_URL = "/api/records";
 const writerecords = () => {
   const token = cache.get("token");
   const data = store.writerecords.getState();
+  const amount_abs = Math.abs(Number(data.amount));
+  if (data.type === "income") {
+    data.amount = amount_abs * 1;
+  } else {
+    data.amount = amount_abs * -1;
+  }
   return request.post(BASE_URL, data, token);
 };
 

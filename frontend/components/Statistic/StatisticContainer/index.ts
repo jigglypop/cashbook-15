@@ -1,4 +1,5 @@
 import { Container } from "../../../util/Container";
+import "./style.scss";
 
 export default class StatisticContainer extends Container {
   public state = {

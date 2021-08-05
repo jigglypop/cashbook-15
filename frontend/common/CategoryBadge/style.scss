@@ -9,12 +9,9 @@
     background-color: white;
     color: var(--white-text);
     height: var(--badge-height);
-    border-radius: 12px;
-    box-shadow: 0 0 20px black;
+    border-radius: 14px;
     transition: all .3s ease-in;
   }
-  .category-badge:hover {
-    box-shadow: 0 0 40px black;
-  }
+
 }
 

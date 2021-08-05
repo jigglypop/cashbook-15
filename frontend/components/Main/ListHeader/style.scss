@@ -1,15 +1,16 @@
 .ListHeaderOuter {
     position: relative;
     width: var(--write-width);
-    background-color: var(--app);
     border-radius: 10px;
-    box-shadow: 0 0 20px var(--text);
     padding: 10px;
     margin-bottom: 30px;
-            
-    .calendar-title {
+    box-shadow: 0 0 10px var(--text);
+    border: 2px solid var(--border);
+    background-color: var(--app);
+
+    .listheader-title {
         position: relative;
-        width: var(--calendar-title-width);
+        width: 100%;
         margin: 20px;
 
         display: flex;
@@ -18,8 +19,8 @@
 
         label {
             font-size: 14px;
-            color: var(--primary1);
-            margin: 20px;
+            color: var(--text);
+            margin: 0 20px;
         }
 
 
@@ -34,7 +35,7 @@
             content: '';
             display: inline-block;
             visibility: visible;
-            border: 2px solid var(--primary1);
+            border: 2px solid var(--text);
         }
 
         input[type='radio']:checked:after {
@@ -44,17 +45,31 @@
             top: -5px;
             left: -5px;
             position: relative;
-            background-color: var(--primary1);
+            background-color: var(--text);
             content: '';
             display: inline-block;
             visibility: visible;
-            border: 2px solid var(--primary1);
+            border: 2px solid var(--text);
         }
-        .calendar-item {
+        .listheader-item {
             position: relative;
+            width: 300px;
             display: flex;
             align-items: center;
             justify-content: center;       
+        }
+        .listheader-item.left {
+            justify-content: flex-start;
+        }
+
+        .listheader-item.right {
+            margin-right: 60px;
+        }
+        .listheader-all {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;              
         }
     }
 

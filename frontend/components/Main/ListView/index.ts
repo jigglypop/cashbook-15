@@ -52,13 +52,13 @@ export default class ListView extends Container {
     return `
         <div>
           ${
-            this.data && this.dataKeys
+            this.data && this.dataKeys && this.dataKeys.length !== 0
               ? this.dataKeys
                   .map((key: number) => {
                     return `<DayItem :day="${key}" @getData="getData" />`;
                   })
                   .join("\n")
-              : ""
+              : "<h4 class='nodata' >데이터가 없습니다.</h4>"
           }
         </div>
     `;

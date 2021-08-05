@@ -1,0 +1,19 @@
+.CardContainerOuter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    perspective: 500px;
+}
+.CardContainerOuter.isNotDisplay {
+    display: none;
+}

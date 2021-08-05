@@ -3,6 +3,7 @@ import { IHeaderView } from "../../../App";
 import { CalendarSVG } from "../../../common/SVG/CalendarSVG";
 import { GoOutSVG } from "../../../common/SVG/GoOutSVG";
 import { MainSVG } from "../../../common/SVG/MainSVG";
+import { OlympicRingsSVG } from "../../../common/SVG/OlympicRingsSVG";
 import { StatisticSVG } from "../../../common/SVG/StatisticSVG";
 import { ICheck } from "../../../redux/check";
 import { initCheck } from "../../../redux/check/actions";
@@ -38,39 +39,53 @@ export default class HeaderView extends Container {
 
   render() {
     const [year, month] = makeYearMonth(this.check.params.toString());
+    const { img } = this.check;
+
     return `
-      <div class="header-item" >
-        <h4 class="header-button" id="main-title" >우아한 가계부</h4>
+      <div class="header-item left" >
+        <div class="header-button-item">
+          ${OlympicRingsSVG}
+        </div>
+        <div class="header-button-item">
+          <h4 id="main-title" >WOOWA CASHBOOK</h4>
+        </div>
       </div>
       <div class="header-item" >
         <div class="header-button" id="calendar-front">
           <h4><</h4>
         </div>
-        <div class="header-button" id="calendar-front">
-          <h1>${month}월</h1>
-          <h4>${year}</h4>
+        <div class="header-button days" id="calendar-front">
+          <h1 id="month-title" >${month}월</h1>
+          <h4 id="year-title">${year}</h4>
         </div>    
         <div class="header-button" id="calendar-back">
           <h4>></h4>
         </div>
       </div>
       <div class="header-item" >
-          <div class="header-button login" >
+          <div class="header-button login" id="avatar-button" >
+            <Avatar :width="40px" :height="40px" ${
+              img !== "" ? `:profileImage="${img}"` : ""
+            }/>
             <h4 id="login-id">${
               this.props.username ? this.props.username : ""
             }</h4>
-            <h4 id="logout-button" >${
-              this.props.username ? GoOutSVG("var(--white-text)") : ""
-            }</h4>
-          </div>      
-          <div class="header-button" id="home-navigation">
-            ${MainSVG}
+
           </div>
-          <div class="header-button" id="calendar-navigation">
-            ${CalendarSVG}
+          <div class="header-svg" >
+            <div  class="header-button" id="home-navigation">
+              ${MainSVG}
+            </div>
           </div>
-          <div class="header-button" id="statistic-navigation">
-            ${StatisticSVG}
+          <div class="header-svg" >
+            <div class="header-button" id="calendar-navigation">
+              ${CalendarSVG}
+            </div>
+          </div>
+          <div class="header-svg" >
+            <div class="header-button" id="statistic-navigation">
+              ${StatisticSVG}
+            </div>
           </div>
       </div>
 `;
@@ -85,6 +100,10 @@ export default class HeaderView extends Container {
 
   goStatistic() {
     goStatistic();
+  }
+
+  toggleProfile() {
+    $(".ProfileViewOuter").toggleClass("dropProfile");
   }
   async goLogout() {
     await store.check.dispatch(initCheck());
@@ -108,5 +127,6 @@ export default class HeaderView extends Container {
     $("#calendar-navigation").on("click", this.goCalendar);
     $("#statistic-navigation").on("click", this.goStatistic);
     $("#logout-button").on("click", this.goLogout);
+    $("#avatar-button").on("click", this.toggleProfile);
   }
 }

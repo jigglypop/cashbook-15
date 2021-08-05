@@ -2,16 +2,19 @@
     position: relative;
     width: var(--records-width);
     height: var(--chart-height);
-    background-color: var(--app);
     border-radius: 10px;
-    box-shadow: 0 0 20px var(--text);
     margin: 20px;
+    box-shadow: 0 0 10px var(--text);
+    border: 2px solid var(--border);
+    background-color: var(--app);
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-size: 14px;
+    color: var(--text);
 
     .pieview-inner{
         display: flex;

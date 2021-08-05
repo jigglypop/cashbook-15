@@ -29,7 +29,9 @@ export default class PieView extends Container {
     );
     return `
         <div class="pieview-inner">
-          <h3 class="all-expense" >지출: ${dot(expenseSum)} 원</h3>
+          <h3 class="all-expense" >월별 총 지출 금액 : ${dot(
+            expenseSum
+          )} 원</h3>
         </div>
         <div class="pieview-inner" >
           <div class="pie-item" >${PieChartSVG(category)}</div>

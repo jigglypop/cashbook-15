@@ -13,6 +13,7 @@ export interface ICheckAction {
   type: string;
   username: string;
   id: string;
+  img: string;
   path: string;
   params: number;
 }
@@ -24,12 +25,14 @@ export function checkReducer(state = initialState, action: ICheckAction) {
       return {
         ...state,
         username: action.username,
+        img: action.img,
       };
     case CHECKANDROUTE:
       return {
         ...state,
         username: action.username,
         id: action.id,
+        img: action.img,
         path: action.path,
         params: action.params,
       };

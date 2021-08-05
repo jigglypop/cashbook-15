@@ -41,19 +41,13 @@ export default class FilteredCategory extends Container {
     return `
     <div class="filtercategory-inner" >
         ${
-          this.data.length === 0
-            ? "<h1>카테고리 데이터가 없습니다</h1>"
-            : `<div>
-          ${
-            this.data && this.dataKeys
-              ? this.dataKeys
-                  .map((key: number) => {
-                    return `<DayItem :day="${key}" @getData="getData" />`;
-                  })
-                  .join("\n")
-              : ""
-          }
-        </div>`
+          this.data && this.dataKeys && this.dataKeys.length !== 0
+            ? this.dataKeys
+                .map((key: number) => {
+                  return `<DayItem :day="${key}" @getData="getData" />`;
+                })
+                .join("\n")
+            : "<h2 class='nodata' >데이터가 없습니다.</h2>"
         }
     </div>`;
   }

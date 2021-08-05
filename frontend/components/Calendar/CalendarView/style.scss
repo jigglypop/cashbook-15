@@ -4,17 +4,19 @@
     align-items: center;
     justify-content: center;
     width: var(--calendar-width);
-    background-color: var(--app);
-    box-shadow: 0 0 20px var(--text);
     border-radius: 10px;
     margin: 20px;
     padding: 20px;
-
+    box-shadow: 0 0 10px var(--text);
+    border: 2px solid var(--border);
+    background-color: var(--app);
+    margin-bottom: 100px;
+    
     .calendar-title {
         width: 100%;
         margin: 20px;
         font-size: 14px;
-        color: var(--primary1);
+        color: var(--tag);
         display: flex;
         align-items: center;
         justify-content: space-around;     
@@ -42,6 +44,11 @@
             justify-content: center;
         }
 
+        .date.isToday {
+            background-color: var(--grayB);
+            box-shadow: 0 0 20px var(--grayB);
+        }
+
         .date {
             background-color: var(--calendar-item);
             box-shadow: 0 0 20px var(--calendar-item);
@@ -58,14 +65,14 @@
                 margin: 5px;
             }
             
-            .calcdate-all{
+            .calcdate-all {
                 font-size: 12px;
-                color: var(--primary1);
+                color: var(--dark);
             }
 
             .calcdate-income{
                 font-size: 12px;
-                color: var(--primary3);
+                color: var(--blue);
             }
 
             .calcdate-expense{

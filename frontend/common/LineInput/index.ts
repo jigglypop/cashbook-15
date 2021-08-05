@@ -7,6 +7,7 @@ interface ILineInput {
   type?: string;
   labelText?: string;
   value?: string;
+  color?: string;
   onChange: (e: InputEl) => void;
 }
 

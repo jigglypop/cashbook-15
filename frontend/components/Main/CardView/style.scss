@@ -1,0 +1,48 @@
+.CardViewOuter {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    height: 80%;
+
+    background-color: #222222;
+    border-radius: 10px;
+    box-shadow: 0 0 20px black;
+
+
+    .close-svg {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        cursor: pointer;
+        transition: all .3s ease-in;
+    }
+
+    .close-svg:hover {
+        transform: scale(1.2);
+    }
+
+    .cardview-item.button {
+        margin-top: 100px;
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .move-carousel {
+        color: white;
+        margin: 10px;
+        padding: 10px;
+        text-shadow: 0 0 10px white;
+        transition: all .3s ease-in;
+        cursor: pointer;
+    }
+    .move-carousel:hover {
+        transform: scale(1.2);
+    }
+}

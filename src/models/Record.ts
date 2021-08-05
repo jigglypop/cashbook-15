@@ -4,7 +4,7 @@ import {
   Column,
   ForeignKey,
   Model,
-  Table
+  Table,
 } from "sequelize-typescript";
 import Category from "./Category";
 import Payment from "./Payment";

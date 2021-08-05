@@ -10,4 +10,74 @@
             margin: 5px;
         }
     }
+    .header-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        h4 {
+            color: var(--header-app);
+        }
+    }
+    .header-button.days {
+        flex-direction: column;
+    }
+    .header-button-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: flex-start;
+    }
+    #main-title {
+        color: var(--header-app);
+        font-size: 16px;
+        margin: 5px;        
+    }
+    #main-description {
+        color: var(--header-app);
+        font-size: 10px;
+        margin: 5px;        
+    }
+    #month-title {
+        color: var(--header-app);
+        font-size: 45px;
+        margin: 5px;
+    }
+    #year-title {
+        color: var(--header-app);
+        font-size: 14px;
+    }
+    .header-svg {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--darkmode);
+        border: 2px solid black;
+        box-shadow: 0 0 10px black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transition: all .3s ease-in;
+        margin: 10px;
+        svg {
+            transform: scale(0.8);
+        }
+    }
+    .header-svg.logout {
+        background: none;
+    }
+    .header-item.left {
+        justify-content: flex-start;
+    }
+    .header-svg:hover {
+        transform: scale(1.2);
+    }
+
+    .OlympicRingsSVG {
+        width: 60px;
+        height: 50px;
+        transform: scale(0.7);
+    }
 }
