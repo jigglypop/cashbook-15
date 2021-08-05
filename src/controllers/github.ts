@@ -75,9 +75,5 @@ export const githubtoken = async (req: any, res: Response) => {
   const token = await generateToken(user);
   res.set("token", token);
   res.status(200).json({ data: serialized });
-  req.session.destroy(function (err: string) {
-    if (err) {
-      return;
-    }
-  });
+  req.session.destroy();
 };
