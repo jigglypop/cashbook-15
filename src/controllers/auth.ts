@@ -47,8 +47,11 @@ export const login = async (req: Request, res: Response) => {
 
 export const register = async (req: Request, res: Response) => {
   const { username, password, email } = req.body;
+  if (!username || !password || !email) {
+    throw new HttpError(400, "입력되지 않은 값이 있습니다.");
+  }
 
-  const hashedPassword = await bcrypt.hash(password.toString(), 10);
+  const hashedPassword = await bcrypt.hash(password, 10);
   const user = await User.create({ username, email, hashedPassword });
   const serialized = await serialize(user);
   const token = await generateToken(user);
