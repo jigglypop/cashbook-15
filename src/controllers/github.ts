@@ -57,13 +57,7 @@ export const githubtoken = async (req: any, res: Response) => {
   const img = data.avatar_url;
   if (!user) {
     const hashedPassword = await bcrypt.hash(password.toString(), 10);
-    user = await User.create({
-      username,
-      email: "",
-      hashedPassword,
-      img,
-    });
-    if (!user) throw new HttpError(500, "유저 생성 불가");
+    user = await User.create({ username, hashedPassword, img });
   } else {
     const hashedPassword = user.getDataValue("hashedPassword");
     const valid = await bcrypt.compare(password, hashedPassword);
