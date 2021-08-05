@@ -5,16 +5,50 @@
     align-items: flex-start;
     justify-content: flex-start;
     cursor: pointer;
+    z-index: 1;
+}
+
+.write-item-outer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: var(--app);
+    width: 100%;
+    height: 100%;
+}
+
+.write-item-inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;   
+}
+.write-item-dummy {
+    position: absolute;
+    background-color: var(--app);
+    width: 160px;
+    height: 110px;
+    margin-left: -20px;
+    margin-top: -20px;
+    z-index: -1;
 }
 
 .type-flag {
-    background-color: var(--tag);
-    box-shadow: 0 0 10px var(--tag);
-    color: black;
+    background: var(--header-color);
+    color: var(--app);
     font-size: 14px;
+    font-weight: 800;
     border-radius: 5px;
-    padding: 5px 10px;
-    margin: 5px;
+    width: 50px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.type-category-name {
+    margin: 0 5px;
 }
 
 .write-item {
@@ -24,6 +58,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    text-align: center;
     justify-content: flex-start;
 
     .LineInput input{
@@ -43,7 +78,7 @@
         border-radius: 10px;
         visibility: visible;
         transform: translateY(100px);
-        z-index: 4;
+        z-index: -2;
         transition: all .3s ease-in;
 
         .category-select-item {

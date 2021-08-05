@@ -8,10 +8,10 @@
     width: var(--badge-width);
     background-color: white;
     color: var(--white-text);
+    text-shadow: 0px 0px 20px #1d1d1d;
     height: var(--badge-height);
     border-radius: 14px;
     transition: all .3s ease-in;
   }
-
 }
 

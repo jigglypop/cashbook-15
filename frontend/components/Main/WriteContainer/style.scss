@@ -3,11 +3,12 @@
     width: var(--write-width);
     height: var(--write-height);
     display: flex;
-    justify-content: center;
+    padding-left: 30px;
     align-items: center;
     border-radius: 10px;
     box-shadow: 0 0 10px var(--text);
     border: 2px solid var(--border);
     background-color: var(--app);
-    z-index: 5;
+    z-index: 7;
+    overflow-x:auto;
 }

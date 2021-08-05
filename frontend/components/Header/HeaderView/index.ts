@@ -1,7 +1,7 @@
 import { store } from "../../..";
 import { IHeaderView } from "../../../App";
 import { CalendarSVG } from "../../../common/SVG/CalendarSVG";
-import { GoOutSVG } from "../../../common/SVG/GoOutSVG";
+import { HambergerSVG } from "../../../common/SVG/HambergerSVG";
 import { MainSVG } from "../../../common/SVG/MainSVG";
 import { OlympicRingsSVG } from "../../../common/SVG/OlympicRingsSVG";
 import { StatisticSVG } from "../../../common/SVG/StatisticSVG";
@@ -50,19 +50,19 @@ export default class HeaderView extends Container {
           <h4 id="main-title" >WOOWA CASHBOOK</h4>
         </div>
       </div>
-      <div class="header-item" >
-        <div class="header-button" id="calendar-front">
+      <div class="header-item center" >
+        <div class="header-button goback" id="calendar-front">
           <h4><</h4>
         </div>
         <div class="header-button days" id="calendar-front">
-          <h1 id="month-title" >${month}월</h1>
+          <h1 id="month-title" >${month}<span id="month-title-month">월</span></h1>
           <h4 id="year-title">${year}</h4>
         </div>    
-        <div class="header-button" id="calendar-back">
+        <div class="header-button goback" id="calendar-back">
           <h4>></h4>
         </div>
       </div>
-      <div class="header-item" >
+      <div class="header-item right" id="header-icons">
           <div class="header-button login" id="avatar-button" >
             <Avatar :width="40px" :height="40px" ${
               img !== "" ? `:profileImage="${img}"` : ""
@@ -72,18 +72,40 @@ export default class HeaderView extends Container {
             }</h4>
 
           </div>
-          <div class="header-svg" >
+          <div class="header-svg isnothamberger" >
             <div  class="header-button" id="home-navigation">
               ${MainSVG}
             </div>
           </div>
-          <div class="header-svg" >
+          <div class="header-svg isnothamberger" >
             <div class="header-button" id="calendar-navigation">
               ${CalendarSVG}
             </div>
           </div>
-          <div class="header-svg" >
+          <div class="header-svg isnothamberger" >
             <div class="header-button" id="statistic-navigation">
+              ${StatisticSVG}
+            </div>
+          </div>
+          <div class="header-svg ishamberger" id="hamberger" >
+            <div class="header-button" id="calendar-navigation">
+              ${HambergerSVG()}
+            </div>
+          </div>
+      </div>
+      <div class="header-item hamberger" id="header-hamberger">
+          <div class="header-svg" >
+            <div  class="header-button" id="home-navigation-hamberger">
+              ${MainSVG}
+            </div>
+          </div>
+          <div class="header-svg" >
+            <div class="header-button" id="calendar-navigation-hamberger">
+              ${CalendarSVG}
+            </div>
+          </div>
+          <div class="header-svg" >
+            <div class="header-button" id="statistic-navigation-hamberger">
               ${StatisticSVG}
             </div>
           </div>
@@ -104,6 +126,9 @@ export default class HeaderView extends Container {
 
   toggleProfile() {
     $(".ProfileViewOuter").toggleClass("dropProfile");
+  }
+  toggleHamberger() {
+    $("#header-hamberger").toggleClass("isHambergetOpen");
   }
   async goLogout() {
     await store.check.dispatch(initCheck());
@@ -126,7 +151,11 @@ export default class HeaderView extends Container {
     $("#home-navigation").on("click", this.goMain);
     $("#calendar-navigation").on("click", this.goCalendar);
     $("#statistic-navigation").on("click", this.goStatistic);
+    $("#home-navigation-hamberger").on("click", this.goMain);
+    $("#calendar-navigation-hamberger").on("click", this.goCalendar);
+    $("#statistic-navigation-hamberger").on("click", this.goStatistic);
     $("#logout-button").on("click", this.goLogout);
     $("#avatar-button").on("click", this.toggleProfile);
+    $("#hamberger").on("click", this.toggleHamberger);
   }
 }

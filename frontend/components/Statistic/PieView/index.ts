@@ -34,8 +34,8 @@ export default class PieView extends Container {
           )} 원</h3>
         </div>
         <div class="pieview-inner" >
-          <div class="pie-item" >${PieChartSVG(category)}</div>
-          ${categoryItem}
+          <div class="pie-item pie-chart" >${PieChartSVG(category)}</div>
+          <div class="pie-item">${categoryItem}</div>
         </div>
     `;
   }

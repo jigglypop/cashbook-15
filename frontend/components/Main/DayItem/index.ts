@@ -29,7 +29,9 @@ export default class DayItem extends Container {
     );
     const data = this.props.getData(this.props.day);
     return `
-        <div>
+        ${
+          data && data.length !== 0
+            ? `<div>
           <div class="day-title-wrapper">
             <h4 class="day-title" >${year}년 ${month}월 ${this.props.day}일</h4>
           </div>
@@ -38,7 +40,9 @@ export default class DayItem extends Container {
               return `<RecordItem :amount="${item.amount}" :categoryValue="${item.category.value}" :categoryId="${item.category.id}" :content="${item.content}" :paymentValue="${item.payment.value}" :type="${item.type}" />`;
             })
             .join("\n")}
-        </div>
+        </div>`
+            : ""
+        }
     `;
   }
 

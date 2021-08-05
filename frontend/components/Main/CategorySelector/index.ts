@@ -28,8 +28,13 @@ export default class CategorySelector extends Container {
     const typestring = type === "expense" ? "지출" : "수입";
 
     return `
-        <h6 class="write-text" id="write-text" >분류</h6>
-        <h4><span class="type-flag" >${typestring}</span> ${categoryName}</h4>
+        <div class="write-item-outer" >
+          <h6 class="write-text" id="write-text" >분류</h6>
+          <div class="write-item-inner">
+            <div class="type-flag" >${typestring}</div>
+            <h4 class="type-category-name" >${categoryName}</h4>
+          </div>
+        </div>
         <div class="category-select" id="category-select" >
           ${category
             .map((item) => {
@@ -75,7 +80,8 @@ export default class CategorySelector extends Container {
     }
     const select = $("#category-select").get();
     select.classList.add("invisible");
-    $("#write-text").on("click", this.toggle);
+    $(".CategorySelectorOuter").on("click", this.toggle);
+
     $(".category-select").on("click", this.setCategoryItem);
     $("#checksvg").css("stroke", flag);
   }

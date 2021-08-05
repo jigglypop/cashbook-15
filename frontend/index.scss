@@ -68,8 +68,9 @@ body {
   --write-width: 1000px;
   --write-height: 120px;
   --footer-height: 60px;
-
   --chart-height: 600px;
+
+
   --category-badge-1 : linear-gradient(45deg, #ed213a, #93291e);
   --category-badge-2 : linear-gradient(45deg, #bc4e9c, #f80759);
   --category-badge-3 : linear-gradient(45deg, #fdc830, #f37335);
@@ -92,12 +93,26 @@ body {
   --category-8 : #8e2de2;
   --category-9 : #302b63;
   --category-10 : #434343;
-  --category-11 : var(--grayA);
+  --category-11 : var(--grayD);
+
+  --category-dark-1: none;
+  --category-dark-2: none;
+  --category-dark-3: none;
+  --category-dark-4: none;
+  --category-dark-5: none;
+  --category-dark-6: none;
+  --category-dark-7: none;
+  --category-dark-8: none;
+  --category-dark-9: none;
+  --category-dark-10: none;
+
   --body-background: #d7d7d7;
   --calendar-item: #d7d7d7;
   --base-shadow: none;
   --tag: #219A95;
   --blue: #1fa2ff;
+  --badge: none;
+  --calendar-outer-width: 1200px;
 
   --base-gradient: linear-gradient(45deg, #0cebeb, #20e3b2, #219A95);
   --dark-gradient: linear-gradient(45deg, #0cebeb, #20e3b2, #29ffc6);
@@ -110,6 +125,176 @@ body {
   --credit-width: 430px;
   --credit-height: 260px;
   background: var(--body-background);
+
+  @media(min-width: 600px){ 
+    .header-svg.ishamberger {
+      display:none;
+    }
+  }
+
+  @media screen and (max-width: 900px) { 
+    --records-width: 600px;
+    --records-half-width: 100%;
+    --record-item: 200px;
+    --calendar-outer-width: 600px;
+    --write-width: 600px;
+
+    .CalendarContainerOuter {
+      align-items: flex-start;
+      justify-content: flex-start;
+      height: 700px;
+      border: 2px solid var(--grayC);
+      border-radius: 10px;
+    }
+
+    #main-title {
+      display: none;     
+    }
+    #login-id {
+      display: none;
+    }
+    #month-title {
+      font-size: 25px;
+    }
+    #month-title-month {
+      display: none;
+    }
+    #year-title {
+      font-size: 14px;
+    }
+
+    .calendar-inner {
+      transform: scale(0.9);
+    }
+
+    .pie-chart {
+      svg {
+        width: 300px;
+        height: 300px;
+      }
+    }
+
+    .LineChartOuter {
+      svg {
+        transform: translateX(100px);
+      }
+    }
+
+    .pieview-inner {
+      h3 {
+        margin-top: 100px;
+      }
+      flex-direction: column;
+    }
+    .nodata {
+      font-size: 20px;
+    }
+  }
+
+  @media screen and (max-width: 600px) { 
+    --records-width: 500px;
+    --records-half-width: 100%;
+    --record-item: 200px;
+    --calendar-outer-width: 500px;
+    --write-width: 500px;
+    .nodata {
+      font-size: 20px;
+    }
+    .CalendarContainerOuter {
+      justify-content: flex-start;
+      width: 400px;
+      height: 600px;
+    }
+
+    .header-item.center{
+      width: 250px;
+    }
+
+    .ListHeaderOuter {
+      overflow: auto;
+    }
+
+    .card-secret {
+      font-size: 12px;
+    }
+
+    .footer-text {
+      display: none;
+    }
+
+    .header-svg.isnothamberger {
+      display: none;
+    }
+    .ProfileViewOuter {
+      right: 100px;
+    }
+
+    #month-title {
+      font-size: 20px;
+    }
+    #year-title {
+      display: none;
+    }
+
+    .calendar-inner {
+      transform: scale(0.7);
+    }
+    .pie-chart {
+      svg {
+        width: 200px;
+        height: 200px;
+      }
+    }
+
+    .LineChartOuter {
+      svg {
+        transform: translateX(200px);
+      }
+    }
+
+    .pieview-inner {
+      h3 {
+        margin-top: 100px;
+      }
+      flex-direction: column;
+    }
+  }
+  @media screen and (max-width: 400px) { 
+    --records-width: 300px;
+    --records-half-width: 100%;
+    --record-item: 200px;
+    --calendar-outer-width: 300px;
+    --write-width: 300px;
+
+    .CalendarContainerOuter {
+      height: 500px;
+    }
+    .header-item.center{
+      width: 250px;
+    }
+
+    #month-title {
+      font-size: 16px;
+    }
+
+    .card-secret {
+      font-size: 10px;
+    }
+
+    .pie-chart {
+      svg {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+
+    .LineChartOuter {
+      svg {
+        transform: translateX(300px);
+      }
+    }
+  }
 }
 
 
@@ -211,7 +396,8 @@ main {
 }
 
 .nodata {
-  margin: 20px;
+  margin: 40px;
   color: var(--text);
-  font-size: 18px;
+  font-size: 28px;
 }
+

@@ -1,4 +1,5 @@
 import { categoryObjectKeyValue } from "../../constants/constants";
+import cache from "../../util/cache";
 import { Component } from "../../util/Component";
 import { Container } from "../../util/Container";
 import "./style.scss";
@@ -20,10 +21,10 @@ export default class CategoryBadge extends Component {
   css() {
     return `
       .category-badge {
-        box-shadow: 0_0_10px_var(--category-${this.props.key});
+        box-shadow: 0_0_10px_var(--category-dark-${this.props.key});
       }
       .category-badge:hover {
-        box-shadow: 0_0_20px_var(--category-${this.props.key});
+        box-shadow: 0_0_20px_var(--category-dark-${this.props.key});
       }
     `;
   }

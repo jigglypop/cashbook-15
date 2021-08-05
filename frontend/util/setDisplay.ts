@@ -74,6 +74,16 @@ export const SunAttr = () => {
     "--darkmode": headerColor,
     "--tag": tag,
     "--thumb": text,
+    "--category-dark-1": "none",
+    "--category-dark-2": "none",
+    "--category-dark-3": "none",
+    "--category-dark-4": "none",
+    "--category-dark-5": "none",
+    "--category-dark-6": "none",
+    "--category-dark-7": "none",
+    "--category-dark-8": "none",
+    "--category-dark-9": "none",
+    "--category-dark-10": "none",
   };
 };
 
@@ -101,6 +111,16 @@ export const MoonAttr = () => {
     "--tag": tag,
     "--darkmode": "linear-gradient(45deg, #434343, #000000)",
     "--thumb": text,
+    "--category-dark-1": "#ed213a",
+    "--category-dark-2": "#bc4e9c",
+    "--category-dark-3": "#fdc830",
+    "--category-dark-4": "#ffe259",
+    "--category-dark-5": "#a8ff78",
+    "--category-dark-6": "#11998e",
+    "--category-dark-7": "#12d8fa",
+    "--category-dark-8": "#8e2de2",
+    "--category-dark-9": "#302b63",
+    "--category-dark-10": "#434343",
   };
 };
 

@@ -13,8 +13,8 @@
   justify-content: center;
   align-items: center;
   min-width: 200px;
-  background-color: rgba(0, 0, 0, 0.8);
-  border: 2px solid var(--red);
+  background-color: rgba(0, 0, 0);
+  border: 2px solid var(--thumb);
   color: white;
   font-size: 15px;
   font-weight: 800;
@@ -23,7 +23,7 @@
   margin: 0.5rem;
 }
 .strong {
-  color: var(--red);
+  color: var(--thumb);
   font-size: 15px;
   font-weight: 800;
   margin: 2px;

@@ -1,4 +1,9 @@
 .LineChartOuter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   .graph .labels.x-labels {
     text-anchor: middle;
   }
@@ -57,11 +62,14 @@
   }
 
   text{
-    fill: var(--text);
+    fill: var(--grayD);
   }
 
   .yearcategory-title {
     fill: var(--text);   
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   @keyframes dash {
