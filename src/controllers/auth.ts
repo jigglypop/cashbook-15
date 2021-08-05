@@ -40,8 +40,6 @@ export const login = async (req: Request, res: Response) => {
   const serialized = await serialize(user);
   const token = await generateToken(user);
   res.set("token", token);
-  res.setHeader("Access-Control-Expose-Headers", "*");
-  res.setHeader("Access-Control-Allow-Origin", "*");
   res.status(200).json({ data: serialized });
 };
 
@@ -56,8 +54,6 @@ export const register = async (req: Request, res: Response) => {
   const serialized = await serialize(user);
   const token = await generateToken(user);
   res.set("token", token);
-  res.setHeader("Access-Control-Expose-Headers", "*");
-  res.setHeader("Access-Control-Allow-Origin", "*");
   res.status(200).json({ data: serialized });
 };
 
