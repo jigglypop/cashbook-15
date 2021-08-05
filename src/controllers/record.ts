@@ -28,9 +28,38 @@ export const readByMonth = async (req: IReadRecordRequest, res: Response) => {
   res.status(200).json({ data: records });
 };
 
+const addYearCategory = async (record: IWriteRecordRequest["body"]) => {
+  const { type, categoryId, year, amount, userId, month } = record;
+  if (type === "expense") {
+    let categoryIdString = categoryId.toString();
+    if (categoryIdString.length === 1) {
+      categoryIdString = "0" + categoryIdString;
+    }
+    const yearCategoryId = Number(
+      year.toString() + categoryIdString + userId.toString()
+    );
+    const yearCategory = await YearCategory.findByPk(yearCategoryId);
+    if (!yearCategory) {
+      await YearCategory.create<any>({
+        id: yearCategoryId,
+        [month]: amount,
+      });
+      return;
+    }
+
+    await YearCategory.increment(
+      { [month]: amount },
+      { where: { id: yearCategoryId } }
+    );
+  }
+};
+
 export const write = async (req: IWriteRecordRequest, res: Response) => {
   if (!Object.values(RecordType).includes(req.body.type)) {
     throw new HttpError(400, "잘못된 타입입니다.");
+  }
+  if (req.body.type === RecordType.EXPENSE) {
+    await addYearCategory(req.body);
   }
   const { paymentId, userId, year, categoryId, amount } = req.body;
   if (!paymentId || !userId || !year || !categoryId || !amount)
@@ -42,40 +71,8 @@ export const write = async (req: IWriteRecordRequest, res: Response) => {
       userId,
     });
   }
-  req.body.paymentId = payment.id;
 
-  if (req.body.type === "expense") {
-    let categoryIdString = categoryId.toString();
-    if (categoryIdString.length === 1) {
-      categoryIdString = "0" + categoryIdString;
-    }
-    const yearCategoryId = Number(
-      year.toString() + categoryIdString + userId.toString()
-    );
-    const yearCategory: any = await YearCategory.findByPk(yearCategoryId);
-    if (!yearCategory) {
-      const yearCategory = await YearCategory.create<any>({
-        id: yearCategoryId,
-        [req.body.month]: amount,
-      });
-      if (!yearCategory) throw new HttpError(500, "월별 지출 내역 생성 실패");
-    } else {
-      const monthValue = await yearCategory.getDataValue(req.body.month);
-      const _yearCategory = await YearCategory.update(
-        {
-          [req.body.month]: monthValue + amount,
-        },
-        {
-          where: {
-            id: yearCategoryId,
-          },
-        }
-      );
-      if (!_yearCategory)
-        throw new HttpError(500, "월별 지출 내역 업데이트 실패");
-    }
-  }
-  const newRecord = await Record.create({ ...req.body });
+  const newRecord = await Record.create({ ...req.body, paymentId: payment.id });
   const { month } = newRecord;
   const records: Record[] = await Record.findAll({
     where: { month: month, userId: userId },
