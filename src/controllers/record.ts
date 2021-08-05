@@ -25,7 +25,7 @@ export const readByMonth = async (req: IReadRecordRequest, res: Response) => {
   const records: Record[] = await Record.findAll({
     where: { month, userId },
     include: [Category, Payment],
-    order: [["date", "ASC"]],
+    order: [["createdAt", "DESC"]],
   });
   res.status(200).json({ data: records });
 };
@@ -96,7 +96,7 @@ export const write = async (req: IWriteRecordRequest, res: Response) => {
   const records: Record[] = await Record.findAll({
     where: { month: req.body.month, userId: req.body.userId },
     include: [Category, Payment],
-    order: [["date", "ASC"]],
+    order: [["createdAt", "DESC"]],
   });
   res.status(200).json({ data: records });
 };
