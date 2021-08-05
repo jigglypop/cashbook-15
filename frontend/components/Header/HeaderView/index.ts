@@ -4,6 +4,7 @@ import { CalendarSVG } from "../../../common/SVG/CalendarSVG";
 import { HambergerSVG } from "../../../common/SVG/HambergerSVG";
 import { MainSVG } from "../../../common/SVG/MainSVG";
 import { OlympicRingsSVG } from "../../../common/SVG/OlympicRingsSVG";
+import { Olympics } from "../../../common/SVG/Olympics";
 import { StatisticSVG } from "../../../common/SVG/StatisticSVG";
 import { ICheck } from "../../../redux/check";
 import { initCheck } from "../../../redux/check/actions";
@@ -46,8 +47,9 @@ export default class HeaderView extends Container {
         <div class="header-button-item">
           ${OlympicRingsSVG}
         </div>
-        <div class="header-button-item">
-          <h4 id="main-title" >WOOWA CASHBOOK</h4>
+        <div class="header-button-item title" id="woowa-title">
+          <h4 id="main-title" >WOOWA</h4>
+          <h4 id="main-des" > CASHBOOK</h4>
         </div>
       </div>
       <div class="header-item center" >
@@ -147,7 +149,7 @@ export default class HeaderView extends Container {
     };
     $("#calendar-front").on("click", goFront);
     $("#calendar-back").on("click", goBack);
-    $("#main-title").on("click", this.goMain);
+    $("#woowa-title").on("click", this.goMain);
     $("#home-navigation").on("click", this.goMain);
     $("#calendar-navigation").on("click", this.goCalendar);
     $("#statistic-navigation").on("click", this.goStatistic);

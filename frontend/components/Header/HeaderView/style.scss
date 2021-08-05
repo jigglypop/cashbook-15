@@ -29,16 +29,14 @@
         align-items: flex-start;
         text-align: flex-start;
     }
-    #main-title {
+    #woowa-title {
         color: var(--header-app);
-        font-size: 16px;
+        font-size: 20px;
+        font-weight: 800;
         margin: 5px;        
+        cursor: pointer;
     }
-    #main-description {
-        color: var(--header-app);
-        font-size: 10px;
-        margin: 5px;        
-    }
+
     #month-title {
         color: var(--header-app);
         font-size: 45px;
@@ -105,7 +103,7 @@
     .OlympicRingsSVG {
         width: 60px;
         height: 50px;
-        transform: scale(0.7);
+        transform: scale(0.9);
     }
 
       @media screen and (max-width: 600px) { 
@@ -126,4 +124,18 @@
             transform: scale(0.8);
         }
       }
+
+//   #olympic-ring path:nth-child(1){
+//     stroke-dasharray: 1000;
+//     stroke-dashoffset: 1000;
+//     transition: all .3s ease-in;
+//     cursor: pointer;
+//     animation: dash 3s linear forwards;
+//   }
+// 
+//   @keyframes dash {
+//     to {
+//       stroke-dashoffset: 0;
+//     }
+//   }
 }

@@ -10,10 +10,14 @@
 .credit-selector {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     cursor: pointer;
-
+    width: 200px;
     h5 {
-        margin: 0 5px;
+        margin: 0 2px;
     }
+}
+
+.credit-card-name {
+    font-size: 13px;
 }

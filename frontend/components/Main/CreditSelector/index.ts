@@ -26,7 +26,9 @@ export default class CreditSelector extends Container {
           <h6 class="write-text" >결제수단</h6>
           <div class="credit-selector" >
             <GlassButton :text="선택" @onClick="onPayment" :width="60px" :height="25px" />
-            <h5>${paymentId === -1 ? "선택없음" : paymentId}</h5>
+            <h5 class="credit-card-name" >${
+              paymentId === -1 ? "선택없음" : paymentId
+            }</h5>
           </div>
 
     `;
