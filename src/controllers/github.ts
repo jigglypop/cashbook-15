@@ -1,7 +1,6 @@
 import bcrypt from "bcryptjs";
 import { Request, Response } from "express";
 import fetch from "node-fetch";
-import { Model } from "sequelize-typescript";
 import HttpError from "../errors/HttpError";
 import User from "../models/User";
 import { generateToken } from "../util/generateToken";
