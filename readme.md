@@ -20,6 +20,21 @@
 
 # 실행 방법
 
+```text
+# .env
+DB_NAME=
+DB_HOST=
+MYSQL_PORT=
+DB_USERNAME=
+DB_PASSWORD=
+SESSION_KEY=
+JWT_SECRET=
+JWT_EXPIRED=
+SERVER_URL=
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+```
+
 ```shell
 yarn install
 yarn run start
