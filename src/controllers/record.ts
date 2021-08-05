@@ -6,6 +6,8 @@ import Record, { IRecord } from "../models/Record";
 import RecordType from "../models/RecordType";
 import YearCategory from "../models/YearCategory";
 import { IAuthRequest } from "../middleware/jwtMiddleware";
+import { Transaction } from "sequelize";
+import wrapTransaction from "../util/wrapTransaction";
 
 interface IReadRecordRequest extends IAuthRequest {
   query: {
@@ -28,7 +30,10 @@ export const readByMonth = async (req: IReadRecordRequest, res: Response) => {
   res.status(200).json({ data: records });
 };
 
-const addYearCategory = async (record: IWriteRecordRequest["body"]) => {
+const addYearCategory = async (
+  record: IWriteRecordRequest["body"],
+  transaction: Transaction
+) => {
   const { type, categoryId, year, amount, userId, month } = record;
   if (type === RecordType.INCOME) {
     return;
@@ -40,38 +45,53 @@ const addYearCategory = async (record: IWriteRecordRequest["body"]) => {
   const yearCategoryId = Number(
     year.toString() + categoryIdString + userId.toString()
   );
-  const yearCategory = await YearCategory.findByPk(yearCategoryId);
+  const yearCategory = await YearCategory.findByPk(yearCategoryId, {
+    transaction,
+  });
   if (!yearCategory) {
-    await YearCategory.create<any>({
-      id: yearCategoryId,
-      [month]: amount,
-    });
+    await YearCategory.create<any>(
+      {
+        id: yearCategoryId,
+        [month]: amount,
+      },
+      { transaction }
+    );
     return;
   }
 
   await YearCategory.increment(
     { [month]: amount },
-    { where: { id: yearCategoryId } }
+    { where: { id: yearCategoryId }, transaction }
   );
 };
 
-const writeRecord = async (record: IRecord) => {
+const writeRecord = async (record: IRecord, transaction: Transaction) => {
   const { paymentId, userId } = record;
-  let payment = await Payment.findOne({ where: { value: paymentId } });
+  let payment = await Payment.findOne({
+    where: { value: paymentId },
+    transaction,
+  });
   if (!payment) {
-    payment = await Payment.create({
-      value: paymentId.toString(),
-      userId,
-    });
+    payment = await Payment.create(
+      {
+        value: paymentId.toString(),
+        userId,
+      },
+      { transaction }
+    );
   }
-  await Record.create({ ...record, paymentId: payment.id });
+  await Record.create({ ...record, paymentId: payment.id }, { transaction });
 };
 
 export const write = async (req: IWriteRecordRequest, res: Response) => {
   if (!Object.values(RecordType).includes(req.body.type)) {
     throw new HttpError(400, "잘못된 타입입니다.");
   }
-  await Promise.all([addYearCategory(req.body), writeRecord(req.body)]);
+
+  await wrapTransaction((t) => [
+    addYearCategory(req.body, t),
+    writeRecord(req.body, t),
+  ]);
 
   const records: Record[] = await Record.findAll({
     where: { month: req.body.month, userId: req.body.userId },
