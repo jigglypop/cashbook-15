@@ -29,6 +29,9 @@ export const readByMonth = async (req: IReadRecordRequest, res: Response) => {
 };
 
 export const write = async (req: IWriteRecordRequest, res: Response) => {
+  if (!Object.values(RecordType).includes(req.body.type)) {
+    throw new HttpError(400, "잘못된 타입입니다.");
+  }
   const { paymentId, userId, year, categoryId, amount } = req.body;
   if (!paymentId || !userId || !year || !categoryId || !amount)
     throw new HttpError(400, "카드 기록이 필요합니다.");
@@ -39,16 +42,17 @@ export const write = async (req: IWriteRecordRequest, res: Response) => {
       userId,
     });
   }
-  let categoryIdString = categoryId.toString();
-  if (categoryIdString.length === 1) {
-    categoryIdString = "0" + categoryIdString;
-  }
-  const yearCategoryId = Number(
-    year.toString() + categoryIdString + userId.toString()
-  );
-  const yearCategory: any = await YearCategory.findByPk(yearCategoryId);
+  req.body.paymentId = payment.id;
 
   if (req.body.type === "expense") {
+    let categoryIdString = categoryId.toString();
+    if (categoryIdString.length === 1) {
+      categoryIdString = "0" + categoryIdString;
+    }
+    const yearCategoryId = Number(
+      year.toString() + categoryIdString + userId.toString()
+    );
+    const yearCategory: any = await YearCategory.findByPk(yearCategoryId);
     if (!yearCategory) {
       const yearCategory = await YearCategory.create<any>({
         id: yearCategoryId,
@@ -71,17 +75,7 @@ export const write = async (req: IWriteRecordRequest, res: Response) => {
         throw new HttpError(500, "월별 지출 내역 업데이트 실패");
     }
   }
-
-  const _paymentId = payment.id;
-  const req_body = { ...req.body };
-  req_body.paymentId = _paymentId;
-  const data: IRecord = {
-    ...req_body,
-  };
-  if (!Object.values(RecordType).includes(data.type)) {
-    throw new HttpError(400, "잘못된 타입입니다.");
-  }
-  const newRecord = await Record.create({ ...data });
+  const newRecord = await Record.create({ ...req.body });
   const { month } = newRecord;
   const records: Record[] = await Record.findAll({
     where: { month: month, userId: userId },
