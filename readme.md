@@ -36,7 +36,7 @@ yarn run start
   - Record - 수입/지출 내역
   - Payment - 결제수단
   - Category - 내역 카테고리
-  - YearCategories - 통계 페이지 수입/지출 내역 조회용 테이블 
+  - YearCategories - 통계 페이지 지출 내역 조회용 테이블 
 </div>
 
 # API Spec
