@@ -38,7 +38,3 @@ yarn run start
   - Category - 내역 카테고리
   - YearCategories - 통계 페이지 지출 내역 조회용 테이블 
 </div>
-
-# API Spec
-
-### [Wiki에서 보기](https://github.com/woowa-techcamp-2021/cashbook-15/wiki/API-spec)
