@@ -46,7 +46,7 @@ export default class LoginView extends Container {
     return `
     <Input :placeholder="아이디" @onChange="changeUsername" />
     <Input :placeholder="비밀번호" :type="password" @onChange="changePassword" />
-    <GlassButton :text="로그인" @onClick="loginApi" />
+    <GlassButton :text="로그인" @onClick="loginApi"  :background="linear-gradient(45deg,  #bc4e9c, #f80759" :color="white" />
     <a href="${GITHUB_URL}" >
       <button class="github-button" >GITHUB 로그인/ 회원가입 </button>
     </a>

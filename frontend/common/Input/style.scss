@@ -4,26 +4,20 @@
     align-items: flex-start;
     padding: 10px;
     margin: 10px;
-
-    position: absolute;
+    position: sticky;
     width: var(--auth-width);
-    height: 80px;
-    left: 15px;
-    top: 52px;
-
-    background: transparent;
-
-    box-sizing: border-box;
     border-radius: 8px;
-
-
-    position: static;
     height: 40px;
-    left: 16px;
-    bottom: 8px;
-
-    font-size: 16px;
     line-height: 22px;
-
-    color: var(--deep-gray);
+    border: none;
+    color: var(--grayC);
+    border: 2px solid var(--grayC);
+    border-radius: 2px;
+    background: transparent;
+    width: var(--auth-width);
+    min-width: var(--input-width);
+    font-size: 16px;
+    font-weight: 800;
+    transition: all 0.3s ease-in-out;
 }
+

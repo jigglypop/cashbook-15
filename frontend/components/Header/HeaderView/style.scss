@@ -65,11 +65,38 @@
             transform: scale(0.8);
         }
     }
+
     .header-svg.logout {
         background: none;
     }
     .header-item.left {
         justify-content: flex-start;
+    }
+
+    .header-item.right {
+        justify-content: flex-end;
+    }
+
+    .header-item.hamberger{ 
+        position: fixed;
+        background: #1d1d1d;
+        border-radius: 10px;
+        top: var(--header-height);
+        width: 70px;
+        height: 300px;
+        right: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transform: translateX(70px);
+        transition: all .3s ease-in;
+    }
+
+    .header-item.hamberger.isHambergetOpen {
+        transform: translateX(0);
     }
     .header-svg:hover {
         transform: scale(1.2);
@@ -80,4 +107,23 @@
         height: 50px;
         transform: scale(0.7);
     }
+
+      @media screen and (max-width: 600px) { 
+        .header-item {
+            width: 150px;
+        }
+
+        #month-title{
+            font-size: 20px;
+        }
+        .header-item.center {
+            width: 150px;
+        }
+        .header-button.goback{
+            font-size: 14px;
+        }
+        #hamberger {
+            transform: scale(0.8);
+        }
+      }
 }

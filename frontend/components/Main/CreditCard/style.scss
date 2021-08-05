@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    
     .credit-card-inner {
         position: relative;
         width: var(--credit-width);
@@ -31,7 +32,7 @@
     .card-secret {
         margin-top: 150px;
         margin-left: 50px;
-        font-size: 20px;
+        font-size: 16px;
         color: white;
         text-shadow: 0 0 20px white;
         position: absolute;

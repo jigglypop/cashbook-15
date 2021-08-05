@@ -30,13 +30,11 @@ export default class Input extends Container {
   }
 
   render() {
-    return `
-            <input
-            ${this.props.type ? `type=${this.props.type}` : ""}
-            class="Input" id="input-${this.ID}"
-            value="${this.props.value ?? ""}"
-            placeholder="${this.props.placeholder ?? ""}"></input>
-        `;
+    return `<input
+      ${this.props.type ? `type=${this.props.type}` : ""}
+      class="Input" id="input-${this.ID}"
+      value="${this.props.value ?? ""}"
+      placeholder="${this.props.placeholder ?? ""}"></input>`;
   }
   componentDidMount() {
     const that = this;

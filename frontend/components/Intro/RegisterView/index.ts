@@ -48,9 +48,9 @@ export default class RegisterView extends Container {
     <Input :placeholder="아이디" @onChange="changeUsername" />
     <Input :placeholder="이메일" @onChange="changeEmail" />
     <Input :placeholder="비밀번호" :type="password" @onChange="changePassword" />
-    <GlassButton :text="회원가입" @onClick="registerApi" />
+    <GlassButton :text="회원가입" @onClick="registerApi" :background="linear-gradient(45deg, #bc4e9c, #f80759" :color="white"/>
     <a href="${GITHUB_URL}" >
-      <button class="github-button" >GITHUB 로그인/ 회원가입 </button>
+      <button class="github-button"  >GITHUB 로그인/ 회원가입 </button>
     </a>
     <h6 class="errormessage" >${this.state.errorText}</h6>
     `;

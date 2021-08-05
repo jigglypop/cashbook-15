@@ -3,10 +3,19 @@
     width: 100%;
     height: 100%;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     .all-expense {
-        color: var(--text);
-        font-size: 30px;
+        width: 400px;
+        color: var(--header-app);
+        font-size: 16px;
         font-weight: 800;
+        background: var(--header-color);
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px var(--badge);
     }
 
 }

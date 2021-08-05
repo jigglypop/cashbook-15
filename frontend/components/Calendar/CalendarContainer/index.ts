@@ -14,8 +14,11 @@ export default class CalendarContainer extends Container {
 
   render() {
     return `
-    <CalendarDays />
-    <CalendarView />`;
+    <div class="calendar-inner" >
+      <CalendarDays />
+      <CalendarView />
+    </div>
+`;
   }
 
   componentDidMount() {

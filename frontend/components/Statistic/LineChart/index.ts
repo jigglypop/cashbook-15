@@ -57,11 +57,11 @@ export default class LineChart extends Container {
       xPoint[i - 1] = start;
       xLabel += `<text x="${start}" y="${
         yMax + 50
-      }" fill="var(--text)" >${i}</text>`;
+      }" fill="var(--grayD)" >${i}</text>`;
       Circles += `
       <text x="${xPoint[i - 1]}" y="${
         yPoint[i - 1] - 5
-      }"  font-size="10px" fill="var(--text)" >${dot(
+      }"  font-size="10px" fill="var(--grayD)" >${dot(
         monthdata[i - 1]
       )} 원</text>
       `;
