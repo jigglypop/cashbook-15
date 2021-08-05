@@ -54,16 +54,8 @@ const addYearCategory = async (record: IWriteRecordRequest["body"]) => {
   }
 };
 
-export const write = async (req: IWriteRecordRequest, res: Response) => {
-  if (!Object.values(RecordType).includes(req.body.type)) {
-    throw new HttpError(400, "잘못된 타입입니다.");
-  }
-  if (req.body.type === RecordType.EXPENSE) {
-    await addYearCategory(req.body);
-  }
-  const { paymentId, userId, year, categoryId, amount } = req.body;
-  if (!paymentId || !userId || !year || !categoryId || !amount)
-    throw new HttpError(400, "카드 기록이 필요합니다.");
+const writeRecord = async (record: IRecord) => {
+  const { paymentId, userId } = record;
   let payment = await Payment.findOne({ where: { value: paymentId } });
   if (!payment) {
     payment = await Payment.create({
@@ -71,11 +63,18 @@ export const write = async (req: IWriteRecordRequest, res: Response) => {
       userId,
     });
   }
+  await Record.create({ ...record, paymentId: payment.id });
+};
 
-  const newRecord = await Record.create({ ...req.body, paymentId: payment.id });
-  const { month } = newRecord;
+export const write = async (req: IWriteRecordRequest, res: Response) => {
+  if (!Object.values(RecordType).includes(req.body.type)) {
+    throw new HttpError(400, "잘못된 타입입니다.");
+  }
+  await addYearCategory(req.body);
+  await writeRecord(req.body);
+
   const records: Record[] = await Record.findAll({
-    where: { month: month, userId: userId },
+    where: { month: req.body.month, userId: req.body.userId },
     include: [Category, Payment],
     order: [["date", "ASC"]],
   });
