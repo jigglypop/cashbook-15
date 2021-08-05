@@ -85,7 +85,7 @@ export default class WriteView extends Container {
           <h6 class="write-text" >일자</h6>
           <div class="write-input" >
             <h4 class="write-day" >${year}/${month}/</h4>
-            <LineInput @onChange="changeDay" :value="${day}" :type="number" :width="35px" />
+            <LineInput @onChange="changeDay" :value="${day}" :type="number" :width="35px" :fontsize="25px" />
           </div>
         </div>
         <div class="write-item" id="write-item-category">
