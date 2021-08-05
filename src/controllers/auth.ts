@@ -18,7 +18,8 @@ export const check = async (req: IAuthRequest, res: Response) => {
   if (!user) {
     throw new HttpError(401, "같은 이름의 계정이 존재하지 않습니다.");
   }
-  res.status(200).json({ data: user });
+  const serialized = await serialize(user);
+  res.status(200).json({ data: serialized });
 };
 
 export const login = async (req: Request, res: Response) => {
