@@ -1,6 +1,8 @@
 import { store } from "..";
 import cache from "../util/cache";
 import { makeYearMonth } from "../util/getDate";
+import { getYearMonthToString } from "../util/getYear";
+import { makeLengthTwo } from "../util/makeLengthTwo";
 import request from "./utils/request";
 
 const BASE_URL = "/api/records";
@@ -14,14 +16,15 @@ const writerecords = () => {
   } else {
     data.amount = amount_abs * -1;
   }
+  const yearmonth = getYearMonthToString();
+  data.month = yearmonth;
   return request.post(BASE_URL, data, token);
 };
 
 const getrecords = () => {
   const token = cache.get("token");
-  const { params } = store.check.getState();
-  const data = makeYearMonth(params);
-  return request.get(BASE_URL + `/?month=${data[1]}`, token);
+  const yearmonth = getYearMonthToString();
+  return request.get(BASE_URL + `/?month=${yearmonth}`, token);
 };
 
 const records = {

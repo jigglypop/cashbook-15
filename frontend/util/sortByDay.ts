@@ -1,5 +1,4 @@
 import { IListItem } from "../redux/list";
-
 export const sortByDay = (data: IListItem[]) => {
   const _data: any = {};
   const _calcdate: any = {};

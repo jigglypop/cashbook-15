@@ -10,6 +10,7 @@ export interface IRecordItem {
   paymentValue: string;
   paymentId: number;
   type: string;
+  createdAt: string;
 }
 
 export default class RecordItem extends Container {

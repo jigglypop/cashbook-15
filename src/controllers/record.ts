@@ -8,10 +8,12 @@ import YearCategory from "../models/YearCategory";
 import { IAuthRequest } from "../middleware/jwtMiddleware";
 import { Transaction } from "sequelize";
 import wrapTransaction from "../util/wrapTransaction";
+import { makeYearMonth } from "../../frontend/util/getDate";
 
 interface IReadRecordRequest extends IAuthRequest {
   query: {
     month: string;
+    year: string;
   };
 }
 
@@ -35,6 +37,9 @@ const addYearCategory = async (
   transaction: Transaction
 ) => {
   const { type, categoryId, year, amount, userId, month } = record;
+  const data = makeYearMonth(month.toString());
+  const _month = data[1];
+
   if (type === RecordType.INCOME) {
     return;
   }
@@ -52,7 +57,7 @@ const addYearCategory = async (
     await YearCategory.create<any>(
       {
         id: yearCategoryId,
-        [month]: amount,
+        [_month]: amount,
       },
       { transaction }
     );
@@ -60,7 +65,7 @@ const addYearCategory = async (
   }
 
   await YearCategory.increment(
-    { [month]: amount },
+    { [_month]: amount },
     { where: { id: yearCategoryId }, transaction }
   );
 };
