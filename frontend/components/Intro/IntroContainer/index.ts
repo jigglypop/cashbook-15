@@ -42,22 +42,24 @@ export default class IntroContainer extends React {
         <h1 class="tokyo" id="tokyo" >TOKYO</h1>
         <h1 class="tokyo" id="olympics" >OLYMPICS</h1>
         <h1 class="tokyo" id="edition" >EDITTION</h1>
+
       </div>
 
-    <div class="intro-inner" >
+        <div class="intro-inner" >
 
-      <h1 class="intro-title">WOOWA CASHBOOK</h1>
-      <h4 class="dummy-id" >관람용 아이디/비밀번호 : woowa / 123456</h4>
-    ${
-      this.state.toggle
-        ? `
-        <div id="toggle-login" class="goto-flag" >기존 아이디가 있으신가요? <span>로그인</span></div>
-        <RegisterView/>`
-        : `
-        <div id="toggle-register" class="goto-flag" >처음이신가요? <span>회원가입</span></div>
-        <LoginView/>`
-    }
-    </div>`;
+          <h1 class="intro-title">WOOWA CASHBOOK</h1>
+          <h4 class="dummy-id" >관람용 아이디/비밀번호 : woowa / 123456</h4>
+        ${
+          this.state.toggle
+            ? `
+            <div id="toggle-login" class="goto-flag" >기존 아이디가 있으신가요? <span>로그인</span></div>
+            <RegisterView/>`
+            : `
+            <div id="toggle-register" class="goto-flag" >처음이신가요? <span>회원가입</span></div>
+            <LoginView/>`
+        }
+        </div>
+`;
   }
 
   componentDidMount() {
@@ -91,6 +93,7 @@ export default class IntroContainer extends React {
 
     $(`.IntroContainerOuter`).on("mouseout", function () {
       $(`#intro-container`).css("transform", `rotateY(0deg) rotateX(0deg)`);
+      $(`#intro-inner`).css("transform", "translate3d(0, 0, 0)");
       $(`#tokyo`).css("transform", "translate3d(0, 0, 0)");
       $(`#olympics`).css("transform", "translate3d(0, 0, 0)");
       $(`#edition`).css("transform", "translate3d(0, 0, 0)");
