@@ -2,6 +2,7 @@ import {
   AllowNull,
   BelongsTo,
   Column,
+  Default,
   ForeignKey,
   Model,
   Table,
@@ -17,6 +18,7 @@ export interface IRecord {
   amount: number;
   content: string;
   date: number;
+  year: number;
   month: number;
   userId: number;
   categoryId: number;

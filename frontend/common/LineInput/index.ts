@@ -30,7 +30,6 @@ export default class LineInput extends React {
   }
 
   css() {
-    console.log(this.props.fontsize);
     return `    
       #line-input-${this.ID} {
         ${this.props.width ? `width: ${this.props.width}` : ""}

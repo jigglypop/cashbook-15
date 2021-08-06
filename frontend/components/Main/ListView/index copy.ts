@@ -1,7 +1,6 @@
 import { store } from "../../..";
 import { Container } from "../../../util/Container";
 import { makeYearMonth } from "../../../util/getDate";
-import { getYear } from "../../../util/getYear";
 import { IRecordItem } from "../RecordItem";
 import "./style.scss";
 
@@ -17,11 +16,13 @@ export default class ListView extends Container {
 
   componentWillMount() {
     const { filter, data } = store.list.getState();
-
+    const { params } = store.check.getState();
+    const [year] = makeYearMonth(params);
     if (data) {
       this.data = {};
       for (const key of Object.keys(data[0])) {
         if (data[0] !== undefined) {
+          console.log(key, data[0], year);
           if (data[0][key]) {
             if (filter === "income") {
               this.data[key] = data[0][key].filter(
